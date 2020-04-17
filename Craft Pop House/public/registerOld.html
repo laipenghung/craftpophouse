@@ -63,16 +63,18 @@
 						</form>
 					</div>
 					
-					<div class="modal-footer">
-						<div class="row">
-							<i class="fab fa-facebook-square fa-3x col-4"></i>
-							<i class="fab fa-google-plus-square fa-3x col-4"></i>
-							<i class="fas fa-envelope-square fa-3x col-4"></i>
+					<div class="modal-footer" data-ng-app="loginModule">
+						<div class="row" data-ng-controller="loginCtrl">
+							<i class="fab fa-facebook-square fa-3x col-4" data-ng-click="accType('fb')"></i>
+							<i class="fab fa-google-plus-square fa-3x col-4" data-ng-click="accType('google')"></i>
+							<i class="fas fa-envelope-square fa-3x col-4" onclick="location.href = 'registerEmailForm.html'"></i>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		
+		<a href="#" onclick="signOut()">Sign out</a>
 	</div>
 	
 	<!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -86,8 +88,13 @@
     <!-- jQuery – required for Bootstrap's JavaScript plugins) --> 
     <script src="frameworks/js/jquery.min.js"></script> 
     <!-- All Bootstrap  plug-ins  file --> 
-    <script src="frameworks/js/bootstrap.min.js"></script> 
-	<script src="firebase_script/fireBasePhoneAuth.js"></script>
+    <script src="frameworks/js/bootstrap.min.js"></script>
+	<!--AngularJS-->
+	<script src="frameworks/js/angular.min.js"></script>
+	<!--Firebase Config-->
+	<script src="firebase_script/socialMediaLogin.js"></script>
+	<script src="firebase_script/firebasePhoneAuth.js"></script>
+	<script src="firebase_script/accountSignOut.js"></script>
 </body>
 
 <footer>

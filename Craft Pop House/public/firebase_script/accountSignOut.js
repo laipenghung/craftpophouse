@@ -1,11 +1,15 @@
-$.getScript("firebase_script/firebaseConfig.js", function(){});
-
 firebase.auth().onAuthStateChanged(function(user){
-	if(user){
-		console.log("User logged in");
+	if(user != null){
+		if(user.emailVerified == false){
+			user.sendEmailVerification();
+			console.log("Send verification email");
+		}
+		else{
+			console.log("User is verified");
+		}
 	}
 	else{
-		console.log("User not logged in");
+		console.log("No user loging");
 	}
 });
 

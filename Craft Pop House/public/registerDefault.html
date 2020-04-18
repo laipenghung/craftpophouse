@@ -51,6 +51,10 @@
 	.fab, .fas{
 		margin-right: 10px;
 	}
+	
+	#loginHyperText{
+		margin-left: 10px;
+	}
 	</style>
 </head>
 
@@ -76,11 +80,11 @@
 				<p class="divider-text">
 					<span class="bg-light">OR</span>
 				</p>
-				<p class="text-center">Sign in with your phone</p>
+				<p class="text-center">Sign up with your phone</p>
 				
 				<form>
 					<div class="form-group row ml-2">
-						<input type="tel" class="form-control col-7" placeholder="Phone Number" autocomplete="tel" name="registerPhone" id="registerPhone">
+						<input type="tel" class="form-control col-7" placeholder="+60 143332468" autocomplete="tel" name="registerPhone" id="registerPhone">
 						<button type="button" class="btn btn-email col-4 mx-1" id="signInButton" onclick="submitPhoneNumberAuth()">Sent Code</button>
 					</div>
 					
@@ -112,6 +116,7 @@
 	<!--AngularJS-->
 	<script src="frameworks/js/angular.min.js"></script>
 	<!--Firebase Config-->
+	<script src="firebase_script/firebaseConfig.js"></script>
 	<script src="firebase_script/socialMediaLogin.js"></script>
 	<script src="firebase_script/firebasePhoneAuth.js"></script>
 	<script src="firebase_script/accountSignOut.js"></script>

@@ -1,5 +1,3 @@
-$.getScript("firebase_script/firebaseConfig.js", function(){});
-
 //Hide recaptcha of phone auth
 window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
 	"recaptcha-container",
@@ -11,23 +9,25 @@ window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
 	}
 );
 
+//Send verification code to phone
 function submitPhoneNumberAuth(){
 	var phoneNumber = document.getElementById("registerPhone").value;
 	var appVerifier = window.recaptchaVerifier;
 	
 	firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier).then(function(confirmationResult){
 		window.confirmationResult = confirmationResult;
+		console.log("Sending verfication code to phone");
 	}).catch(function(error){
-		console.log(error);
+		console.log("Error sending verfication code phone");
 	});
 }
 
+//Confirm verification code
 function submitPhoneNumberAuthCode(){
 	var code = document.getElementById("phoneAuthCode").value;
 	confirmationResult.confirm(code).then(function(result){
-		var user = result.user;
-		console.log("Signed in");
+		console.log("Code verification success");
 	}).catch(function(error){
-		console.log("Error sign in");
+		console.log("Code verification error");
 	});
 }

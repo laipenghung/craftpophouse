@@ -1,4 +1,3 @@
-$.getScript("firebase_script/firebaseConfig.js", function(){});
 var login = angular.module("loginModule", []);
 
 login.controller("loginCtrl",
@@ -23,10 +22,7 @@ function signInAcc(provider){
 		//The user info object
 		var user = result.user;
 	}).catch(function(error){
-		var errorCode = error.code;
-		var errorMessage = error.message;
-		var credential = error.credential;
-		console.log(errorCode+errorMessage+credential);
+		console.log("Error sign in with social media account");
 	});
 }
 

@@ -131,7 +131,7 @@
 <body>
     <div class="container-fluid">
         <div id="prodCat" class="row d-flex justify-content-center">
-            <div class="col-lg-6 md-12">
+            <div class="col-lg-10 md-12">
                 <div id="owl-cat" class="owl-carousel owl-theme">
                     <div class="item cat">
                         <a href="#">
@@ -528,32 +528,29 @@
     <script src="owlCarousel/dist/owl.carousel.js" type="text/javascript"></script>
     <script type="text/javascript">
         $('#owl-cat').owlCarousel({
-            items:6,
+            
             loop:true,
             autoplay:true,
             autoplayTimeout:3000,
             autoplayHoverPause:true,
-            dots:false
-        })
-    </script>
-    
-    <script type="text/javascript">
-        $('#owl-msg').owlCarousel({
-            loop:true,
-            margin:10,
-            nav:true,
+            dots:false,
+            responsiveClass:true,
             responsive:{
                 0:{
                     items:1
                 },
-                600:{
-                    items:3
+                480:{
+                    items:4
                 },
-                1000:{
-                    items:5
+                1300:{
+                    items:5  
+                },
+                1700:{
+                    items:6
                 }
             }
         })
     </script>
+
 </body>
 </html>

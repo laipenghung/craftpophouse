@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="myApp">
+<head>
+    <title>CraftPopHouse</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Bootstrap -->
+    <link href="frameworks/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- CSS -->
+	<link rel="stylesheet" href="frameworks/css/style.css">
+    
+<style>
+    h1{
+        margin-top: 4%;
+        text-align: center;
+    }
+</style>
+</head>
+
+<body data-hijacking="on" data-animation="scaleDown">
+    <header>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#"><img src="image/logo.png" width="30" height="30" class="d-inline-block align-top" alt="Logo"></a>
+
+        <!-- BreadCrumb -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+
+                <li class="nav-item" >
+                    <a class="nav-link" href="#">Link 1</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link 2</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link 3</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Product Categories 
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Category 1</a>
+                        <a class="dropdown-item" href="#">Category 2</a>
+
+                        <div class="dropdown-divider"></div>
+
+                        <a class="dropdown-item" href="#">Category 3</a>
+                        <a class="dropdown-item" href="#">Category 4</a>
+                        
+                        <div class="dropdown-divider"></div>
+                        
+                        <a class="dropdown-item" href="#">Category 5</a>
+                        <a class="dropdown-item" href="#">Category 6</a>
+                        
+                    </div>
+                </li>
+            </ul>
+
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+   </header>
+        
+    <!-- Main Page -->
+    <h1>Edit Product Details</h1>
+
+    <form action="/#.php">
+        <div class="row">
+            <div class="col-md-1">
+                <label for="p_name">Upload image: </label>
+            </div>
+            
+            <div class="col-md-1">
+                <input type="text" id="p_name" name="p_name"><br>
+            </div>
+        </div>
+        
+        
+        
+        
+        
+        <label for="p_name">Name: </label>
+        <input type="text" id="p_name" name="p_name"><br>
+                                     
+        <label for="p_price">Price: </label>
+        <input type="text" id="p_price" name="p_price"><br>
+        
+        <label for="p_cat">Category: </label>
+        <input type="text" id="p_cat" name="p_cat"><br>
+        
+        <label for="p_stock">Stock: </label>
+        <input type="text" id="p_stock" name="p_stock"><br>
+        
+        <label for="p_desc">Description: </label>
+        <input type="text" id="p_desc" name="p_desc"><br>
+        
+        <label for="p_desc">Remove Product</label>
+        <input type="text" id="p_desc" name="p_desc"><br>
+    
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+    </form> 
+    
+    <!-- Footer -->
+    <footer>
+        &copy; 2020 TheBest | Page developed by - Dickson - Wilson - Peng | Last updated: 19/04/2020 1:16am
+    </footer>
+
+    <!-- jQuery – required for Bootstrap's JavaScript plugins) -->
+    <script src="frameworks/js/jquery.min.js"></script>
+    <!-- All Bootstrap plug-ins file -->
+    <script src="frameworks/js/bootstrap.min.js"></script>
+    <!-- Basic AngularJS -->
+    <script src="frameworks/js/angular.min.js"></script>
+    
+    <!-- Page scroll effect -->
+    <script src="frameworks/js/jquery-2.1.4.js"></script>
+    <script src="frameworks/js/velocity.min.js"></script>
+    <script src="frameworks/js/velocity.ui.min.js"></script>
+    <script src="frameworks/js/main.js"></script>
+    <script src="frameworks/js/modernizr.js"></script> 
+</body>
+</html>

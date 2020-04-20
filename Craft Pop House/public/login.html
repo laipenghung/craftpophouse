@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-	<title>Register</title>
+	<title>Login</title>
 	<meta name="viewport" content="width=device-width, initialscale=1.0"/> 
 	<!-- Bootstrap --> 
 	<link href="frameworks/css/bootstrap.min.css" rel="stylesheet" />  
@@ -22,55 +22,62 @@
 		#loginHyperText{
 			margin-left: 10px;
 		}
-		
-		.ng-invalid.ng-dirty{
-			border-color: red;
-			outline-color: red;
-		}
-		
-		.ng-valid.ng-dirty{
-			border-color: green;
-			outline-color: green;
-		}
 	</style>
 </head>
 
 <body>
-	<div class="container" data-ng-app="confirmPassword">
+	<div class="container">
 		<div class="card bg-light m-4">
 			<article class="card-body mx-auto" style="max-width: 400px;">
-				<h4 class="card-title mt-3 text-center">Create Account</h4>
+				<h4 class="card-title mt-3 text-center">Login Account</h4>
 				
-				<form id="signup-form" name="signupForm" data-ng-submit="signupForm.$valid && ok()" novalidate>
+				<form id="login-form">
 					<!--Email input-->
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fa fa-envelope"></i></span>
 						 </div>
-						<input class="form-control" id="signup-email" placeholder="Email address" type="email" required>
+						<input class="form-control" id="login-email" placeholder="Email address" type="email" required>
 					</div>
 					
 					<!--First password input-->
-					<div class="form-group input-group">
+					<div class="form-group input-group" id="passwordInput">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fa fa-lock"></i></span>
 						</div>
-						<input class="form-control" placeholder="Create password" type="password" name="newPassword" data-ng-model="password.newPassword" data-ng-pattern="/^((?=.*[\d])(?=.*[a-z])(?=.*[A-Z])|(?=.*[a-z])(?=.*[A-Z])(?=.*[^\w\d\s])|(?=.*[\d])(?=.*[A-Z])(?=.*[^\w\d\s])|(?=.*[\d])(?=.*[a-z])(?=.*[^\w\d\s])).{8,30}$/" required>
-						<span data-ng-show="signupForm.newPassword.$dirty && signupForm.newPassword.$invalid">Minimum 8 characters with 1 capital and 1 number</span>
+						<input class="form-control" id="login-password" placeholder="Password" type="password" required>
+					</div>
+                                  
+					<div class="form-group">
+						<button type="submit" class="btn btn-facebook btn-block">Login</button>
+					</div>    
+					<!--<a class="text-center" data-toggle="model" href="#forgotPasswordModal">Forgot Password?</a>-->
+					
+					<div class="modal fade" id="forgotPasswordModal" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="model-title">Forgot Password</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									  <span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<form>
+										<div class="form-group">
+											<label for="forgotPassEmail" class="col-form-label">Enter email:</label>
+											<input type="email" class="form-control" id="forgotPassEmail">
+										</div>
+									</form>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-primary">Send request to email</button>
+								</div>
+							</div>
+						</div>
 					</div>
 					
-					<!--Second password input-->
-					<div class="form-group input-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-						</div>
-						<input class="form-control" id="signup-password" name="confirmPassword" placeholder="Repeat password" type="password"  data-ng-model="password.confirmPassword" data-ng-minlength="8" value-matches="password.newPassword" required>
-						<span data-ng-show="signupForm.confirmPassword.$dirty && signupForm.confirmPassword.$invalid">Enter the same password again to confirm.</span>
-					</div>                                     
-					<div class="form-group">
-						<button type="submit" class="btn btn-facebook btn-block">Create Account</button>
-					</div>    
-					<p class="text-center">Have an account?<a href="login.html" id="loginHyperText">Log In</a></p>  
+					<p class="text-center">No account yet?<a href="registerDefault.html" id="loginHyperText">Register</a></p>  
 				</form>
 			</article>
 		</div>
@@ -88,15 +95,13 @@
     <!-- jQuery – required for Bootstrap's JavaScript plugins) --> 
     <script src="frameworks/js/jquery.min.js"></script> 
     <!-- All Bootstrap  plug-ins  file --> 
-	<script src="frameworks/js/popper.min.js"></script> 
     <script src="frameworks/js/bootstrap.min.js"></script>
 	<!--AngularJS-->
 	<script src="frameworks/js/angular.min.js"></script>
 	<!--Firebase Config-->
 	<script src="firebase_script/firebaseConfig.js"></script>
-	<script src="firebase_script/firebaseEmailAuth.js"></script>
+	<script src="firebase_script/accountLogin.js"></script>
 	<script src="firebase_script/accountSignOut.js"></script>
-	<script src="frameworks/js/confirmPassword.js"></script>
 </body>
 
 <footer>

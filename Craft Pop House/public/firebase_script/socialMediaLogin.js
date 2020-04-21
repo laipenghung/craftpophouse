@@ -17,10 +17,9 @@ login.controller("loginCtrl",
 
 function signInAcc(provider){
 	firebase.auth().signInWithPopup(provider).then(function(result){
-		//Google access token, can use to access API
-		var token = result.credential.accessToken;
 		//The user info object
 		var user = result.user;
+		console.log(user);
 	}).catch(function(error){
 		console.log("Error sign in with social media account");
 	});

@@ -8,8 +8,8 @@ loginForm.addEventListener("submit", (e) =>{
 	
 	firebase.auth().signInWithEmailAndPassword(email, pass).then(result => {
 		console.log(result.user);
-		location.href="userLogin.html";
-	}).catch(function(error){
+		location.href="fakeIndex.html";
+	}).catch(error => {
 		console.log(error);
 		if(error.code == "auth/too-many-requests"){
 			alert("Too many unsuccessful login attempts. Please try again later.");
@@ -19,3 +19,13 @@ loginForm.addEventListener("submit", (e) =>{
 		}
 	});
 });
+
+function submitForgotPassword(){
+	var forgetPass = loginForm["forgotPassEmail"].value;
+	
+	firebase.auth().sendPasswordResetEmail(forgetPass).then(result => {
+		alert("Password reset is send to your email");
+	}).catch(error => {
+		
+	});
+}

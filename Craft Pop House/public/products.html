@@ -68,7 +68,7 @@
             height: auto;
             text-align: center;
             box-shadow: 5px 10px 18px #888888;
-            display: inline-block;
+            display: block;
             float: left;
             margin: 40px 15px;
             overflow: hidden;
@@ -190,83 +190,34 @@
     <div class="container-fluid">
         <!--row 1-->
         <div class="row d-flex justify-content-center">
-            <div class="prodCard">
-                <div class="cardImg-wrapper">
-                    <img class="cardImg" src="https://source.unsplash.com/random/280x240" />
-                </div>
+            <div class="col-lg-10">
+            <div id="app">
+                <div v-for = "p in products">
+                    <div class="prodCard">
+                            <div class="cardImg-wrapper">
+                                <img class="cardImg" src="https://source.unsplash.com/random/280x240" />
+                            </div>
 
-                <div class="cardDesc">
-                    <p id="title">Product Name</p>
+                            <div class="cardDesc" >
+                                <p id="title">{{p.prod_Name}}</p>
 
-                    <p>Price</p>
-                    <button href="#" id="btn">
-                        <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
-                    </button>
-                </div>
-            </div>
-            
-            <div class="prodCard">
-                <div class="cardImg-wrapper">
-                    <img class="cardImg" src="https://source.unsplash.com/random/280x240" />
-                </div>
-
-                <div class="cardDesc">
-                    <p id="title">Product Name</p>
-
-                    <p>Price</p>
-                    <button href="#" id="btn">
-                        <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
-                    </button>
-                </div>
-            </div>
-            
-            <div class="prodCard">
-                <div class="cardImg-wrapper">
-                    <img class="cardImg" src="https://source.unsplash.com/random/280x240" />
-                </div>
-
-                <div class="cardDesc">
-                    <p id="title">Product Name</p>
-
-                    <p>Price</p>
-                    <button href="#" id="btn">
-                        <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
-                    </button>
-                </div>
-            </div>
-            
-            <div class="prodCard">
-                <div class="cardImg-wrapper">
-                    <img class="cardImg" src="https://source.unsplash.com/random/280x240" />
-                </div>
-
-                <div class="cardDesc">
-                    <p id="title">Product Name</p>
-
-                    <p>Price</p>
-                    <button href="#" id="btn">
-                        <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
-                    </button>
-                </div>
-            </div>
-            
-            <div class="prodCard">
-                <div class="cardImg-wrapper">
-                    <img class="cardImg" src="https://source.unsplash.com/random/280x240" />
-                </div>
-
-                <div class="cardDesc">
-                    <p id="title">Product Name</p>
-
-                    <p>Price</p>
-                    <button href="#" id="btn">
-                        <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
-                    </button>
+                                <p>{{p.prod_Price}}</p>
+                                <button href="#" id="btn">
+                                    <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
+
+
         
-        <!--row 2-->
+        
+                
+        <!--row 2
         <div class="row d-flex justify-content-center">
             <div class="prodCard">
                 <div class="cardImg-wrapper">
@@ -344,162 +295,10 @@
             </div>
         </div>
         
-        <!--row 3-->
-        <div class="row d-flex justify-content-center">
-            <div class="prodCard">
-                <div class="cardImg-wrapper">
-                    <img class="cardImg" src="https://source.unsplash.com/random/280x240" />
-                </div>
-
-                <div class="cardDesc">
-                    <p id="title">Product Name</p>
-
-                    <p>Price</p>
-                    <button href="#" id="btn">
-                        <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
-                    </button>
-                </div>
-            </div>
-            
-            <div class="prodCard">
-                <div class="cardImg-wrapper">
-                    <img class="cardImg" src="https://source.unsplash.com/random/280x240" />
-                </div>
-
-                <div class="cardDesc">
-                    <p id="title">Product Name</p>
-
-                    <p>Price</p>
-                    <button href="#" id="btn">
-                        <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
-                    </button>
-                </div>
-            </div>
-            
-            <div class="prodCard">
-                <div class="cardImg-wrapper">
-                    <img class="cardImg" src="https://source.unsplash.com/random/280x240" />
-                </div>
-
-                <div class="cardDesc">
-                    <p id="title">Product Name</p>
-
-                    <p>Price</p>
-                    <button href="#" id="btn">
-                        <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
-                    </button>
-                </div>
-            </div>
-            
-            <div class="prodCard">
-                <div class="cardImg-wrapper">
-                    <img class="cardImg" src="https://source.unsplash.com/random/280x240" />
-                </div>
-
-                <div class="cardDesc">
-                    <p id="title">Product Name</p>
-
-                    <p>Price</p>
-                    <button href="#" id="btn">
-                        <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
-                    </button>
-                </div>
-            </div>
-            
-            <div class="prodCard">
-                <div class="cardImg-wrapper">
-                    <img class="cardImg" src="https://source.unsplash.com/random/280x240" />
-                </div>
-
-                <div class="cardDesc">
-                    <p id="title">Product Name</p>
-
-                    <p>Price</p>
-                    <button href="#" id="btn">
-                        <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <!--row 4-->
-        <div class="row d-flex justify-content-center">
-            <div class="prodCard">
-                <div class="cardImg-wrapper">
-                    <img class="cardImg" src="https://source.unsplash.com/random/280x240" />
-                </div>
-
-                <div class="cardDesc">
-                    <p id="title">Product Name</p>
-
-                    <p>Price</p>
-                    <button href="#" id="btn">
-                        <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
-                    </button>
-                </div>
-            </div>
-            
-            <div class="prodCard">
-                <div class="cardImg-wrapper">
-                    <img class="cardImg" src="https://source.unsplash.com/random/280x240" />
-                </div>
-
-                <div class="cardDesc">
-                    <p id="title">Product Name</p>
-
-                    <p>Price</p>
-                    <button href="#" id="btn">
-                        <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
-                    </button>
-                </div>
-            </div>
-            
-            <div class="prodCard">
-                <div class="cardImg-wrapper">
-                    <img class="cardImg" src="https://source.unsplash.com/random/280x240" />
-                </div>
-
-                <div class="cardDesc">
-                    <p id="title">Product Name</p>
-
-                    <p>Price</p>
-                    <button href="#" id="btn">
-                        <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
-                    </button>
-                </div>
-            </div>
-            
-            <div class="prodCard">
-                <div class="cardImg-wrapper">
-                    <img class="cardImg" src="https://source.unsplash.com/random/280x240" />
-                </div>
-
-                <div class="cardDesc">
-                    <p id="title">Product Name</p>
-
-                    <p>Price</p>
-                    <button href="#" id="btn">
-                        <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
-                    </button>
-                </div>
-            </div>
-            
-            <div class="prodCard">
-                <div class="cardImg-wrapper">
-                    <img class="cardImg" src="https://source.unsplash.com/random/280x240" />
-                </div>
-
-                <div class="cardDesc">
-                    <p id="title">Product Name</p>
-
-                    <p>Price</p>
-                    <button href="#" id="btn">
-                        <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
-                    </button>
-                </div>
-            </div>
-        </div>
+        -->
     </div>
+        
+
         
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
@@ -516,7 +315,20 @@
                 </li>
             </ul>
         </nav>
+    <!--vue.js-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="/__/firebase/7.14.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="/__/firebase/7.14.1/firebase-analytics.js"></script>
+    <script src="/__/firebase/7.14.1/firebase-firestore.js"></script>
+    <script src="/__/firebase/7.14.1/firebase-functions.js"></script>
+
+    <!-- Initialize Firebase -->
+    <script src="/__/firebase/init.js"></script>
     
     <!-- jQuery – required for Bootstrap's JavaScript plugins) -->
     <script src="frameworks/js/jquery.min.js"></script>
@@ -524,6 +336,8 @@
     <script src="frameworks/js/bootstrap.min.js"></script>
     <!-- Basic AngularJS -->
     <script src="frameworks/js/angular.min.js"></script>
+
+    <script src="firebase_script/products.js"></script>
     
     <script src="owlCarousel/dist/owl.carousel.js" type="text/javascript"></script>
     <script type="text/javascript">

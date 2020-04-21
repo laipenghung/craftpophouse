@@ -1,4 +1,5 @@
 firebase.auth().onAuthStateChanged(function(user){
+	console.log(user);
 	if(user != null){
 		if(user.emailVerified == false){
 			user.sendEmailVerification();

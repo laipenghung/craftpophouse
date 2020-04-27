@@ -483,3 +483,63 @@ ol, ul {
     display: block;
   }
 }
+
+/*Register page css*/
+	.divider-text {
+		position: relative;
+		text-align: center;
+		margin-top: 15px;
+		margin-bottom: 15px;
+	}
+	.divider-text span {
+		padding: 7px;
+		font-size: 12px;
+		position: relative;   
+		z-index: 2;
+	}
+	.divider-text:after {
+		content: "";
+		position: absolute;
+		width: 100%;
+		border-bottom: 1px solid #ddd;
+		top: 55%;
+		left: 0;
+		z-index: 1;
+	}
+
+	.btn-facebook {
+		background-color: #405D9D;
+		color: #fff;
+	}
+	.btn-google {
+		background-color: #DD4B39;
+		color: #fff;
+	}
+	.btn-email {
+		background-color: #595959;
+		color: #fff;
+	}
+	
+	.btn-create {
+		background-color: #e85a4f;
+		color: #fff;
+	}
+	
+	.fab, .fas{
+		margin-right: 10px;
+	}
+	
+	#loginHyperText{
+		margin-left: 10px;
+	}
+	
+	.ng-invalid.ng-dirty{
+		border-color: red;
+		outline-color: red;
+	}
+	
+	.ng-valid.ng-dirty{
+		border-color: green;
+		outline-color: green;
+	}
+/*Register page css end*/

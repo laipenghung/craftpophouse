@@ -27,6 +27,7 @@ function submitPhoneNumberAuthCode(){
 	var code = document.getElementById("phoneAuthCode").value;
 	confirmationResult.confirm(code).then(function(result){
 		console.log("Code verification success");
+		location.href = "index.html";
 	}).catch(function(error){
 		console.log("Code verification error");
 	});

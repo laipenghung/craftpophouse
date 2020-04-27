@@ -19,7 +19,8 @@ function signInAcc(provider){
 	firebase.auth().signInWithPopup(provider).then(function(result){
 		//The user info object
 		var user = result.user;
-		console.log(user);
+		console.log("Login successfull");
+		location.href = "index.html";
 	}).catch(function(error){
 		console.log("Error sign in with social media account");
 	});

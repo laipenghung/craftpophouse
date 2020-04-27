@@ -13,7 +13,7 @@ signupForm.addEventListener("submit", (e) => {
 	firebase.auth().createUserWithEmailAndPassword(email, pass).then(user =>{
 		if(!alert("Verification link sent to your email")){
 			addUsername(uname);
-			window.location.reload();
+			location.href = "index.html";
 		}
 	});
 	

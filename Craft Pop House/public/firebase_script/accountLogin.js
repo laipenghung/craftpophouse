@@ -8,7 +8,7 @@ loginForm.addEventListener("submit", (e) =>{
 	
 	firebase.auth().signInWithEmailAndPassword(email, pass).then(result => {
 		console.log(result.user);
-		location.href="fakeIndex.html";
+		location.href="index.html";
 	}).catch(error => {
 		console.log(error);
 		if(error.code == "auth/too-many-requests"){

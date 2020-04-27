@@ -4,6 +4,7 @@
 	<meta name="viewport" content="width=device-width, initialscale=1.0"/> 
 	<!-- Bootstrap --> 
 	<link href="frameworks/css/bootstrap.min.css" rel="stylesheet" />  
+	<script src="frameworks/js/jquery-3.5.0.min.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries --> 
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// --> 
 	<!--[if lt IE 9]> 
@@ -13,55 +14,17 @@
 	
 	<!--Social media button-->
 	<script src="https://kit.fontawesome.com/46f7c7318f.js" crossorigin="anonymous"></script>
-	<style>
-	.divider-text {
-		position: relative;
-		text-align: center;
-		margin-top: 15px;
-		margin-bottom: 15px;
-	}
-	.divider-text span {
-		padding: 7px;
-		font-size: 12px;
-		position: relative;   
-		z-index: 2;
-	}
-	.divider-text:after {
-		content: "";
-		position: absolute;
-		width: 100%;
-		border-bottom: 1px solid #ddd;
-		top: 55%;
-		left: 0;
-		z-index: 1;
-	}
-
-	.btn-facebook {
-		background-color: #405D9D;
-		color: #fff;
-	}
-	.btn-google {
-		background-color: #DD4B39;
-		color: #fff;
-	}
-	.btn-email {
-		background-color: #595959;
-		color: #fff;
-	}
-	
-	.fab, .fas{
-		margin-right: 10px;
-	}
-	
-	#loginHyperText{
-		margin-left: 10px;
-	}
-	</style>
+	<!-- CSS -->
+	<link rel="stylesheet" href="frameworks/css/style.css">
 </head>
 
 <body>
-	<div class="container" data-ng-app="loginModule">
-		<div class="card bg-light m-4" data-ng-controller="loginCtrl">
+	<!--Nav reuse-->
+    <div id="nav-placeholder"></div>
+	
+	<!--Content-->
+	<div class="container" data-ng-app="loginModule" style="margin-top: 7%;">
+		<div class="card bg-light" data-ng-controller="loginCtrl">
 			<article class="card-body mx-auto" style="max-width: 400px;">
 				<h4 class="card-title mt-3 text-center">Create Account</h4>
 				<p class="text-center">Get started with your free account</p>
@@ -101,6 +64,9 @@
 			</article>
 		</div>
 	</div> 
+	
+	<!--Footer reuse-->
+	<div id="footer-placeholder"></div>
 	
 	<!-- The core Firebase JS SDK is always required and must be listed first -->
 	<script src="/__/firebase/7.12.0/firebase-app.js"></script>

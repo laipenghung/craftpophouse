@@ -8,12 +8,15 @@ firebase.auth().onAuthStateChanged(function(user){
 		else{
 			console.log("User is verified");
 		}
+		$("#nav-placeholder").load("navbarLogin.html");
+		$("#footer-placeholder").load("footer.html");
 	}
 	else{
 		console.log("No user loging");
+		$("#nav-placeholder").load("navbar.html");
+		$("#footer-placeholder").load("footer.html");
 	}
 });
-
 
 function signOut(){
 	firebase.auth().signOut().then(function(){

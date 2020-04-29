@@ -1,92 +1,89 @@
 <!DOCTYPE html>
-<html data-ng-app="">
+<html>
 <head>
     <title>Task 3.4 C</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,
-    initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Bootstrap -->
     <link href="frameworks/css/bootstrap.min.css" rel="stylesheet" />
    
     <style>
-        body {
-            padding: 0;
-            margin: 0;
-        }
-        
-        .store-msg {
-            border: 1px solid black;
-            text-align: center;
-        }
-        
-        .msg-details {
-            margin-top: 15px;
-            margin-bottom: 5px;
-            font-size: 15px;
-        }
-        
-        .nav-item a{
-            font-size: 20px;
-            padding: 20px 150px;
-        }
-        
-        .q {
-            border: 1px solid black;
-        }
-        
-        .row2 {
-            margin: 20px 0;
-        }
-        
-        .prodDet h1{
-            font-size: 40px;
-        }
-        
-        .prodDet p{
-            font-size: 20px;
-        }
-        
-        #info {
-            font-size: 18px;
-        }
-        
+        /**.a {
+            border: 1px solid black;   
+        }**/
 
+        .row1 {
+            height: 70%;
+        }
+
+        #content {
+            margin-top: 30px;
+        }
+
+        img {
+            margin: auto;
+            max-width: 90%;
+        }
+
+        .pName {
+           font-size: 35px;
+           font-weight: bold;
+           margin-top: 15px;;        
+        }
+
+        .pDesc {
+           font-size: 20px;
+           margin-top: 15px;
+           text-align: justify;      
+        }
         
-        #atc {
+        .pPrice {
+           font-size: 23px;
+           margin-top: 15px;;        
+        }
+
+        .pQuan {
+           font-size: 23px;
+           margin-top: 15px;;        
+        }
+        
+        #addCart {
             border: none;
             outline: 0;
-            margin: 15px 0;
+            margin-top: 30px;
+            margin-left: 15%;
             color: white;
             background-color: #000;
             text-align: center;
             width: 70%;
-            font-size: 15px;
+            padding: 15px;
+            font-size: 20px;
         }
-        
-        #atc a{
-            text-decoration: none;
-            color: white;
-            margin: auto;
+
+        .nav-link {
+            font-size: 20px;
+            padding: 20px;
         }
-        
-        h2 {
-            margin: 15px 0;
+
+        .row2 {
+            margin-top: 20px;
+        }
+
+        h2{
             text-align: center;
-            font-size: 40px;
         }
-        
+
         /*product card*/
         .prodCard{
-            max-width: 220px;  
-            max-height: 450px;
+            width: 280px;  
+            height: auto;
             text-align: center;
             box-shadow: 5px 10px 18px #888888;
             display: block;
-            overflow: hidden;
             float: left;
-            margin: 20px 25px;
-            position: relative;
+            margin: 40px 15px;
+            overflow: hidden;
         }
         
         .prodCard:hover {
@@ -95,13 +92,14 @@
         }
         
         .cardImg-wrapper {  
-            width: 220px;
-            max-height: 270px;
+            width: auto;
+            height: auto;
             overflow: hidden; 
         }
 
         .cardImg {
             transition: 0.6s;
+            height: 240px;
         }
 
         .cardImg:hover {
@@ -114,7 +112,7 @@
         }
         
         .cardDesc p{
-            font-size: 16px;
+            font-size: 13px;
             text-align: center;
             margin: 10px 0;
         }
@@ -140,226 +138,135 @@
             color: white;
         }
         
-        
-        .test {
-            border: 1px solid black;
-            height: 500px;
-            background-color: aqua;
-		}
-		
-		.carousel-inner img {
-            display: table-cell;
-            margin: auto;
-        }
-		
-		.carousel-control-next-icon,
-		.carousel-control-prev-icon {
-		  filter: invert(1);
-		}
-        
     </style>
 </head>
 
 <body>
 	<div class="container-fluid">
-        <div class="row store-msg">
-            <div class="col-md-12 msg-details">
-                <p><strong>Free delivery</strong>: Store Messsage 1</p>
-            </div>
-        </div>
-        
-        <div class="row d-flex justify-content-center row2">
-            <div class="col-md-7 ">
-				<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    </ol>
-                    
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                        <img class="d-block " src="https://source.unsplash.com/random/600x700" alt="First slide">
-                        </div>
-                        <div class="carousel-item">
-                        <img class="d-block " src="https://source.unsplash.com/random/600x700" alt="Second slide">
-                        </div>
-                        <div class="carousel-item">
-                        <img class="d-block " src="https://source.unsplash.com/random/600x700" alt="Third slide">
-                        </div>
+        <div id="content">
+            <div v-for = "p in products">
+                <div class="row d-flex justify-content-center row1">
+                    <div class="col-xl-7 prodImg a">
+                        <img class="d-block " :src=p.url alt="Second slide">
                     </div>
-                    
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
+                    <div class="col-xl-4 prodImfo a">
+                        <p class="pName">{{p.prod_Name}}</p>
+
+                        <p class="pDesc">{{p.prod_Desc}}</p>
+
+                        <p class="pPrice">RM {{p.prod_Price}}</p>
+
+                        <p class="pQuan">Only <strong>{{p.prod_Quant}}</strong> items left</p>
+
+                        <label for="pModel"><p class="pQuan">Select Quantity</p></label>
+                        <div>
+                            <select>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+
+                        <button id="addCart">
+                            Add To Cart
+                        </button>
+                    </div>
                 </div>
-                
             </div>
             
-            <div class="col-md-5 prodDet">
-                
-                <h1>Product Name</h1>
-                <p>RM 999</p>
-                <p id="info">Product Description Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                
-                <p>Only <strong>10</strong> items left</p>
-
-                <div>
-                    <label for="pModel"><p class="selection">Select Quantity</p></label>
-                    <select ng-model="##">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                </div>
-                
-                <button id="atc">
-                    <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
-                </button>
-                
-            </div>         
-        </div>
-        
-        
-        <div class="row">
-            <div class="col-md-12 ">
-                <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Overview</a>
-                    </li>
+            <div class="row row2">
+                <div class="col-lg-12">
+                    <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Seller</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Rating &amp; Comments</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Delivery Options</a>
+                        </li>
+                    </ul>
                     
-                    <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Rating &amp; Comments</a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Delivery Options</a>
-                    </li>
-                </ul>
-                
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <div class="row justify-content-center">
-                            <div class="col-md-9 sm-12 test">
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="row justify-content-center">
+                                <div class="col-md-9 sm-12 test">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <div class="row justify-content-center">
+                                <div class="col-md-9 test">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                            <div class="row justify-content-center">
+                                <div class="col-md-9 test">
+                                </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <div class="row justify-content-center">
-                            <div class="col-md-9 test">
+                </div>
+            </div>
+    
+            <hr>
+            <h2>Related Item</h2>
+            <hr>
+    
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-10 d-flex justify-content-center">
+                    <div id="related">
+                        <div v-for = "p in as">
+                            <div class="prodCard" @click="detail(p.prod_Id)">
+                                <div class="cardImg-wrapper">
+                                    <img class="cardImg" :src=p.url>
+                                </div>
+                                <div class="cardDesc" >
+                                    <p id="title">{{p.prod_Name}}</p>
+    
+                                    <p>{{p.prod_Price}}</p>
+                                    <button href="#" id="btn">
+                                        <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                        <div class="row justify-content-center">
-                            <div class="col-md-9 test">
-                            </div>
-                        </div>
-                    </div>
-                </div> 
-            </div>
-        </div>
-        
-        <hr>
-        <h2>Related Item</h2>
-        <hr>
-          
-        <div class="row d-flex justify-content-center">
-
-            <div class="prodCard">
-                <div class="cardImg-wrapper">
-                    <img class="cardImg" src="https://source.unsplash.com/random/280x240" />
-                </div>
-
-                <div class="cardDesc">
-                    <p id="title">Product Name</p>
-
-                    <p>Price</p>
-                    <button href="#" id="btn">
-                        <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
-                    </button>
                 </div>
             </div>
-            
-            <div class="prodCard">
-                <div class="cardImg-wrapper">
-                    <img class="cardImg" src="https://source.unsplash.com/random/280x240" />
-                </div>
-
-                <div class="cardDesc">
-                    <p id="title">Product Name</p>
-
-                    <p>Price</p>
-                    <button href="#" id="btn">
-                        <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
-                    </button>
-                </div>
-            </div>
-            
-            <div class="prodCard">
-                <div class="cardImg-wrapper">
-                    <img class="cardImg" src="https://source.unsplash.com/random/280x240" />
-                </div>
-
-                <div class="cardDesc">
-                    <p id="title">Product Name</p>
-
-                    <p>Price</p>
-                    <button href="#" id="btn">
-                        <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
-                    </button>
-                </div>
-            </div>
-            
-            <div class="prodCard">
-                <div class="cardImg-wrapper">
-                    <img class="cardImg" src="https://source.unsplash.com/random/280x240" />
-                </div>
-
-                <div class="cardDesc">
-                    <p id="title">Product Name</p>
-
-                    <p>Price</p>
-                    <button href="#" id="btn">
-                        <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
-                    </button>
-                </div>
-            </div>
-
-
-
-
         </div>
     </div>
-            
-            
-        
+  
+     <!--vue.js-->
+     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-        
-    
-        
-        
-        
-        
-        
-	    
-    <!-- jQuery – required for Bootstrap's JavaScript plugins) -->
-    <script src="frameworks/js/jquery.min.js"></script>
-    <!-- All Bootstrap plug-ins file -->
-    <script src="frameworks/js/bootstrap.bundle.min.js "></script>
-    <script src="frameworks/js/bootstrap.min.js"></script>
-    <!-- Basic AngularJS -->
-    <script src="frameworks/js/angular.min.js"></script>
+     <!-- The core Firebase JS SDK is always required and must be listed first -->
+     <script src="/__/firebase/7.12.0/firebase-app.js"></script>
+     <!-- TODO: Add SDKs for Firebase products that you want to use
+          https://firebase.google.com/docs/web/setup#available-libraries -->
+     <script src="/__/firebase/7.12.0/firebase-analytics.js"></script>
+     <script src="/__/firebase/7.14.0/firebase-auth.js"></script>
+     <script src="/__/firebase/7.14.1/firebase-firestore.js"></script>
+     <!-- Initialize Firebase -->
+     <script src="/__/firebase/init.js"></script>
+     <!-- jQuery – required for Bootstrap's JavaScript plugins) --> 
+     <script src="frameworks/js/jquery.min.js"></script> 
+     <!-- All Bootstrap  plug-ins  file --> 
+     <script src="frameworks/js/bootstrap.min.js"></script>
+     <!--AngularJS-->
+     <script src="frameworks/js/angular.min.js"></script>
+     
+     <!--Firebase Config-->
+     <script src="firebase_script/firebaseConfig.js"></script>
+     <script src="firebase_script/product-detail.js"></script>
     
 </body>
 </html>

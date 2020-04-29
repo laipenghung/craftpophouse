@@ -13,28 +13,26 @@
     <link href="owlCarousel/dist/assets/owl.theme.default.min.css" rel="stylesheet" text="text/css"/>
    
     <style>
-        #prodCat {
-            background-color: gainsboro;
-        }
-        
-        .cat {
-            width: 150px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .catImage {
-            display: block;
-            max-width: 40px;
-            max-height: 40px;
-            margin: 10px auto;
-        }
-        
-        .catDesc {
+        /*prod cat*/
+        .prodCat {
+            border: 0;
+            width: 130px;
+            height: 130px;
             text-align: center;
-            font-size: 12px;
-        }
-        
+            background-color: white;
+       }
+
+       .prodCat img {
+           width: 40px;
+           height: 40px;
+       }
+       
+       .catDesc {
+           font-size: 15px;
+           text-align: center;
+           margin-top: 5px;
+       }
+
         /*product css */
         /*.d-flex {
             display: -webkit-box;
@@ -57,10 +55,6 @@
             -ms-flex-align: center;
             align-items: center;
         }*/
-
-        body {
-            background-color: #f7f7f7;
-        }
         
         /*product card*/
         .prodCard{
@@ -100,13 +94,12 @@
         }
         
         .cardDesc p{
-            font-size: 13px;
             text-align: center;
             margin: 10px 0;
         }
         
         #title {
-            font-size: 20px;
+            font-size: 15px;
         }
         
         #btn {
@@ -125,66 +118,76 @@
             text-decoration: none;
             color: white;
         }
+
+        #btn p {
+            font-size: 18px;
+        }
+
+        .price {
+            font-size: 20px;
+        }
         
     </style>
 </head>
 
 <body onload="showAll()">
     <div class="container-fluid">
-        <div id="prodCat" class="row d-flex justify-content-center">
-            <div class="col-lg-10 md-12">
-                <div id="owl-cat" class="owl-carousel owl-theme">
-                    <div class="item cat" onclick="filterCloth()">
-                        <button  id="test">
-                            <img class="catImage" src="https://image.flaticon.com/icons/png/512/34/34627.png" title="" alt="" >
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-10">
+                <div class="row d-flex justify-content-center">
+                    <!--All icons taken from https://www.flaticon.com/authors/freepik -->
+                    
+                    <div class="col-md-1">
+                        <button class="prodCat" onclick="filterCloth()">
+                            <img class="catImage" src="image/shirt.png" title="" alt="" >
                             <p class="catDesc">Clothing &amp; Accessories</p>
                         </button>
-                    </div>
-                    
-                    <div class="item cat" onclick="filterJew()">
-                        <button>
-                            <img class="catImage" src="https://image.flaticon.com/icons/png/512/34/34627.png" title="" alt="" >
+                    </div>  
+    
+                    <div class="col-md-1">
+                        <button class="prodCat" onclick="filterJew()">
+                            <img class="catImage" src="image/diamond.png" title="" alt="" >
                             <p class="catDesc">Jewelry</p>
                         </button>
                     </div>
-                    
-                    <div class="item cat" onclick="filterCraft()">
-                        <button>
-                            <img class="catImage" src="https://image.flaticon.com/icons/png/512/34/34627.png" title="" alt="" >
+    
+                    <div class="col-md-1">
+                        <button class="prodCat" onclick="filterCraft()">
+                            <img class="catImage" src="image/glue.png" title="" alt="" >
                             <p class="catDesc">Craft Supplies</p>
                         </button>
                     </div>
-                    
-                    <div class="item cat" onclick="filterBed()">
-                        <button>
-                            <img class="catImage" src="https://image.flaticon.com/icons/png/512/34/34627.png" title="" alt="" >
+
+                    <div class="col-md-1">
+                        <button class="prodCat" onclick="filterBed()">
+                            <img class="catImage" src="image/frame.png" title="" alt="" >
                             <p class="catDesc">Bedding/Room Décor</p>
                         </button>
                     </div>
-                    
-                    <div class="item cat" onclick="filterToy()">
-                        <button>
-                            <img class="catImage" src="https://image.flaticon.com/icons/png/512/34/34627.png" title="" alt="" >
+
+                    <div class="col-md-1">
+                        <button class="prodCat" onclick="filterToy()">
+                            <img class="catImage" src="image/toy.png" title="" alt="" >
                             <p class="catDesc">Soft Toys</p>
                         </button>
-                    </div>
-                    
-                    <div class="item cat" onclick="filterArt()">
-                        <button>
-                            <img class="catImage" src="https://image.flaticon.com/icons/png/512/34/34627.png" title="" alt="" >
+                    </div>  
+    
+                    <div class="col-md-1">
+                        <button class="prodCat" onclick="filterArt()">
+                            <img class="catImage" src="image/art.png" title="" alt="" >
                             <p class="catDesc">Vintage Arts</p>
                         </button>
                     </div>
-                    
-                    <div class="item cat" onclick="filterWed()">
-                        <button>
-                            <img class="catImage" src="https://image.flaticon.com/icons/png/512/34/34627.png" title="" alt="" >
+    
+                    <div class="col-md-1">
+                        <button class="prodCat" onclick="filterWed()">
+                            <img class="catImage" src="image/wedding.png" title="" alt="" >
                             <p class="catDesc">Wedding Accessories</p>
                         </button>
                     </div>
-                </div>
+                </div>   
             </div>
-        </div>   
+        </div>
     </div>
     
     <!--Product Card-->
@@ -202,7 +205,7 @@
                             <div class="cardDesc" >
                                 <p id="title">{{p.prod_Name}}</p>
 
-                                <p>{{p.prod_Price}}</p>
+                                <p class="price">RM {{p.prod_Price}}</p>
                                 <button href="#" id="btn">
                                     <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
                                 </button>
@@ -220,7 +223,7 @@
                             <div class="cardDesc" >
                                 <p id="title">{{p.prod_Name}}</p>
 
-                                <p>{{p.prod_Price}}</p>
+                                <p class="price">RM {{p.prod_Price}}</p>
                                 <button href="#" id="btn">
                                     <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
                                 </button>
@@ -238,7 +241,7 @@
                             <div class="cardDesc" >
                                 <p id="title">{{p.prod_Name}}</p>
 
-                                <p>{{p.prod_Price}}</p>
+                                <p class="price">RM {{p.prod_Price}}</p>
                                 <button href="#" id="btn">
                                     <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
                                 </button>
@@ -256,7 +259,7 @@
                             <div class="cardDesc" >
                                 <p id="title">{{p.prod_Name}}</p>
 
-                                <p>{{p.prod_Price}}</p>
+                                <p class="price">RM {{p.prod_Price}}</p>
                                 <button href="#" id="btn">
                                     <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
                                 </button>
@@ -274,7 +277,7 @@
                             <div class="cardDesc" >
                                 <p id="title">{{p.prod_Name}}</p>
 
-                                <p>{{p.prod_Price}}</p>
+                                <p class="price">RM {{p.prod_Price}}</p>
                                 <button href="#" id="btn">
                                     <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
                                 </button>
@@ -292,7 +295,7 @@
                             <div class="cardDesc" >
                                 <p id="title">{{p.prod_Name}}</p>
 
-                                <p>{{p.prod_Price}}</p>
+                                <p class="price">RM {{p.prod_Price}}</p>
                                 <button href="#" id="btn">
                                     <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
                                 </button>
@@ -310,7 +313,7 @@
                             <div class="cardDesc" >
                                 <p id="title">{{p.prod_Name}}</p>
 
-                                <p>{{p.prod_Price}}</p>
+                                <p class="price">RM {{p.prod_Price}}</p>
                                 <button href="#" id="btn">
                                     <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
                                 </button>
@@ -328,7 +331,7 @@
                             <div class="cardDesc" >
                                 <p id="title">{{p.prod_Name}}</p>
 
-                                <p>{{p.prod_Price}}</p>
+                                <p class="price">RM {{p.prod_Price}}</p>
                                 <button href="#" id="btn">
                                     <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
                                 </button>

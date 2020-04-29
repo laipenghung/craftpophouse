@@ -39,10 +39,12 @@
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item">
 						<div class="dropdown show">
-							<a class="fa fa-user fa-2x nav-link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+							<a class="nav-link fa fa-shopping-cart fa-2x" href="#" role="button"></a>
+							<a class="fa fa-user fa-2x nav-link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="getUserProfile()"></a>
 							
-							<div class="dropdown-menu dropdown-menu-right">
-							    <button class="dropdown-item" onclick="signOut()" type="button">Sign Out</a>
+							<div class="dropdown-menu dropdown-menu-right text-center">
+								<p class="font-weight-bold" id="displayName"></p>
+								<button type="button" class="btn btn-dark" onclick="signOut()">Sign Out</button>
 							</div>
 						</div>
 					</li>

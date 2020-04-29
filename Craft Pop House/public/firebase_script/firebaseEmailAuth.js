@@ -1,6 +1,5 @@
 //Sign up new email and password
 var signupForm = document.querySelector("#signup-form");
-var db = firebase.firestore();
 
 signupForm.addEventListener("submit", (e) => {
 	//Prevent force reload by browser
@@ -17,15 +16,11 @@ signupForm.addEventListener("submit", (e) => {
 		}
 	});
 	
-	//Add username to database
+	//Add username
 	function addUsername(uname){
 		firebase.auth().onAuthStateChanged(user => {
 			user.updateProfile({
 				displayName: uname
-			});
-			
-			return db.collection("users").doc(user.uid).set({
-				username: uname
 			});
 		});
 	}

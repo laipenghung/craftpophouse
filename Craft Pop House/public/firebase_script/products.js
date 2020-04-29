@@ -8,7 +8,7 @@ var all = new Vue({
             //console.log(id);
             sessionStorage.setItem("prod_Id", id);
             console.log(sessionStorage);
-            window.location.replace("http://localhost:5000/products-details.html");
+            window.open("http://localhost:5000/products-details.html");
         }
     },
     mounted() {
@@ -36,7 +36,7 @@ var clothOnly = new Vue({
         detail(id){
             sessionStorage.setItem("prod_Id", id);
             console.log(sessionStorage);
-            window.location.replace("http://localhost:5000/products-details.html");
+            window.open("http://localhost:5000/products-details.html");
         }
     },
     mounted() {
@@ -64,7 +64,7 @@ var jewOnly = new Vue({
         detail(id){
             sessionStorage.setItem("prod_Id", id);
             console.log(sessionStorage);
-            window.location.replace("http://localhost:5000/products-details.html");
+            window.open("http://localhost:5000/products-details.html");
         }
     },
     mounted() {
@@ -92,7 +92,7 @@ var craftOnly = new Vue({
         detail(id){
             sessionStorage.setItem("prod_Id", id);
             console.log(sessionStorage);
-            window.location.replace("http://localhost:5000/products-details.html");
+            window.open("http://localhost:5000/products-details.html");
         }
     },
     mounted() {
@@ -120,7 +120,7 @@ var bedOnly = new Vue({
         detail(id){
             sessionStorage.setItem("prod_Id", id);
             console.log(sessionStorage);
-            window.location.replace("http://localhost:5000/products-details.html");
+            window.open("http://localhost:5000/products-details.html");
         }
     },
     mounted() {
@@ -148,7 +148,7 @@ var toyOnly = new Vue({
         detail(id){
             sessionStorage.setItem("prod_Id", id);
             console.log(sessionStorage);
-            window.location.replace("http://localhost:5000/products-details.html");
+            window.open("http://localhost:5000/products-details.html");
         }
     },
     mounted() {
@@ -176,7 +176,7 @@ var artOnly = new Vue({
         detail(id){
             sessionStorage.setItem("prod_Id", id);
             console.log(sessionStorage);
-            window.location.replace("http://localhost:5000/products-details.html");
+            window.open("http://localhost:5000/products-details.html");
         }
     },
     mounted() {
@@ -204,7 +204,7 @@ var weddingOnly = new Vue({
         detail(id){
             sessionStorage.setItem("prod_Id", id);
             console.log(sessionStorage);
-            window.location.href = "http://localhost:5000/products-details.html";
+            window.open("http://localhost:5000/products-details.html");
         }
     },
     mounted() {

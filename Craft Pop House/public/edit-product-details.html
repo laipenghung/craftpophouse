@@ -1,177 +1,207 @@
 <!DOCTYPE html>
-<html lang="en" data-ng-app="myApp">
+<html lang="en">
 <head>
-    <title>CraftPopHouse</title>
+    <title>Edit Product</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
     <!-- Bootstrap -->
     <link href="frameworks/css/bootstrap.min.css" rel="stylesheet" />
-
-    <!-- CSS -->
+    <script src="frameworks/js/jquery-3.5.0.min.js"></script>
+	<!-- CSS -->
 	<link rel="stylesheet" href="frameworks/css/style.css">
     
 <style>
-    h1{
-        margin-top: 4%;
-        text-align: center;
+    .editProduct{
+        margin-left: auto;
+        margin-right: auto;
+        width: 65%;
+        background-color: #eae7dc;
+        color: #e85a4f;
+        font-weight: bold;
+        min-height: 200%;
+        padding: 0 3%;
     }
     
-    body{
-        background: #eae7dc;
+    h3{
+        margin-top: 11%;
+        margin-bottom: 5%;
+        font-weight: bold;
+    }
+    
+    #confirmEdit{
+        background: #98fb98;
+        border: 2px solid #4cbb17;
+        border-radius: 100px;
+        padding: 1% 2.5%;
+        font-weight: bold;
+        margin-right: 2%;
+    }
+    
+    #confirmEdit:hover{
+        background: #4cbb17;
+    }
+    
+    #removeProduct{
+        background: #fa8072;
+        border: 2px solid #d21f3c;
+        border-radius: 100px;
+        padding: 1% 2.5%;
+        font-weight: bold;
+        margin-left: 2%;
+    }
+    
+    #removeProduct:hover{
+        background: #d21f3c;
     }
 </style>
 </head>
 
-<body data-hijacking="on" data-animation="scaleDown">
-    <header>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="#"><img src="image/logo.png" width="30" height="30" class="d-inline-block align-top" alt="Logo"></a>
-
-        <!-- BreadCrumb -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-
-                <li class="nav-item" >
-                    <a class="nav-link" href="#">Link 1</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link 2</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link 3</a>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Product Categories 
-                    </a>
-
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Category 1</a>
-                        <a class="dropdown-item" href="#">Category 2</a>
-
-                        <div class="dropdown-divider"></div>
-
-                        <a class="dropdown-item" href="#">Category 3</a>
-                        <a class="dropdown-item" href="#">Category 4</a>
-                        
-                        <div class="dropdown-divider"></div>
-                        
-                        <a class="dropdown-item" href="#">Category 5</a>
-                        <a class="dropdown-item" href="#">Category 6</a>
-                        
+<body>
+	<!-- Nav reuse -->
+    <div id="nav-placeholder"></div>    
+	
+    <div class="editProduct">
+        <div class="d-flex">
+            <div class="card-body">
+                <!-- Title -->
+				<h3 class="text-center">Edit Product Details</h3>
+                
+                <!-- Form Start -->
+                <form id="addProductForm" class="mt-4">
+                    <!-- Product Name -->
+                    <div class="form-group row">
+                        <label for="pName" class="col-md-2 col-form-label">Product Name</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="pName" placeholder="Enter the Product Name">
+                        </div>
                     </div>
-                </li>
-            </ul>
+                    
+                    <br>
 
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
-    </nav>
-   </header>
-        
-    <!-- Main Page -->
-    <h1>Edit Product Details</h1>
+                    <!-- Product Description -->
+                    <div class="form-group row">
+                        <label for="pDesc" class="col-md-2 col-form-label">Product Description</label>
+                        <div class="col-md-10">
+                            <textarea class="form-control" rows="2" id="pDesc" placeholder="Enter the Product Description"></textarea>
+                        </div>
+                    </div>
+                    
+                    <br>
 
-    <form action="/#.php">
-        <div class="row">
-            <input type='file' onchange="readURL(this);" />
-            <img id="uploadImg" src="http://placehold.it/180" alt="your image" />
+                    <!-- Product Price -->
+                    <div class="form-group row">
+                        <label for="pPrice" class="col-md-2 col-form-label">Product Price (RM)</label>
+                        <div class="col-md-10">
+                            <input type="number" class="form-control" id="pPrice" placeholder="Enter the Product Price">
+                        </div>
+                    </div>
+                    
+                    <br>
+
+                    <!-- Product Quantity -->
+                    <div class="form-group row">
+                        <label for="pQuant" class="col-md-2 col-form-label">Product Quantity</label>
+                        <div class="col-md-10">
+                            <input type="number" class="form-control" id="pQuant" placeholder="Enter the Product Quantity">
+                        </div>
+                    </div>
+                    
+                    <br>
+
+                    <!-- Product Image -->
+                    <div class="form-group row">
+                        <label for="pImage" class="col-md-2 col-form-label">Product Image</label>
+                        <div class="col-md-10">
+                            <input type="file" id="pImage">
+                        </div>
+                    </div>
+                    
+                    <br>
+
+                    <!-- Product Category -->
+                    <fieldset class="form-group">
+                        <div class="row">
+                            <p class="col-md-2 col-form-label selection">Product Category</p>
+                            
+                            <div class="col-md-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="radioBtn_1" value="clothing">
+                                    <label class="form-check-label" for="radioBtn_1">Clothing &amp; Accessories</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="radioBtn_2" value="jewelry">
+                                    <label class="form-check-label" for="radioBtn_2">Jewelry</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="radioBtn_3" value="craft">
+                                    <label class="form-check-label" for="radioBtn_3">Craft Supplies</label>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="radioBtn_4" value="wedding">
+                                    <label class="form-check-label" for="radioBtn_4">Wedding Accessories</label>
+                                </div>
+                                
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="radioBtn_5" value="bedding">
+                                    <label class="form-check-label" for="radioBtn_5">Bedding/Room Décor</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="radioBtn_6" value="toys">
+                                    <label class="form-check-label" for="radioBtn_6">Soft Toys</label>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="radioBtn_7" value="arts">
+                                    <label class="form-check-label" for="radioBtn_7">Vintage Arts</label>
+                                </div> 
+                            </div>
+                        </div>
+                    </fieldset>
+					
+                    <br><br>
+                    
+					<div class="text-center">
+						<button type="button" id="confirmEdit" onclick="confirmEdit()">Confirm</button>
+                        <button type="button" id="removeProduct" onclick="removeProduct()">Remove</button>
+					</div>
+                </form>
+            </div>
         </div>
-        
-        <div class="row">
-            <div class="col-md-1">
-                <label for="p_name">Name: </label>
-            </div>
-            
-            <div class="col-md-1">
-                <input type="text" id="p_name" name="p_name"><br>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-1">
-                <label for="p_price">Price: </label>
-            </div>
-            
-            <div class="col-md-1">
-                <input type="text" id="p_price" name="p_price"><br>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-1">
-                <label for="p_cat">Category: </label>
-            </div>
-            
-            <div class="col-md-1">
-                <input type="text" id="p_cat" name="p_cat"><br>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-1">
-                <label for="p_stock">Stock: </label>
-            </div>
-            
-            <div class="col-md-1">
-                <input type="text" id="p_stock" name="p_stock"><br>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-1">
-                <label for="p_desc">Description: </label>
-            </div>
-            
-            <div class="col-md-1">
-                <input type="text" id="p_desc" name="p_desc"><br>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-1">
-                <input type="button" value="Remove">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-12">
-                <input type="submit" value="Submit">
-                <input type="reset" value="Reset">
-            </div>
-        </div>
-    </form> 
+    </div>
     
-    <!-- Footer -->
-    <footer>
-        &copy; 2020 TheBest | Page developed by - Dickson - Wilson - Peng | Last updated: 19/04/2020 1:16am
-    </footer>
-
-    <!-- jQuery – required for Bootstrap's JavaScript plugins) -->
-    <script src="frameworks/js/jquery.min.js"></script>
-    <!-- All Bootstrap plug-ins file -->
+	<!-- Footer reuse -->
+	<div id="footer-placeholder"></div>
+	
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="/__/firebase/7.12.0/firebase-app.js"></script>
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+		 https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="/__/firebase/7.12.0/firebase-analytics.js"></script>
+	<script src="/__/firebase/7.14.0/firebase-auth.js"></script>
+    <script src="/__/firebase/7.14.1/firebase-firestore.js"></script>
+    <script src="/__/firebase/7.14.2/firebase-storage.js"></script>
+    <script src="/__/firebase/7.14.2/firebase-database.js"></script>
+	<!-- Initialize Firebase -->
+	<script src="/__/firebase/init.js"></script>
+    <!-- jQuery – required for Bootstrap's JavaScript plugins) --> 
+    <script src="frameworks/js/jquery.min.js"></script> 
+    <!-- All Bootstrap  plug-ins  file --> 
     <script src="frameworks/js/bootstrap.min.js"></script>
-    <!-- Basic AngularJS -->
+	<!--AngularJS-->
     <script src="frameworks/js/angular.min.js"></script>
     
-    <!-- Page scroll effect -->
-    <script src="frameworks/js/jquery-2.1.4.js"></script>
-    <script src="frameworks/js/velocity.min.js"></script>
-    <script src="frameworks/js/velocity.ui.min.js"></script>
-    <script src="frameworks/js/main.js"></script>
-    <script src="frameworks/js/modernizr.js"></script> 
+	<!--Firebase Config-->
+	<script src="firebase_script/firebaseConfig.js"></script>
+	<script src="firebase_script/accountControl.js"></script>
+    <script src="firebase_script/addproduct.js"></script>
 </body>
 </html>

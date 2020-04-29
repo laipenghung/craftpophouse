@@ -87,13 +87,8 @@
 
     <form action="/#.php">
         <div class="row">
-            <div class="col-md-1">
-                <label for="p_name">Upload image: </label>
-            </div>
-            
-            <div class="col-md-1">
-                <input type="text" id="p_name" name="p_name"><br>
-            </div>
+            <input type='file' onchange="readURL(this);" />
+            <img id="uploadImg" src="http://placehold.it/180" alt="your image" />
         </div>
         
         <div class="row">
@@ -148,11 +143,7 @@
         
         <div class="row">
             <div class="col-md-1">
-                <label for="p_desc">Remove Product</label>
-            </div>
-            
-            <div class="col-md-1">
-                <input type="text" id="p_desc" name="p_desc"><br>
+                <input type="button" value="Remove">
             </div>
         </div>
         

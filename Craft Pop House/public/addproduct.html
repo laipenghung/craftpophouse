@@ -1,25 +1,27 @@
 <!DOCTYPE html>
-<html data-ng-app="">
+<html lang="en">
 <head>
-    <title>Task 3.4 C</title>
+    <title>Sell Your Product</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,
     initial-scale=1.0" />
 
     <!-- Bootstrap -->
     <link href="frameworks/css/bootstrap.min.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-   
-    <style>
-        
-    </style>
+    <script src="frameworks/js/jquery-3.5.0.min.js"></script>
+	<!-- CSS -->
+	<link rel="stylesheet" href="frameworks/css/style.css">
 </head>
 
 <body>
-    <div class="container">
-        <div class="row-md-12 d-flex justify-content-center">
-            <div class="col content">
-                <form>
+	<!--Nav reuse-->
+    <div id="nav-placeholder"></div>    
+	
+    <div class="container" style="margin-top: 6%;">
+        <div class="card bg-light d-flex justify-content-center">
+            <div class="card-body">
+				<h3 class="card-title mb-3 text-center">Sell Your Product</h3>
+                <form id="addProductForm" class="mt-4">
                     <div class="form-group row">
                         <label for="pName" class="col-md-2 col-form-label"><p class="selection">Product Name</p></label>
                         <div class="col-md-10">
@@ -94,15 +96,18 @@
                             </div>
                         </div>
                     </fieldset>
-
-                    <button onclick="testfunction()">upload</button>
+					
+					<div class="text-center">
+						<button type="button" class="btn btn-primary" onclick="testfunction()">Post</button>
+					</div>
                 </form>
             </div>
-
         </div>
     </div>
     
-
+	<!--Footer reuse-->
+	<div id="footer-placeholder"></div>
+	
     <!-- The core Firebase JS SDK is always required and must be listed first -->
 	<script src="/__/firebase/7.12.0/firebase-app.js"></script>
 	<!-- TODO: Add SDKs for Firebase products that you want to use
@@ -123,8 +128,7 @@
     
 	<!--Firebase Config-->
 	<script src="firebase_script/firebaseConfig.js"></script>
+	<script src="firebase_script/accountControl.js"></script>
     <script src="firebase_script/addproduct.js"></script>
-    
-    
 </body>
 </html>

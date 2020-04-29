@@ -52,11 +52,5 @@ function signOut(){
 	}).catch(function(error){
 		console.log("Error sign out");
 	});
+	window.location.href = "index.html";
 }
-
-/*firebase.firestore().collection("users").get().then(snapshot => {
-	data = snapshot.docs;
-	data.forEach(doc =>{
-		console.log(doc.data());	
-	});
-})*/

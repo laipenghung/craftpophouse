@@ -4,9 +4,10 @@ var all = new Vue({
       products : []
     },
     methods: {
-        detail(id){
+        detail(id, cat){
             //console.log(id);
             sessionStorage.setItem("prod_Id", id);
+            sessionStorage.setItem("prod_Cat", cat);
             console.log(sessionStorage);
             window.open("http://localhost:5000/products-details.html");
         },
@@ -45,8 +46,9 @@ var clothOnly = new Vue({
         clothOnly : []
     },
     methods: {
-        detail(id){
+        detail(id, cat){
             sessionStorage.setItem("prod_Id", id);
+            sessionStorage.setItem("prod_Cat", cat);
             console.log(sessionStorage);
             window.open("http://localhost:5000/products-details.html");
         },
@@ -85,8 +87,9 @@ var jewOnly = new Vue({
         jewOnly : []
     },
     methods: {
-        detail(id){
+        detail(id, cat){
             sessionStorage.setItem("prod_Id", id);
+            sessionStorage.setItem("prod_Cat", cat);
             console.log(sessionStorage);
             window.open("http://localhost:5000/products-details.html");
         },
@@ -125,8 +128,9 @@ var craftOnly = new Vue({
         craftOnly : []
     },
     methods: {
-        detail(id){
+        detail(id, cat){
             sessionStorage.setItem("prod_Id", id);
+            sessionStorage.setItem("prod_Cat", cat);
             console.log(sessionStorage);
             window.open("http://localhost:5000/products-details.html");
         },
@@ -165,8 +169,9 @@ var bedOnly = new Vue({
         bedOnly : []
     },
     methods: {
-        detail(id){
+        detail(id, cat){
             sessionStorage.setItem("prod_Id", id);
+            sessionStorage.setItem("prod_Cat", cat);
             console.log(sessionStorage);
             window.open("http://localhost:5000/products-details.html");
         },
@@ -205,8 +210,9 @@ var toyOnly = new Vue({
         toyOnly : []
     },
     methods: {
-        detail(id){
+        detail(id, cat){
             sessionStorage.setItem("prod_Id", id);
+            sessionStorage.setItem("prod_Cat", cat);
             console.log(sessionStorage);
             window.open("http://localhost:5000/products-details.html");
         },
@@ -245,8 +251,9 @@ var artOnly = new Vue({
         artOnly : []
     },
     methods: {
-        detail(id){
+        detail(id, cat){
             sessionStorage.setItem("prod_Id", id);
+            sessionStorage.setItem("prod_Cat", cat);
             console.log(sessionStorage);
             window.open("http://localhost:5000/products-details.html");
         },
@@ -285,8 +292,9 @@ var weddingOnly = new Vue({
         weddingOnly : []
     },
     methods: {
-        detail(id){
+        detail(id, cat){
             sessionStorage.setItem("prod_Id", id);
+            sessionStorage.setItem("prod_Cat", cat);
             console.log(sessionStorage);
             window.open("http://localhost:5000/products-details.html");
         },

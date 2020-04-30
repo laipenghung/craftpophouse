@@ -10,7 +10,19 @@ var all = new Vue({
             sessionStorage.setItem("prod_Cat", cat);
             console.log(sessionStorage);
             window.open("http://localhost:5000/products-details.html");
-        }
+        },
+		addToCart(pid, pName, pDesc, pPrice, pQuant, photoURL){
+			//Add to cart
+			db.collection("users").doc(gUser.uid).
+			collection("cartItem").add({
+				prod_ID: pid,
+				prod_name: pName,
+				prod_desc: pDesc,
+				prod_price: pPrice,
+				order_quantity: pQuant,
+				photo: photoURL
+			});
+		}
     },
     mounted() {
         const ref = firebase.firestore().collection('Products');
@@ -39,7 +51,19 @@ var clothOnly = new Vue({
             sessionStorage.setItem("prod_Cat", cat);
             console.log(sessionStorage);
             window.open("http://localhost:5000/products-details.html");
-        }
+        },
+		addToCart(pid, pName, pDesc, pPrice, pQuant, photoURL){
+			//Add to cart
+			db.collection("users").doc(gUser.uid).
+			collection("cartItem").add({
+				prod_ID: pid,
+				prod_name: pName,
+				prod_desc: pDesc,
+				prod_price: pPrice,
+				order_quantity: pQuant,
+				photo: photoURL
+			});
+		}
     },
     mounted() {
         const ref = firebase.firestore().collection('Products').where("prod_Cat", "==", "clothing");
@@ -68,7 +92,19 @@ var jewOnly = new Vue({
             sessionStorage.setItem("prod_Cat", cat);
             console.log(sessionStorage);
             window.open("http://localhost:5000/products-details.html");
-        }
+        },
+		addToCart(pid, pName, pDesc, pPrice, pQuant, photoURL){
+			//Add to cart
+			db.collection("users").doc(gUser.uid).
+			collection("cartItem").add({
+				prod_ID: pid,
+				prod_name: pName,
+				prod_desc: pDesc,
+				prod_price: pPrice,
+				order_quantity: pQuant,
+				photo: photoURL
+			});
+		}
     },
     mounted() {
         const ref = firebase.firestore().collection('Products').where("prod_Cat", "==", "jewelry");
@@ -97,7 +133,19 @@ var craftOnly = new Vue({
             sessionStorage.setItem("prod_Cat", cat);
             console.log(sessionStorage);
             window.open("http://localhost:5000/products-details.html");
-        }
+        },
+		addToCart(pid, pName, pDesc, pPrice, pQuant, photoURL){
+			//Add to cart
+			db.collection("users").doc(gUser.uid).
+			collection("cartItem").add({
+				prod_ID: pid,
+				prod_name: pName,
+				prod_desc: pDesc,
+				prod_price: pPrice,
+				order_quantity: pQuant,
+				photo: photoURL
+			});
+		}
     },
     mounted() {
         const ref = firebase.firestore().collection('Products').where("prod_Cat", "==", "craft");
@@ -126,7 +174,19 @@ var bedOnly = new Vue({
             sessionStorage.setItem("prod_Cat", cat);
             console.log(sessionStorage);
             window.open("http://localhost:5000/products-details.html");
-        }
+        },
+		addToCart(pid, pName, pDesc, pPrice, pQuant, photoURL){
+			//Add to cart
+			db.collection("users").doc(gUser.uid).
+			collection("cartItem").add({
+				prod_ID: pid,
+				prod_name: pName,
+				prod_desc: pDesc,
+				prod_price: pPrice,
+				order_quantity: pQuant,
+				photo: photoURL
+			});
+		}
     },
     mounted() {
         const ref = firebase.firestore().collection('Products').where("prod_Cat", "==", "bedding");
@@ -155,7 +215,19 @@ var toyOnly = new Vue({
             sessionStorage.setItem("prod_Cat", cat);
             console.log(sessionStorage);
             window.open("http://localhost:5000/products-details.html");
-        }
+        },
+		addToCart(pid, pName, pDesc, pPrice, pQuant, photoURL){
+			//Add to cart
+			db.collection("users").doc(gUser.uid).
+			collection("cartItem").add({
+				prod_ID: pid,
+				prod_name: pName,
+				prod_desc: pDesc,
+				prod_price: pPrice,
+				order_quantity: pQuant,
+				photo: photoURL
+			});
+		}
     },
     mounted() {
         const ref = firebase.firestore().collection('Products').where("prod_Cat", "==", "toys");
@@ -184,7 +256,19 @@ var artOnly = new Vue({
             sessionStorage.setItem("prod_Cat", cat);
             console.log(sessionStorage);
             window.open("http://localhost:5000/products-details.html");
-        }
+        },
+		addToCart(pid, pName, pDesc, pPrice, pQuant, photoURL){
+			//Add to cart
+			db.collection("users").doc(gUser.uid).
+			collection("cartItem").add({
+				prod_ID: pid,
+				prod_name: pName,
+				prod_desc: pDesc,
+				prod_price: pPrice,
+				order_quantity: pQuant,
+				photo: photoURL
+			});
+		}
     },
     mounted() {
         const ref = firebase.firestore().collection('Products').where("prod_Cat", "==", "arts");
@@ -213,7 +297,19 @@ var weddingOnly = new Vue({
             sessionStorage.setItem("prod_Cat", cat);
             console.log(sessionStorage);
             window.open("http://localhost:5000/products-details.html");
-        }
+        },
+		addToCart(pid, pName, pDesc, pPrice, pQuant, photoUrl){
+			//Add to cart
+			db.collection("users").doc(gUser.uid).
+			collection("cartItem").add({
+				prod_ID: pid,
+				prod_name: pName,
+				prod_desc: pDesc,
+				prod_price: pPrice,
+				order_quantity: pQuant,
+				photo: photoUrl
+			});
+		}
     },
     mounted() {
         const ref = firebase.firestore().collection('Products').where("prod_Cat", "==", "wedding");

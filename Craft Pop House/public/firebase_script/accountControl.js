@@ -40,7 +40,7 @@ function switchNavBar(navType){
 }
 
 function getUserProfile(){
-	displayName = document.getElementById("displayName")
+	displayName = document.getElementById("displayName");
 	displayName.style.color = "white";
 	displayName.innerText = gUser.displayName;
 }

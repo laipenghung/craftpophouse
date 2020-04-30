@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html ng-app="app">
+<html lang="en" ng-app="app">
 <head>
-    <title>Task 3.4 C</title>
+    <title>Products</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,
     initial-scale=1.0" />
     
     <!-- Bootstrap -->
     <link href="frameworks/css/bootstrap.min.css" rel="stylesheet" />
-    
+	<script src="frameworks/js/jquery-3.5.0.min.js"></script>
+     <!-- CSS -->
+	<link rel="stylesheet" href="frameworks/css/style.css">
     <link href="owlCarousel/dist/assets/owl.carousel.css" rel="stylesheet" text="text/css"/>
     <link href="owlCarousel/dist/assets/owl.theme.default.min.css" rel="stylesheet" text="text/css"/>
    
     <style>
-        /*prod cat*/
         .prodCat {
-            border: 0;
-            width: 130px;
-            height: 130px;
+            border: 1px solid grey;
+            width: 115px;
+            height: 115px;
             text-align: center;
             background-color: white;
        }
@@ -36,43 +37,19 @@
        .prodCat:focus {
            outline: none;
        }
-
-        /*product css */
-        /*.d-flex {
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-        }
-
-        .align-center {
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center;
-        }
-
-        .flex-centerY-centerX {
-            justify-content: center;
-            -webkit-box-pack: center;
-            -ms-flex-pack: center;
-            justify-content: center;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center;
-        }*/
-        
         /*product card*/
         .prodCard{
             width: 280px;  
             height: auto;
             text-align: center;
-            box-shadow: 5px 10px 18px #888888;
             display: block;
             float: left;
             margin: 40px 15px;
             overflow: hidden;
+			background-color: white;
         }
         
-        .prodCard:hover {
+        .prodCard:hover, .prodCat:hover {
             transform: scale(1.1);
             transition: 0.3s;
         }
@@ -135,62 +112,60 @@
 </head>
 
 <body onload="showAll()">
-    <div class="container-fluid">
+	<!--Nav reuse-->
+    <div id="nav-placeholder"></div>   
+
+    <div class="container-fluid" style="margin-top: 6%;">
         <div class="row d-flex justify-content-center">
-            <div class="col-lg-10">
-                <div class="row d-flex justify-content-center">
-                    <!--All icons taken from https://www.flaticon.com/authors/freepik -->
-                    
-                    <div class="col-md-1">
-                        <button class="prodCat" onclick="filterCloth()">
-                            <img class="catImage" src="image/shirt.png" title="" alt="" >
-                            <p class="catDesc">Clothing &amp; Accessories</p>
-                        </button>
-                    </div>  
-    
-                    <div class="col-md-1">
-                        <button class="prodCat" onclick="filterJew()">
-                            <img class="catImage" src="image/diamond.png" title="" alt="" >
-                            <p class="catDesc">Jewelry</p>
-                        </button>
-                    </div>
-    
-                    <div class="col-md-1">
-                        <button class="prodCat" onclick="filterCraft()">
-                            <img class="catImage" src="image/glue.png" title="" alt="" >
-                            <p class="catDesc">Craft Supplies</p>
-                        </button>
-                    </div>
+			<!--All icons taken from https://www.flaticon.com/authors/freepik -->
+			<div class="col-auto p-0">
+				<button class="prodCat" onclick="filterCloth()">
+					<img class="catImage" src="image/shirt.png" title="" alt="" >
+					<p class="catDesc">Clothing &amp; Accessories</p>
+				</button>
+			</div>  
 
-                    <div class="col-md-1">
-                        <button class="prodCat" onclick="filterBed()">
-                            <img class="catImage" src="image/frame.png" title="" alt="" >
-                            <p class="catDesc">Bedding/Room Décor</p>
-                        </button>
-                    </div>
+			<div class="col-auto p-0">
+				<button class="prodCat" onclick="filterJew()">
+					<img class="catImage" src="image/diamond.png" title="" alt="" >
+					<p class="catDesc">Jewelry</p>
+				</button>
+			</div>
 
-                    <div class="col-md-1">
-                        <button class="prodCat" onclick="filterToy()">
-                            <img class="catImage" src="image/toy.png" title="" alt="" >
-                            <p class="catDesc">Soft Toys</p>
-                        </button>
-                    </div>  
-    
-                    <div class="col-md-1">
-                        <button class="prodCat" onclick="filterArt()">
-                            <img class="catImage" src="image/art.png" title="" alt="" >
-                            <p class="catDesc">Vintage Arts</p>
-                        </button>
-                    </div>
-    
-                    <div class="col-md-1">
-                        <button class="prodCat" onclick="filterWed()">
-                            <img class="catImage" src="image/wedding.png" title="" alt="" >
-                            <p class="catDesc">Wedding Accessories</p>
-                        </button>
-                    </div>
-                </div>   
-            </div>
+			<div class="col-auto p-0">
+				<button class="prodCat" onclick="filterCraft()">
+					<img class="catImage" src="image/glue.png" title="" alt="" >
+					<p class="catDesc">Craft Supplies</p>
+				</button>
+			</div>
+
+			<div class="col-auto p-0">
+				<button class="prodCat" onclick="filterBed()">
+					<img class="catImage" src="image/frame.png" title="" alt="" >
+					<p class="catDesc">Bedding/Room Décor</p>
+				</button>
+			</div>
+
+			<div class="col-auto p-0">
+				<button class="prodCat" onclick="filterToy()">
+					<img class="catImage" src="image/toy.png" title="" alt="" >
+					<p class="catDesc">Soft Toys</p>
+				</button>
+			</div>  
+
+			<div class="col-auto p-0">
+				<button class="prodCat" onclick="filterArt()">
+					<img class="catImage" src="image/art.png" title="" alt="" >
+					<p class="catDesc">Vintage Arts</p>
+				</button>
+			</div>
+
+			<div class="col-auto p-0">
+				<button class="prodCat" onclick="filterWed()">
+					<img class="catImage" src="image/wedding.png" title="" alt="" >
+					<p class="catDesc">Wedding Accessories</p>
+				</button>
+			</div>
         </div>
     </div>
     
@@ -202,151 +177,180 @@
 
                 <div id="all">
                     <div v-for = "p in products">
-                        <div class="prodCard" @click="detail(p.prod_Id, p.prod_Cat)">
-                            <div class="cardImg-wrapper">
+
+                        <div class="prodCard">
+                            <div class="cardImg-wrapper" @click="detail(p.prod_Id)">
+
+
                                 <img class="cardImg" :src=p.url>
                             </div>
                             <div class="cardDesc" >
                                 <p id="title">{{p.prod_Name}}</p>
 
                                 <p class="price">RM {{p.prod_Price}}</p>
-                                <button href="#" id="btn">
-                                    <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
-                                </button>
                             </div>
+							<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Desc, p.prod_Price, 1, p.url)" id="btn">
+								<p>Add to Cart</p>
+							</button>
                         </div>
                     </div>
                 </div>
 
                 <div id="clothOnly">
                     <div v-for = "p in clothOnly">
-                        <div class="prodCard" @click="detail(p.prod_Id, p.prod_Cat)">
-                            <div class="cardImg-wrapper">
+
+                        <div class="prodCard">
+                            <div class="cardImg-wrapper" @click="detail(p.prod_Id)">
+
+
+
                                 <img class="cardImg" :src=p.url />
                             </div>
                             <div class="cardDesc" >
                                 <p id="title">{{p.prod_Name}}</p>
 
                                 <p class="price">RM {{p.prod_Price}}</p>
-                                <button href="#" id="btn">
-                                    <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
-                                </button>
                             </div>
+							<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Desc, p.prod_Price, 1, p.url)" id="btn">
+								<p>Add to Cart</p>
+							</button>
                         </div>
                     </div>
                 </div>
 
                 <div id="craftOnly">
                     <div v-for = "p in craftOnly">
-                        <div class="prodCard" @click="detail(p.prod_Id, p.prod_Cat)">
-                            <div class="cardImg-wrapper">
+
+                        <div class="prodCard">
+                            <div class="cardImg-wrapper" @click="detail(p.prod_Id)">
+
+
+
                                 <img class="cardImg" :src=p.url />
                             </div>
                             <div class="cardDesc" >
                                 <p id="title">{{p.prod_Name}}</p>
 
                                 <p class="price">RM {{p.prod_Price}}</p>
-                                <button href="#" id="btn">
-                                    <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
-                                </button>
                             </div>
+							<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Desc, p.prod_Price, 1, p.url)" id="btn">
+								<p>Add to Cart</p>
+							</button>
                         </div>
                     </div>
                 </div>
 
                 <div id="jewOnly">
                     <div v-for = "p in jewOnly">
-                        <div class="prodCard" @click="detail(p.prod_Id, p.prod_Cat)">
-                            <div class="cardImg-wrapper">
+
+                        <div class="prodCard">
+                            <div class="cardImg-wrapper" @click="detail(p.prod_Id)">
+
+
                                 <img class="cardImg" :src=p.url />
                             </div>
                             <div class="cardDesc" >
                                 <p id="title">{{p.prod_Name}}</p>
 
                                 <p class="price">RM {{p.prod_Price}}</p>
-                                <button href="#" id="btn">
-                                    <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
-                                </button>
                             </div>
+							<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Desc, p.prod_Price, 1, p.url)" id="btn">
+								<p>Add to Cart</p>
+							</button>
                         </div>
                     </div>
                 </div>
 
                 <div id="bedOnly">
                     <div v-for = "p in bedOnly">
-                        <div class="prodCard" @click="detail(p.prod_Id, p.prod_Cat)">
-                            <div class="cardImg-wrapper" >
+
+                        <div class="prodCard">
+                            <div class="cardImg-wrapper" @click="detail(p.prod_Id)">
+
+
                                 <img class="cardImg" :src=p.url />
                             </div>
                             <div class="cardDesc" >
                                 <p id="title">{{p.prod_Name}}</p>
 
                                 <p class="price">RM {{p.prod_Price}}</p>
-                                <button href="#" id="btn">
-                                    <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
-                                </button>
                             </div>
+							<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Desc, p.prod_Price, 1, p.url)" id="btn">
+								<p>Add to Cart</p>
+							</button>
                         </div>
                     </div>
                 </div>
 
                 <div id="toyOnly">
                     <div v-for = "p in toyOnly">
-                        <div class="prodCard" @click="detail(p.prod_Id, p.prod_Cat)">
-                            <div class="cardImg-wrapper">
+
+                        <div class="prodCard">
+                            <div class="cardImg-wrapper" @click="detail(p.prod_Id)">
+
+
+
                                 <img class="cardImg" :src=p.url />
                             </div>
                             <div class="cardDesc" >
                                 <p id="title">{{p.prod_Name}}</p>
 
                                 <p class="price">RM {{p.prod_Price}}</p>
-                                <button href="#" id="btn">
-                                    <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
-                                </button>
                             </div>
+							<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Desc, p.prod_Price, 1, p.url)" id="btn">
+								<p>Add to Cart</p>
+							</button>
                         </div>
                     </div>
                 </div>
 
                 <div id="artOnly">
                     <div v-for = "p in artOnly">
-                        <div class="prodCard" @click="detail(p.prod_Id, p.prod_Cat)">
-                            <div class="cardImg-wrapper">
+
+                        <div class="prodCard">
+                            <div class="cardImg-wrapper" @click="detail(p.prod_Id)">
+
+
                                 <img class="cardImg" :src=p.url />
                             </div>
                             <div class="cardDesc" >
                                 <p id="title">{{p.prod_Name}}</p>
 
                                 <p class="price">RM {{p.prod_Price}}</p>
-                                <button href="#" id="btn">
-                                    <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
-                                </button>
                             </div>
+							<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Desc, p.prod_Price, 1, p.url)" id="btn">
+								<p>Add to Cart</p>
+							</button>
                         </div>
                     </div>
                 </div>
 
                 <div id="weddingOnly">
                     <div v-for = "p in weddingOnly">
-                        <div class="prodCard" @click="detail(p.prod_Id, p.prod_Cat)">
-                            <div class="cardImg-wrapper">
+                      <div class="prodCard">
+                            <div class="cardImg-wrapper" @click="detail(p.prod_Id)">
+
+
+
                                 <img class="cardImg" :src=p.url />
                             </div>
                             <div class="cardDesc" >
                                 <p id="title">{{p.prod_Name}}</p>
 
                                 <p class="price">RM {{p.prod_Price}}</p>
-                                <button href="#" id="btn">
-                                    <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
-                                </button>
                             </div>
+							<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Desc, p.prod_Price, 1, p.url)" id="btn">
+								<p>Add to Cart</p>
+							</button>
                         </div>
                     </div>
                 </div>
-                
             </div>
         </div>
     </div>
+	
+	<!--Footer reuse-->
+	<div id="footer-placeholder"></div>
 
     <!--vue.js-->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -369,7 +373,9 @@
     
 	<!--Firebase Config-->
 	<script src="firebase_script/firebaseConfig.js"></script>
+	<script src="firebase_script/accountControl.js"></script>
     <script src="firebase_script/products.js"></script>
+	<script src="firebase_script/cartFunction.js"></script>
     
     <script src="owlCarousel/dist/owl.carousel.js" type="text/javascript"></script>
     <script type="text/javascript">

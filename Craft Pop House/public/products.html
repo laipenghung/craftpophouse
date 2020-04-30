@@ -202,7 +202,7 @@
 
                 <div id="all">
                     <div v-for = "p in products">
-                        <div class="prodCard" @click="detail(p.prod_Id)">
+                        <div class="prodCard" @click="detail(p.prod_Id, p.prod_Cat)">
                             <div class="cardImg-wrapper">
                                 <img class="cardImg" :src=p.url>
                             </div>
@@ -220,7 +220,7 @@
 
                 <div id="clothOnly">
                     <div v-for = "p in clothOnly">
-                        <div class="prodCard" @click="detail(p.prod_Id)">
+                        <div class="prodCard" @click="detail(p.prod_Id, p.prod_Cat)">
                             <div class="cardImg-wrapper">
                                 <img class="cardImg" :src=p.url />
                             </div>
@@ -238,7 +238,7 @@
 
                 <div id="craftOnly">
                     <div v-for = "p in craftOnly">
-                        <div class="prodCard" @click="detail(p.prod_Id)">
+                        <div class="prodCard" @click="detail(p.prod_Id, p.prod_Cat)">
                             <div class="cardImg-wrapper">
                                 <img class="cardImg" :src=p.url />
                             </div>
@@ -256,7 +256,7 @@
 
                 <div id="jewOnly">
                     <div v-for = "p in jewOnly">
-                        <div class="prodCard" @click="detail(p.prod_Id)">
+                        <div class="prodCard" @click="detail(p.prod_Id, p.prod_Cat)">
                             <div class="cardImg-wrapper">
                                 <img class="cardImg" :src=p.url />
                             </div>
@@ -274,7 +274,7 @@
 
                 <div id="bedOnly">
                     <div v-for = "p in bedOnly">
-                        <div class="prodCard" @click="detail(p.prod_Id)">
+                        <div class="prodCard" @click="detail(p.prod_Id, p.prod_Cat)">
                             <div class="cardImg-wrapper" >
                                 <img class="cardImg" :src=p.url />
                             </div>
@@ -292,7 +292,7 @@
 
                 <div id="toyOnly">
                     <div v-for = "p in toyOnly">
-                        <div class="prodCard" @click="detail(p.prod_Id)">
+                        <div class="prodCard" @click="detail(p.prod_Id, p.prod_Cat)">
                             <div class="cardImg-wrapper">
                                 <img class="cardImg" :src=p.url />
                             </div>
@@ -310,7 +310,7 @@
 
                 <div id="artOnly">
                     <div v-for = "p in artOnly">
-                        <div class="prodCard" @click="detail(p.prod_Id)">
+                        <div class="prodCard" @click="detail(p.prod_Id, p.prod_Cat)">
                             <div class="cardImg-wrapper">
                                 <img class="cardImg" :src=p.url />
                             </div>
@@ -328,7 +328,7 @@
 
                 <div id="weddingOnly">
                     <div v-for = "p in weddingOnly">
-                        <div class="prodCard" @click="detail(p.prod_Id)">
+                        <div class="prodCard" @click="detail(p.prod_Id, p.prod_Cat)">
                             <div class="cardImg-wrapper">
                                 <img class="cardImg" :src=p.url />
                             </div>

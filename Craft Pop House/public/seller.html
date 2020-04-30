@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>Task 3.4 C</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,
+    initial-scale=1.0" />
+    
+    <!-- Bootstrap -->
+    <link href="frameworks/css/bootstrap.min.css" rel="stylesheet" />
+    
+    <style>
+        .row2 {
+            margin-top: 25px;
+        }
+        .s{
+            font-size: 25px;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+       hr{
+           margin-top: 15px;
+       }
+
+       .pImg {
+           width: 100px;
+           height: 100px;
+           margin: auto;
+       }
+
+       .buttonImg {
+           width: 30px;
+           height: 30px;
+       }
+
+       button {
+        margin-right: 10px;
+        background-color: transparent;
+        border: 0;
+       }
+
+       .sellBtn {
+            border: none;
+            outline: 0;
+            color: white;
+            background-color: black;
+            display: block;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 20px;
+            padding: 0 30px;
+            height: 80px;
+            margin: 20px 0;
+       }
+
+       .sellBtn a {
+            text-decoration: none;
+            color: white;  
+       }
+
+       .sellBtn a:hover {
+            text-decoration: none;
+       }
+
+
+       .sellBtn p {
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 23px;
+        }
+
+        .row3 p{
+            margin-top: 10px;
+            font-size: 30px;
+        }
+
+        th {
+            text-align: center;
+            font-size: 18px;
+        }
+
+        td {
+            text-align: center;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div id="content">
+            <div class="row d-flex justify-content-center row2 a">
+                <div class="col-md-6 s a">
+                    <p>Join Craft Pop House</p>
+                    <p>Click the button on the right and become one of the seller</p>
+                </div>
+
+                <div class="col-md-3 d-flex justify-content-center a">
+                    <a href="http://localhost:5000/addproduct.html" class="sellBtn">
+                        <p>Sell on Marketplace</p>
+                    </a>
+                </div>
+            </div>
+            <hr>
+
+            <div class="row row3 d-flex justify-content-center ">
+                <p>Current sell listings</p>
+            </div>
+
+            <div class="row d-flex justify-content-center ">
+                <div class="col-md-10 d-flex justify-content-center">
+                    <div class="table-responsive" id="">   
+                        <table class="table table-hover">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Product Name</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr v-for="p in products">
+                                    <td>
+                                        <img class="pImg" :src=p.url>
+                                    </td>
+                                    <td class="text">{{p.prod_Name}}</td>
+                                    <td class="text">RM {{p.prod_Price}}</td>
+                                    <td class="text">{{p.prod_Quant}}</td>
+                                    <td>
+                                        <button>
+                                            <img class="buttonImg" src="image/archive.png" alt="Edit" title="Edit" @click="editProduct(p.prod_Id)">
+                                        </button>
+                                        <button>
+                                            <img class="buttonImg" src="image/can.png" alt="Remove" title="Remove" @click="removeProduct(p.prod_Id)">
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>      
+    </div>    
+
+    <!--vue.js-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="/__/firebase/7.12.0/firebase-app.js"></script>
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+		 https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="/__/firebase/7.12.0/firebase-analytics.js"></script>
+	<script src="/__/firebase/7.14.0/firebase-auth.js"></script>
+	<script src="/__/firebase/7.14.1/firebase-firestore.js"></script>
+	<!-- Initialize Firebase -->
+	<script src="/__/firebase/init.js"></script>
+    <!-- jQuery – required for Bootstrap's JavaScript plugins) --> 
+    <script src="frameworks/js/jquery.min.js"></script> 
+    <!-- All Bootstrap  plug-ins  file --> 
+    <script src="frameworks/js/bootstrap.min.js"></script>
+    
+	<!--Firebase Config-->
+	<script src="firebase_script/firebaseConfig.js"></script>
+    <script src="firebase_script/seller.js"></script>
+
+</body>
+</html>

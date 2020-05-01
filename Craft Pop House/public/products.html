@@ -188,7 +188,7 @@
 
                                 <p class="price">RM {{p.prod_Price}}</p>
                             </div>
-							<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Desc, p.prod_Price, 1, p.url)" id="btn">
+							<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, 1)" id="btn" data-toggle="modal" data-target="#addToCart">
 								<p>Add to Cart</p>
 							</button>
                         </div>
@@ -207,7 +207,7 @@
 
                                 <p class="price">RM {{p.prod_Price}}</p>
                             </div>
-							<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Desc, p.prod_Price, 1, p.url)" id="btn">
+							<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, 1)" id="btn" data-toggle="modal" data-target="#addToCart">
 								<p>Add to Cart</p>
 							</button>
                         </div>
@@ -226,7 +226,7 @@
 
                                 <p class="price">RM {{p.prod_Price}}</p>
                             </div>
-							<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Desc, p.prod_Price, 1, p.url)" id="btn">
+							<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, 1)" id="btn" data-toggle="modal" data-target="#addToCart">
 								<p>Add to Cart</p>
 							</button>
                         </div>
@@ -245,7 +245,7 @@
 
                                 <p class="price">RM {{p.prod_Price}}</p>
                             </div>
-							<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Desc, p.prod_Price, 1, p.url)" id="btn">
+							<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, 1)" id="btn" data-toggle="modal" data-target="#addToCart">
 								<p>Add to Cart</p>
 							</button>
                         </div>
@@ -264,7 +264,7 @@
 
                                 <p class="price">RM {{p.prod_Price}}</p>
                             </div>
-							<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Desc, p.prod_Price, 1, p.url)" id="btn">
+							<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, 1)" id="btn" data-toggle="modal" data-target="#addToCart">
 								<p>Add to Cart</p>
 							</button>
                         </div>
@@ -283,7 +283,7 @@
 
                                 <p class="price">RM {{p.prod_Price}}</p>
                             </div>
-							<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Desc, p.prod_Price, 1, p.url)" id="btn">
+							<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, 1)" id="btn" data-toggle="modal" data-target="#addToCart">
 								<p>Add to Cart</p>
 							</button>
                         </div>
@@ -302,7 +302,7 @@
 
                                 <p class="price">RM {{p.prod_Price}}</p>
                             </div>
-							<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Desc, p.prod_Price, 1, p.url)" id="btn">
+							<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, 1)" id="btn" data-toggle="modal" data-target="#addToCart">
 								<p>Add to Cart</p>
 							</button>
                         </div>
@@ -320,12 +320,25 @@
 
                                 <p class="price">RM {{p.prod_Price}}</p>
                             </div>
-							<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Desc, p.prod_Price, 1, p.url)" id="btn">
+							<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, 1)" id="btn" data-toggle="modal" data-target="#addToCart">
 								<p>Add to Cart</p>
 							</button>
                         </div>
                     </div>
                 </div>
+				
+				<div class="modal fade" id="addToCart" tabIndex="-1" role="dialog" aria-labelledby="addToCartTitle" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered" role="document">
+						<div class="modal-content text-center">
+							<div class="modal-body">
+								<h2>Success add to cart</h2>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary mx-auto" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
             </div>
         </div>
     </div>

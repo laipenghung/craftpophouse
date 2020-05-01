@@ -32,7 +32,8 @@
 				<table class="table">
 					<thead>
 						<tr>
-							<th scope="col">Product</th>
+							<th scope="col" class="text-center">Product</th>
+							<th scope="col"></th>
 							<th scope="col">Unit Price</th>
 							<th scope="col">Quantity</th>
 							<th scope="col">Total Price</th>
@@ -40,13 +41,6 @@
 						</tr>
 					</thead>
 					<tbody id="cartList">
-						<tr>
-							<th scope="col">{{p.productName}}</th>
-							<th scope="col">{{p}}</th>
-							<th scope="col">{{p.productQuantity}}</th>
-							<th scope="col">{{p.productTotalPrice}}</th>
-							<th scope="col">{{products}}</th>
-						</tr>
 					</tbody>
 				</table>
 			</article>
@@ -76,6 +70,5 @@
 	<script src="firebase_script/firebaseConfig.js"></script>
 	<script src="firebase_script/accountControl.js"></script>
 	<script src="firebase_script/cartFunction.js"></script>
-
 </body>
 </html>

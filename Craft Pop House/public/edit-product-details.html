@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Edit Product</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+    <!-- Bootstrap -->
+    <link href="frameworks/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="frameworks/js/jquery-3.5.0.min.js"></script>
+	<!-- CSS -->
+	<link rel="stylesheet" href="frameworks/css/style.css">
+    
+<style>
+    .editProduct{
+        margin-left: auto;
+        margin-right: auto;
+        width: 65%;
+        background-color: #eae7dc;
+        color: #e85a4f;
+        font-weight: bold;
+        min-height: 200%;
+        padding: 0 3%;
+    }
+    
+    h3{
+        margin-top: 11%;
+        margin-bottom: 5%;
+        font-weight: bold;
+    }
+    
+    #confirmEdit{
+        background: #98fb98;
+        border: 2px solid #4cbb17;
+        border-radius: 100px;
+        padding: 1% 2.5%;
+        font-weight: bold;
+        margin-right: 2%;
+    }
+    
+    #confirmEdit:hover{
+        background: #4cbb17;
+    }
+    
+    #removeProduct{
+        background: #fa8072;
+        border: 2px solid #d21f3c;
+        border-radius: 100px;
+        padding: 1% 2.5%;
+        font-weight: bold;
+        margin-left: 2%;
+    }
+    
+    #removeProduct:hover{
+        background: #d21f3c;
+    }
+</style>
+</head>
+
+<body>
+	<!-- Nav reuse -->
+    <div id="nav-placeholder"></div>    
+	
+    <div class="editProduct" id="editProduct">
+        <div class="d-flex"> 
+            <div class="card-body">
+                <!-- Title -->
+                <h3 class="text-center">Edit Product Details</h3>
+                
+                <div v-for="p in product">
+                    <!-- Form Start -->
+                    <form id="addProductForm" class="mt-4">
+                        <!-- Product Name -->
+                        <div class="form-group row">
+                            <label for="pName" class="col-md-2 col-form-label">Product Name</label>
+                            <div class="col-md-10">
+                                <input v-model=p.prod_Name :name=p.prod_Name type="text" class="form-control" id="pName" placeholder="Enter the Product Name">
+                            </div>
+                        </div>
+                        
+                        <br>
+
+                        <!-- Product Description -->
+                        <div class="form-group row">
+                            <label for="pDesc" class="col-md-2 col-form-label">Product Description</label>
+                            <div class="col-md-10">
+                                <textarea v-model=p.prod_Desc :name=p.prod_Desc class="form-control" rows="2" id="pDesc" placeholder="Enter the Product Description"></textarea>
+                            </div>
+                        </div>
+                        
+                        <br>
+
+                        <!-- Product Price -->
+                        <div class="form-group row">
+                            <label for="pPrice" class="col-md-2 col-form-label">Product Price (RM)</label>
+                            <div class="col-md-10">
+                                <input v-model=p.prod_Price :name=p.prod_price type="number" class="form-control" id="pPrice" placeholder="Enter the Product Price">
+                            </div>
+                        </div>
+                        
+                        <br>
+
+                        <!-- Product Quantity -->
+                        <div class="form-group row">
+                            <label for="pQuant" class="col-md-2 col-form-label">Product Quantity</label>
+                            <div class="col-md-10">
+                                <input v-model=p.prod_Quant :name=p.prod_Quant type="number" class="form-control" id="pQuant" placeholder="Enter the Product Quantity">
+                            </div>
+                        </div>
+                        
+                        <br>
+
+                        <!-- Product Image -->
+                        <div class="form-group row">
+                            <label for="pImage" class="col-md-2 col-form-label">Product Image</label>
+                            <div class="col-md-10">
+                                <input type="file" id="pImage">
+                            </div>
+                        </div>
+                        
+                        <br>
+
+                        <!-- Product Category -->
+                        <fieldset class="form-group">
+                            <div class="row">
+                                <p class="col-md-2 col-form-label selection">Product Category</p>
+                                
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="gridRadios" id="radioBtn_1" value="clothing" v-model=p.prod_Cat :checked="p.prod_Cat == clothing">
+                                        <label class="form-check-label" for="radioBtn_1">Clothing &amp; Accessories</label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="gridRadios" id="radioBtn_2" value="jewelry" v-model=p.prod_Cat :checked="p.prod_Cat == jewelry">
+                                        <label class="form-check-label" for="radioBtn_2">Jewelry</label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="gridRadios" id="radioBtn_3" value="craft" v-model=p.prod_Cat :checked="p.prod_Cat == craft">
+                                        <label class="form-check-label" for="radioBtn_3">Craft Supplies</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="gridRadios" id="radioBtn_4" value="wedding" v-model=p.prod_Cat :checked="p.prod_Cat == wedding">
+                                        <label class="form-check-label" for="radioBtn_4">Wedding Accessories</label>
+                                    </div>
+                                    
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="gridRadios" id="radioBtn_5" value="bedding" v-model=p.prod_Cat :checked="p.prod_Cat == bedding">
+                                        <label class="form-check-label" for="radioBtn_5">Bedding/Room Décor</label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="gridRadios" id="radioBtn_6" value="toys" v-model=p.prod_Cat :checked="p.prod_Cat == toys">
+                                        <label class="form-check-label" for="radioBtn_6">Soft Toys</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="gridRadios" id="radioBtn_7" value="arts" v-model=p.prod_Cat :checked="p.prod_Cat == arts">
+                                        <label class="form-check-label" for="radioBtn_7">Vintage Arts</label>
+                                    </div> 
+                                </div>
+                            </div>
+                        </fieldset>
+                        
+                        <br><br>
+                        
+                        <div class="text-center">
+                            <button type="button" id="confirmEdit" @click="editProduct()">Confirm</button>
+                            <button type="button" id="removeProduct" @click="closeWindow()">Remove</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+	<!-- Footer reuse -->
+    <div id="footer-placeholder"></div>
+    
+    <!--vue.js-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="/__/firebase/7.12.0/firebase-app.js"></script>
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+		 https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="/__/firebase/7.12.0/firebase-analytics.js"></script>
+	<script src="/__/firebase/7.14.0/firebase-auth.js"></script>
+    <script src="/__/firebase/7.14.1/firebase-firestore.js"></script>
+    <script src="/__/firebase/7.14.2/firebase-storage.js"></script>
+    <script src="/__/firebase/7.14.2/firebase-database.js"></script>
+	<!-- Initialize Firebase -->
+	<script src="/__/firebase/init.js"></script>
+    <!-- jQuery – required for Bootstrap's JavaScript plugins) --> 
+    <script src="frameworks/js/jquery.min.js"></script> 
+    <!-- All Bootstrap  plug-ins  file --> 
+    <script src="frameworks/js/bootstrap.min.js"></script>
+	<!--AngularJS-->
+    <script src="frameworks/js/angular.min.js"></script>
+    
+	<!--Firebase Config-->
+	<script src="firebase_script/firebaseConfig.js"></script>
+	<script src="firebase_script/accountControl.js"></script>
+    <script src="firebase_script/editProductDetails.js"></script>
+</body>
+</html>

@@ -1,62 +1,131 @@
 <!DOCTYPE html>
-<html data-ng-app="">
+<html lang="en">
 <head>
-    <title>Task 3.4 C</title>
+    <title>Sell Your Product</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,
     initial-scale=1.0" />
 
     <!-- Bootstrap -->
     <link href="frameworks/css/bootstrap.min.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-   
-    <style>
-        
-    </style>
+    <script src="frameworks/js/jquery-3.5.0.min.js"></script>
+	<!-- CSS -->
+	<link rel="stylesheet" href="frameworks/css/style.css">
+    
+<style>
+    .editProduct{
+        margin-left: auto;
+        margin-right: auto;
+        width: 65%;
+        background-color: #eae7dc;
+        color: #e85a4f;
+        font-weight: bold;
+        min-height: 200%;
+        padding: 0 3%;
+    }
+    
+    h3{
+        margin-top: 11%;
+        margin-bottom: 5%;
+        font-weight: bold;
+    }
+    
+    #addProduct{
+        background: #98fb98;
+        border: 2px solid #4cbb17;
+        border-radius: 100px;
+        padding: 1% 2.5%;
+        font-weight: bold;
+        margin-right: 2%;
+    }
+    
+    #addProduct:hover{
+        background: #4cbb17;
+    }
+    
+    #resetProduct{
+        background: #fa8072;
+        border: 2px solid #d21f3c;
+        border-radius: 100px;
+        padding: 1% 2.5%;
+        font-weight: bold;
+        margin-left: 2%;
+    }
+    
+    #resetProduct:hover{
+        background: #d21f3c;
+    }
+</style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="row-md-12 d-flex justify-content-center">
-            <div class="col content">
-                <form>
+	<!--Nav Reuse -->
+    <div id="nav-placeholder"></div>    
+	
+    <div class="editProduct">
+        <div class="d-flex">
+            <div class="card-body">
+                <!-- Title -->
+				<h3 class="text-center">Sell Your Product</h3>
+                
+                <!-- Form Start -->
+                <form id="addProductForm" class="mt-4">
+                    <!-- Product Name -->
                     <div class="form-group row">
-                        <label for="pName" class="col-md-2 col-form-label"><p class="selection">Product Name</p></label>
+                        <label for="pName" class="col-md-2 col-form-label">Product Name</label>
                         <div class="col-md-10">
                             <input type="text" class="form-control" id="pName" placeholder="Enter the Product Name">
                         </div>
                     </div>
+                    
+                    <br>
 
-                    <div class="form-group">
-                        <label for="pDesc">Product Description:</label>
-                        <textarea class="form-control" rows="5" id="pDesc"></textarea>
-                    </div>
-
+                    <!-- Product Description -->
                     <div class="form-group row">
-                        <label for="pPrice" class="col-md-2 col-form-label"><p class="selection">Product Price</p></label>
+                        <label for="pDesc" class="col-md-2 col-form-label">Product Description</label>
+                        <div class="col-md-10">
+                            <textarea class="form-control" rows="2" id="pDesc" placeholder="Enter the Product Description"></textarea>
+                        </div>
+                    </div>
+                    
+                    <br>
+
+                    <!-- Product Price -->
+                    <div class="form-group row">
+                        <label for="pPrice" class="col-md-2 col-form-label">Product Price (RM)</label>
                         <div class="col-md-10">
                             <input type="number" class="form-control" id="pPrice" placeholder="Enter the Product Price">
                         </div>
                     </div>
+                    
+                    <br>
 
+                    <!-- Product Quantity -->
                     <div class="form-group row">
-                        <label for="pQuant" class="col-md-2 col-form-label"><p class="selection">Product Quantity</p></label>
+                        <label for="pQuant" class="col-md-2 col-form-label">Product Quantity</label>
                         <div class="col-md-10">
                             <input type="number" class="form-control" id="pQuant" placeholder="Enter the Product Quantity">
                         </div>
                     </div>
+                    
+                    <br>
 
+                    <!-- Product Image -->
                     <div class="form-group row">
-                        <label for="pImage" class="col-md-2 col-form-label"><p class="selection">Product Picture</p></label>
+                        <label for="pImage" class="col-md-2 col-form-label">Product Image</label>
                         <div class="col-md-10">
-                            <input type="file" class="form-control" id="pImage">
+                            <input type="file" id="pImage">
                         </div>
                     </div>
+                    
+                    <br>
 
+                    <!-- Product Category -->
                     <fieldset class="form-group">
                         <div class="row">
                             <p class="col-md-2 col-form-label selection">Product Category</p>
-                            <div class="col-md-10">
+                            
+                            <div class="col-md-3">
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="gridRadios" id="radioBtn_1" value="clothing">
                                     <label class="form-check-label" for="radioBtn_1">Clothing &amp; Accessories</label>
@@ -71,12 +140,14 @@
                                     <input class="form-check-input" type="radio" name="gridRadios" id="radioBtn_3" value="craft">
                                     <label class="form-check-label" for="radioBtn_3">Craft Supplies</label>
                                 </div>
-
+                            </div>
+                            
+                            <div class="col-md-3">
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="gridRadios" id="radioBtn_4" value="wedding">
                                     <label class="form-check-label" for="radioBtn_4">Wedding Accessories</label>
                                 </div>
-
+                                
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="gridRadios" id="radioBtn_5" value="bedding">
                                     <label class="form-check-label" for="radioBtn_5">Bedding/Room Décor</label>
@@ -86,7 +157,9 @@
                                     <input class="form-check-input" type="radio" name="gridRadios" id="radioBtn_6" value="toys">
                                     <label class="form-check-label" for="radioBtn_6">Soft Toys</label>
                                 </div>
-
+                            </div>
+                            
+                            <div class="col-md-3">
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="gridRadios" id="radioBtn_7" value="arts">
                                     <label class="form-check-label" for="radioBtn_7">Vintage Arts</label>
@@ -94,15 +167,21 @@
                             </div>
                         </div>
                     </fieldset>
-
-                    <button onclick="testfunction()">upload</button>
+					
+                    <br><br>
+                    
+					<div class="text-center">
+						<button type="button" id="addProduct" onclick="addProduct()">Add Product</button>
+                        <input type="reset" id="resetProduct" value="Reset">
+					</div>
                 </form>
             </div>
-
         </div>
     </div>
     
-
+	<!--Footer reuse-->
+	<div id="footer-placeholder"></div>
+	
     <!-- The core Firebase JS SDK is always required and must be listed first -->
 	<script src="/__/firebase/7.12.0/firebase-app.js"></script>
 	<!-- TODO: Add SDKs for Firebase products that you want to use
@@ -123,8 +202,7 @@
     
 	<!--Firebase Config-->
 	<script src="firebase_script/firebaseConfig.js"></script>
+	<script src="firebase_script/accountControl.js"></script>
     <script src="firebase_script/addproduct.js"></script>
-    
-    
 </body>
 </html>

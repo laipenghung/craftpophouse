@@ -4,9 +4,14 @@ var cotent = new Vue({
       products : []
     },
     methods: {
+        editProduct(id){
+            sessionStorage.setItem("prodID", id);
+            //console.log(sessionStorage);
+            window.open("http://localhost:5000/edit-product-details.html");
+        },
+
         removeProduct(id){
             //console.log(id);
-
             firebase.firestore().collection("Products").doc(id).delete().then(function() {
                 console.log("Document successfully deleted!");
             }).catch(function(error) {
@@ -15,7 +20,7 @@ var cotent = new Vue({
         }
     },
     mounted() {
-        const ref = firebase.firestore().collection('Products').where("userID", "==", gUser.uid);
+        const ref = firebase.firestore().collection('Products').where("userID", "==", "s9M3evB8LNUSTrjer54mBl5rXaI2");
 
         ref.onSnapshot(snapshot =>{
             //console.log(snapshot);

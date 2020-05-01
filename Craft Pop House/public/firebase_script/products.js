@@ -11,16 +11,14 @@ var all = new Vue({
             console.log(sessionStorage);
             window.open("http://localhost:5000/products-details.html");
         },
-		addToCart(pid, pName, pDesc, pPrice, pQuant, photoURL){
+		addToCart(pid, pName, pPrice, pQuant){
 			//Add to cart
 			db.collection("users").doc(gUser.uid).
 			collection("cartItem").add({
 				prod_ID: pid,
 				prod_name: pName,
-				prod_desc: pDesc,
 				prod_price: pPrice,
-				order_quantity: pQuant,
-				photo: photoURL
+				order_quantity: pQuant
 			});
 		}
     },
@@ -52,16 +50,14 @@ var clothOnly = new Vue({
             console.log(sessionStorage);
             window.open("http://localhost:5000/products-details.html");
         },
-		addToCart(pid, pName, pDesc, pPrice, pQuant, photoURL){
+		addToCart(pid, pName, pPrice, pQuant){
 			//Add to cart
 			db.collection("users").doc(gUser.uid).
 			collection("cartItem").add({
 				prod_ID: pid,
 				prod_name: pName,
-				prod_desc: pDesc,
 				prod_price: pPrice,
-				order_quantity: pQuant,
-				photo: photoURL
+				order_quantity: pQuant
 			});
 		}
     },
@@ -93,16 +89,14 @@ var jewOnly = new Vue({
             console.log(sessionStorage);
             window.open("http://localhost:5000/products-details.html");
         },
-		addToCart(pid, pName, pDesc, pPrice, pQuant, photoURL){
+		addToCart(pid, pName, pPrice, pQuant){
 			//Add to cart
 			db.collection("users").doc(gUser.uid).
 			collection("cartItem").add({
 				prod_ID: pid,
 				prod_name: pName,
-				prod_desc: pDesc,
 				prod_price: pPrice,
-				order_quantity: pQuant,
-				photo: photoURL
+				order_quantity: pQuant
 			});
 		}
     },
@@ -134,16 +128,14 @@ var craftOnly = new Vue({
             console.log(sessionStorage);
             window.open("http://localhost:5000/products-details.html");
         },
-		addToCart(pid, pName, pDesc, pPrice, pQuant, photoURL){
+		addToCart(pid, pName, pPrice, pQuant){
 			//Add to cart
 			db.collection("users").doc(gUser.uid).
 			collection("cartItem").add({
 				prod_ID: pid,
 				prod_name: pName,
-				prod_desc: pDesc,
 				prod_price: pPrice,
-				order_quantity: pQuant,
-				photo: photoURL
+				order_quantity: pQuant
 			});
 		}
     },
@@ -175,16 +167,14 @@ var bedOnly = new Vue({
             console.log(sessionStorage);
             window.open("http://localhost:5000/products-details.html");
         },
-		addToCart(pid, pName, pDesc, pPrice, pQuant, photoURL){
+		addToCart(pid, pName, pPrice, pQuant){
 			//Add to cart
 			db.collection("users").doc(gUser.uid).
 			collection("cartItem").add({
 				prod_ID: pid,
 				prod_name: pName,
-				prod_desc: pDesc,
 				prod_price: pPrice,
-				order_quantity: pQuant,
-				photo: photoURL
+				order_quantity: pQuant
 			});
 		}
     },
@@ -216,16 +206,14 @@ var toyOnly = new Vue({
             console.log(sessionStorage);
             window.open("http://localhost:5000/products-details.html");
         },
-		addToCart(pid, pName, pDesc, pPrice, pQuant, photoURL){
+		addToCart(pid, pName, pPrice, pQuant){
 			//Add to cart
 			db.collection("users").doc(gUser.uid).
 			collection("cartItem").add({
 				prod_ID: pid,
 				prod_name: pName,
-				prod_desc: pDesc,
 				prod_price: pPrice,
-				order_quantity: pQuant,
-				photo: photoURL
+				order_quantity: pQuant
 			});
 		}
     },
@@ -257,16 +245,14 @@ var artOnly = new Vue({
             console.log(sessionStorage);
             window.open("http://localhost:5000/products-details.html");
         },
-		addToCart(pid, pName, pDesc, pPrice, pQuant, photoURL){
+		addToCart(pid, pName, pPrice, pQuant){
 			//Add to cart
 			db.collection("users").doc(gUser.uid).
 			collection("cartItem").add({
 				prod_ID: pid,
 				prod_name: pName,
-				prod_desc: pDesc,
 				prod_price: pPrice,
-				order_quantity: pQuant,
-				photo: photoURL
+				order_quantity: pQuant
 			});
 		}
     },
@@ -298,16 +284,14 @@ var weddingOnly = new Vue({
             console.log(sessionStorage);
             window.open("http://localhost:5000/products-details.html");
         },
-		addToCart(pid, pName, pDesc, pPrice, pQuant, photoUrl){
+		addToCart(pid, pName, pPrice, pQuant){
 			//Add to cart
 			db.collection("users").doc(gUser.uid).
 			collection("cartItem").add({
 				prod_ID: pid,
 				prod_name: pName,
-				prod_desc: pDesc,
 				prod_price: pPrice,
-				order_quantity: pQuant,
-				photo: photoUrl
+				order_quantity: pQuant
 			});
 		}
     },

@@ -17,45 +17,53 @@ function testfunction(){
           break;
       }
     }, function(error) {
-		// Handle unsuccessful uploads
+      // Handle unsuccessful uploads
     }, function() {
-		// Handle successful uploads on complete
-		// For instance, get the download URL: https://firebasestorage.googleapis.com/...
-		uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-			//downloadURLx = downloadURL;
-			console.log('File available at', downloadURL);
-			
-			//Store new product in db
-			db.collection("Products").add({
-				userID: gUser.uid,
-				username: gUser.displayName,
-				url: downloadURL,
-				prod_Name : document.getElementById("pName").value,
-				prod_Desc : document.getElementById("pDesc").value,
-				prod_Price : document.getElementById("pPrice").value,
-				prod_Quant : document.getElementById("pQuant").value,
-				prod_Cat : document.querySelector('input[name="gridRadios"]:checked').value
-			})
-			.then(function(x){
-			  console.log("Document written with ID: ", x.id);
-			  var pId;
-			  pId = x.id;
-			  addToUser(pId);
-			  var updateTask = db.collection("Products").doc(pId)
-			  return updateTask.update({
-				  prod_Id : pId
-			  })
-			});
-			alert("Succuessful Added");
-			document.getElementById("addProductForm").reset();
-		});
-	});
-}
+      // Handle successful uploads on complete
+      // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+      uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+       
+        
+        //downloadURLx = downloadURL;
+        console.log('File available at', downloadURL);
 
-//Keep record in user account
-function addToUser(pId){
-	db.collection("users").doc(gUser.uid).
-	collection("products").add({
-		prod_ID: pId
-	});
+        //var  postkey = firebase.database().ref().child("Products").push().key;
+        //var postdata = {
+        //  url: downloadURL,
+        //  text: document.getElementById("text").value
+        //};
+        //var updates = {};
+        //updates["/Products/" + postkey] = postdata;
+
+         //return firebase.database().ref().update(updates);
+
+         firebase.firestore().collection("Products").add({
+           url: downloadURL,
+           prod_Name : document.getElementById("pName").value,
+           prod_Desc : document.getElementById("pDesc").value,
+           prod_Price : document.getElementById("pPrice").value,
+           prod_Quant : document.getElementById("pQuant").value,
+           prod_Cat : document.querySelector('input[name="gridRadios"]:checked').value
+         })
+         .then(function(x){
+          console.log("Document written with ID: ", x.id);
+          var pId;
+          pId = x.id;
+          var updateTask = firebase.firestore().collection("Products").doc(pId)
+          return updateTask.update({
+            prod_Id : pId
+          })
+         });
+      });
+
+      //var postkey = firebase.database().ref("Products/").push().key;
+      //var updates = {};
+      //var postdata = {
+        //url: downloadURLx,
+        //text: document.getElementById("text").value,
+        //id : postkey
+      //};
+      //updates["/Products/" + postkey] = postdata;
+      //firebase.database().ref().update(updates);
+    });
 }

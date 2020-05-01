@@ -22,8 +22,7 @@ function testfunction(){
 		// Handle successful uploads on complete
 		// For instance, get the download URL: https://firebasestorage.googleapis.com/...
 		uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-			//downloadURLx = downloadURL;
-			console.log('File available at', downloadURL);
+			//console.log('File available at', downloadURL);
 			
 			//Store new product in db
 			db.collection("Products").add({
@@ -59,3 +58,4 @@ function addToUser(pId){
 		prod_ID: pId
 	});
 }
+

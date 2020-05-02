@@ -14,7 +14,7 @@ var all = new Vue({
 		addToCart(pid, pName, pPrice, pQuant){
 			//Add to cart
 			db.collection("users").doc(gUser.uid).
-			collection("cartItem").doc(pid).set({
+      collection("cartItem").doc(pid).set({
 				prod_ID: pid,
 				prod_name: pName,
 				prod_price: pPrice,
@@ -58,7 +58,7 @@ var clothOnly = new Vue({
 		addToCart(pid, pName, pPrice, pQuant){
 			//Add to cart
 			db.collection("users").doc(gUser.uid).
-			collection("cartItem").doc(pid).set({
+      collection("cartItem").doc(pid).set({
 				prod_ID: pid,
 				prod_name: pName,
 				prod_price: pPrice,
@@ -102,7 +102,7 @@ var jewOnly = new Vue({
 		addToCart(pid, pName, pPrice, pQuant){
 			//Add to cart
 			db.collection("users").doc(gUser.uid).
-			collection("cartItem").doc(pid).set({
+      collection("cartItem").doc(pid).set({
 				prod_ID: pid,
 				prod_name: pName,
 				prod_price: pPrice,
@@ -146,7 +146,7 @@ var craftOnly = new Vue({
 		addToCart(pid, pName, pPrice, pQuant){
 			//Add to cart
 			db.collection("users").doc(gUser.uid).
-			collection("cartItem").doc(pid).set({
+      collection("cartItem").doc(pid).set({
 				prod_ID: pid,
 				prod_name: pName,
 				prod_price: pPrice,
@@ -190,7 +190,7 @@ var bedOnly = new Vue({
 		addToCart(pid, pName, pPrice, pQuant){
 			//Add to cart
 			db.collection("users").doc(gUser.uid).
-			collection("cartItem").doc(pid).set({
+      collection("cartItem").doc(pid).set({
 				prod_ID: pid,
 				prod_name: pName,
 				prod_price: pPrice,
@@ -234,7 +234,7 @@ var toyOnly = new Vue({
 		addToCart(pid, pName, pPrice, pQuant){
 			//Add to cart
 			db.collection("users").doc(gUser.uid).
-			collection("cartItem").doc(pid).set({
+      collection("cartItem").doc(pid).set({
 				prod_ID: pid,
 				prod_name: pName,
 				prod_price: pPrice,
@@ -277,8 +277,7 @@ var artOnly = new Vue({
         },
 		addToCart(pid, pName, pPrice, pQuant){
 			//Add to cart
-			db.collection("users").doc(gUser.uid).
-			collection("cartItem").doc(pid).set({
+			db.collection("users").doc(gUser.uid).collection("cartItem").doc(pid).set({
 				prod_ID: pid,
 				prod_name: pName,
 				prod_price: pPrice,
@@ -322,7 +321,7 @@ var weddingOnly = new Vue({
 		addToCart(pid, pName, pPrice, pQuant){
 			//Add to cart
 			db.collection("users").doc(gUser.uid).
-			collection("cartItem").doc(pid).set({
+      collection("cartItem").doc(pid).set({
 				prod_ID: pid,
 				prod_name: pName,
 				prod_price: pPrice,

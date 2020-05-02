@@ -17,12 +17,12 @@ function testfunction(){
           break;
       }
     }, function(error) {
-		// Handle unsuccessful uploads
+      // Handle unsuccessful uploads
     }, function() {
-		// Handle successful uploads on complete
-		// For instance, get the download URL: https://firebasestorage.googleapis.com/...
-		uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-			//console.log('File available at', downloadURL);
+      // Handle successful uploads on complete
+      // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+      uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+		//console.log('File available at', downloadURL);
 			
 			//Store new product in db
 			db.collection("Products").add({
@@ -47,15 +47,8 @@ function testfunction(){
 			});
 			alert("Succuessful Added");
 			document.getElementById("addProductForm").reset();
-		});
+      });
 	});
 }
 
-//Keep record in user account
-function addToUser(pId){
-	db.collection("users").doc(gUser.uid).
-	collection("products").add({
-		prod_ID: pId
-	});
-}
 

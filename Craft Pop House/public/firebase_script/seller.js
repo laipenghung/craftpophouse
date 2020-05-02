@@ -12,10 +12,6 @@ var cotent = new Vue({
             }).catch(function(error) {
                 console.error("Error removing document: ", error);
             });
-        },
-        editProduct(id){
-            sessionStorage.setItem("prodID", id);
-            window.open("http://localhost:5000/eidt-product-details.html");
         }
     },
     mounted() {

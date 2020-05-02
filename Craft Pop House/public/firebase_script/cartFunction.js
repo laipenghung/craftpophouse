@@ -15,11 +15,9 @@ function userCart(){
 				dbProducts(change.doc);
 			}
 			else if(change.type == "removed"){
-				let tr = cartList.querySelector("[data-id=" + change.doc.id + "]");
-				let h3 = payment.querySelector("#totalText");
-				cartList.removeChild(tr);
-				payment.removeChild(h3);
 				location.reload();
+				let tr = cartList.querySelector("[data-id=" + change.doc.id + "]");
+				cartList.removeChild(tr);
 			}
 		});
 	});
@@ -94,7 +92,6 @@ function renderCart(doc, userDoc){
 	tr.appendChild(pActions);
 	cartList.appendChild(tr);
 }
-
 
 function removeFromDB(remove){
 	remove.addEventListener("click", (e) =>{

@@ -107,7 +107,7 @@
 
                         <div class="form-group col-md-4">
                           <label for="shipState">State</label>
-                          <select id="shipState" class="form-control">
+                          <select id="shipState" class="form-control state">
                             <option>Johor</option>
                             <option>Kedah</option>
                             <option>Kelantan</option>
@@ -128,6 +128,10 @@
                           <label for="shipPost">Postcode</label>
                           <input type="text" class="form-control" id="shipPost" placeholder="Postcode">
                         </div>
+                      </div>
+
+                      <div class="form-group d-flex justify-content-center">
+                        <button type="button" class="btn btn-secondary" onclick="saveShipAdd()">Save Shipping Address</button>
                       </div>
                     </form>
                     
@@ -195,6 +199,10 @@
                         <input type="text" class="form-control" id="billPost" placeholder="Postcode">
                       </div>
                     </div>
+
+                    <div class="form-group d-flex justify-content-center">
+                      <button type="button" class="btn btn-secondary" onclick="saveBillAdd()">Save Billing Address</button>
+                    </div>
                   </form>
               </div>
             </div>
@@ -210,40 +218,73 @@
 
               <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                 <div class="card-body">
-                  
+                  <div class="row">
+                    <div class="col-md-6">
+                      <p>Item Receiver</p>
+                      <p id="itemRec"></p>
+                    </div>
+
+                    <div class="col-md-6">
+                      <p>Contact Number</p>
+                      <p id="itemContact"></p>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <p>Shipping Address</p>
+                      <p id="fullShipAdd"></p>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <p>Billing Address</p>
+                      <p id="fullBillAdd"></p>
+                    </div>
+                  </div>
+
+                  <hr>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
+        <div>
+          <div id="paypal-button-container"></div>
+        </div>
+
     </div>
     
     
 	<!-- Footer reuse -->
-	<div id="footer-placeholder"></div>
+  <div id="footer-placeholder"></div>
+  
+  <!-- Include the PayPal JavaScript SDK -->
+  <script src="https://www.paypal.com/sdk/js?client-id=AXZ2brcl8qa8KxhmXWCFPHMAQz6wBHkG6gGOnpYjTL00qFcumUi8j49uAkxZvT3z7_3e0dh6pGtzMiS9&currency=MYR"></script>
 	
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
 	<script src="/__/firebase/7.12.0/firebase-app.js"></script>
 	<!-- TODO: Add SDKs for Firebase products that you want to use
 		 https://firebase.google.com/docs/web/setup#available-libraries -->
 	<script src="/__/firebase/7.12.0/firebase-analytics.js"></script>
 	<script src="/__/firebase/7.14.0/firebase-auth.js"></script>
-    <script src="/__/firebase/7.14.1/firebase-firestore.js"></script>
-    <script src="/__/firebase/7.14.2/firebase-storage.js"></script>
-    <script src="/__/firebase/7.14.2/firebase-database.js"></script>
+  <script src="/__/firebase/7.14.1/firebase-firestore.js"></script>
+  <script src="/__/firebase/7.14.2/firebase-storage.js"></script>
+  <script src="/__/firebase/7.14.2/firebase-database.js"></script>
 	<!-- Initialize Firebase -->
 	<script src="/__/firebase/init.js"></script>
-    <!-- jQuery – required for Bootstrap's JavaScript plugins) --> 
-    <script src="frameworks/js/jquery.min.js"></script> 
-    <!-- All Bootstrap  plug-ins  file --> 
-    <script src="frameworks/js/bootstrap.min.js"></script>
+  <!-- jQuery – required for Bootstrap's JavaScript plugins) --> 
+  <script src="frameworks/js/jquery.min.js"></script> 
+  <!-- All Bootstrap  plug-ins  file --> 
+  <script src="frameworks/js/bootstrap.min.js"></script>
 	<!--AngularJS-->
-    <script src="frameworks/js/angular.min.js"></script>
+  <script src="frameworks/js/angular.min.js"></script>
     
 	<!--Firebase Config-->
 	<script src="firebase_script/firebaseConfig.js"></script>
 	<script src="firebase_script/accountControl.js"></script>
-    <script src="firebase_script/addproduct.js"></script>
+  <script src="firebase_script/checkout.js"></script>
 </body>
 </html>

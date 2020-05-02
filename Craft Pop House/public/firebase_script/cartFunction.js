@@ -60,6 +60,7 @@ function renderCart(doc, userDoc){
 	pActions.appendChild(br);
 	pActions.appendChild(checkout);
 	pActions.setAttribute("style", "vertical-align:middle");
+	checkout();
 	
 	//img
 	pImg.src = doc.data().url;
@@ -100,4 +101,8 @@ function removeFromDB(remove){
 		console.log(id);
 		db.collection("users").doc(gUser.uid).collection("cartItem").doc(id).delete();
 	});
+}
+
+function checkoit(){
+	//Pass prodID, quantity, total price here
 }

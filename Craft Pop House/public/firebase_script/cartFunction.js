@@ -15,11 +15,9 @@ function userCart(){
 				dbProducts(change.doc);
 			}
 			else if(change.type == "removed"){
-				let tr = cartList.querySelector("[data-id=" + change.doc.id + "]");
-				let h3 = payment.querySelector("#totalText");
-				cartList.removeChild(tr);
-				payment.removeChild(h3);
 				location.reload();
+				let tr = cartList.querySelector("[data-id=" + change.doc.id + "]");
+				cartList.removeChild(tr);
 			}
 		});
 	});
@@ -62,6 +60,7 @@ function renderCart(doc, userDoc){
 	pActions.appendChild(br);
 	pActions.appendChild(checkout);
 	pActions.setAttribute("style", "vertical-align:middle");
+	checkout();
 	
 	//img
 	pImg.src = doc.data().url;
@@ -95,7 +94,6 @@ function renderCart(doc, userDoc){
 	cartList.appendChild(tr);
 }
 
-
 function removeFromDB(remove){
 	remove.addEventListener("click", (e) =>{
 		e.stopPropagation();
@@ -103,4 +101,8 @@ function removeFromDB(remove){
 		console.log(id);
 		db.collection("users").doc(gUser.uid).collection("cartItem").doc(id).delete();
 	});
+}
+
+function checkoit(){
+	//Pass prodID, quantity, total price here
 }

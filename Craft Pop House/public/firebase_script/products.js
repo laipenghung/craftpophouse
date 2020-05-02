@@ -14,11 +14,16 @@ var all = new Vue({
 		addToCart(pid, pName, pPrice, pQuant){
 			//Add to cart
 			db.collection("users").doc(gUser.uid).
-			collection("cartItem").add({
+      collection("cartItem").doc(pid).set({
 				prod_ID: pid,
 				prod_name: pName,
 				prod_price: pPrice,
-				order_quantity: pQuant
+				order_quantity: firebase.firestore.FieldValue.increment(1)
+
+			},{merge: true});
+			
+			db.collection("Products").doc(pid).update({
+				prod_Quant: firebase.firestore.FieldValue.increment(-1)
 			});
 		}
     },
@@ -53,11 +58,16 @@ var clothOnly = new Vue({
 		addToCart(pid, pName, pPrice, pQuant){
 			//Add to cart
 			db.collection("users").doc(gUser.uid).
-			collection("cartItem").add({
+      collection("cartItem").doc(pid).set({
 				prod_ID: pid,
 				prod_name: pName,
 				prod_price: pPrice,
-				order_quantity: pQuant
+				order_quantity: firebase.firestore.FieldValue.increment(1)
+
+			},{merge: true});
+			
+			db.collection("Products").doc(pid).update({
+				prod_Quant: firebase.firestore.FieldValue.increment(-1)
 			});
 		}
     },
@@ -92,11 +102,16 @@ var jewOnly = new Vue({
 		addToCart(pid, pName, pPrice, pQuant){
 			//Add to cart
 			db.collection("users").doc(gUser.uid).
-			collection("cartItem").add({
+      collection("cartItem").doc(pid).set({
 				prod_ID: pid,
 				prod_name: pName,
 				prod_price: pPrice,
-				order_quantity: pQuant
+				order_quantity: firebase.firestore.FieldValue.increment(1)
+
+			},{merge: true});
+			
+			db.collection("Products").doc(pid).update({
+				prod_Quant: firebase.firestore.FieldValue.increment(-1)
 			});
 		}
     },
@@ -131,11 +146,16 @@ var craftOnly = new Vue({
 		addToCart(pid, pName, pPrice, pQuant){
 			//Add to cart
 			db.collection("users").doc(gUser.uid).
-			collection("cartItem").add({
+      collection("cartItem").doc(pid).set({
 				prod_ID: pid,
 				prod_name: pName,
 				prod_price: pPrice,
-				order_quantity: pQuant
+				order_quantity: firebase.firestore.FieldValue.increment(1)
+
+			},{merge: true});
+			
+			db.collection("Products").doc(pid).update({
+				prod_Quant: firebase.firestore.FieldValue.increment(-1)
 			});
 		}
     },
@@ -170,11 +190,16 @@ var bedOnly = new Vue({
 		addToCart(pid, pName, pPrice, pQuant){
 			//Add to cart
 			db.collection("users").doc(gUser.uid).
-			collection("cartItem").add({
+      collection("cartItem").doc(pid).set({
 				prod_ID: pid,
 				prod_name: pName,
 				prod_price: pPrice,
-				order_quantity: pQuant
+				order_quantity: firebase.firestore.FieldValue.increment(1)
+
+			},{merge: true});
+			
+			db.collection("Products").doc(pid).update({
+				prod_Quant: firebase.firestore.FieldValue.increment(-1)
 			});
 		}
     },
@@ -209,11 +234,16 @@ var toyOnly = new Vue({
 		addToCart(pid, pName, pPrice, pQuant){
 			//Add to cart
 			db.collection("users").doc(gUser.uid).
-			collection("cartItem").add({
+      collection("cartItem").doc(pid).set({
 				prod_ID: pid,
 				prod_name: pName,
 				prod_price: pPrice,
-				order_quantity: pQuant
+				order_quantity: firebase.firestore.FieldValue.increment(1)
+
+			},{merge: true});
+			
+			db.collection("Products").doc(pid).update({
+				prod_Quant: firebase.firestore.FieldValue.increment(-1)
 			});
 		}
     },
@@ -247,12 +277,16 @@ var artOnly = new Vue({
         },
 		addToCart(pid, pName, pPrice, pQuant){
 			//Add to cart
-			db.collection("users").doc(gUser.uid).
-			collection("cartItem").add({
+			db.collection("users").doc(gUser.uid).collection("cartItem").doc(pid).set({
 				prod_ID: pid,
 				prod_name: pName,
 				prod_price: pPrice,
-				order_quantity: pQuant
+				order_quantity: firebase.firestore.FieldValue.increment(1)
+
+			},{merge: true});
+			
+			db.collection("Products").doc(pid).update({
+				prod_Quant: firebase.firestore.FieldValue.increment(-1)
 			});
 		}
     },
@@ -287,11 +321,16 @@ var weddingOnly = new Vue({
 		addToCart(pid, pName, pPrice, pQuant){
 			//Add to cart
 			db.collection("users").doc(gUser.uid).
-			collection("cartItem").add({
+      collection("cartItem").doc(pid).set({
 				prod_ID: pid,
 				prod_name: pName,
 				prod_price: pPrice,
-				order_quantity: pQuant
+				order_quantity: firebase.firestore.FieldValue.increment(1)
+
+			},{merge: true});
+			
+			db.collection("Products").doc(pid).update({
+				prod_Quant: firebase.firestore.FieldValue.increment(-1)
 			});
 		}
     },

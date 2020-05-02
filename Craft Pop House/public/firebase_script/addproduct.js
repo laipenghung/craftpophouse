@@ -1,4 +1,4 @@
-function testfunction(){
+function addProductDB(){
   var file = document.getElementById("pImage").files[0];
   var storageRef = firebase.storage().ref("prodImages/" + file.name);
   var uploadTask = storageRef.put(file); 
@@ -32,7 +32,7 @@ function testfunction(){
 				prod_Name : document.getElementById("pName").value,
 				prod_Desc : document.getElementById("pDesc").value,
 				prod_Price : document.getElementById("pPrice").value,
-				prod_Quant : document.getElementById("pQuant").value,
+				prod_Quant : parseInt(document.getElementById("pQuant").value),
 				prod_Cat : document.querySelector('input[name="gridRadios"]:checked').value
 			})
 			.then(function(x){

@@ -1,10 +1,28 @@
 var prodID = sessionStorage.getItem("prod_Id");
 var prodCat = sessionStorage.getItem("prod_Cat");
-
+console.log(gUser);
 var content = new Vue({
     el: '#content',
     data: {
       products : []
+    },
+    methods: {
+		//QUANTITY TO FIX
+		addToCart(pid, pName, pPrice, pQuant){
+			//Add to cart
+			db.collection("users").doc(gUser.uid).
+			collection("cartItem").doc(pid).set({
+				prod_ID: pid,
+				prod_name: pName,
+				prod_price: pPrice,
+				order_quantity: firebase.firestore.FieldValue.increment(1)
+
+			},{merge: true});
+			
+			db.collection("Products").doc(pid).update({
+				prod_Quant: firebase.firestore.FieldValue.increment(-1)
+			});
+		}
     },
     mounted() {
         const ref = firebase.firestore().collection('Products').where("prod_Id", "==", prodID);

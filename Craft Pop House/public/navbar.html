@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="frameworks/css/style.css">
-
 <header>
 	<nav class="navbar fixed-top navbar-expand-lg navbar-light">
 		<a class="navbar-brand" href="index.html"><img src="image/logo.png" width="30" height="30" class="d-inline-block align-top" alt="Logo"></a>
@@ -16,33 +14,48 @@
 				</li>
 
 				<li class="nav-item" >
-					<a class="nav-link" href="products.html">Products Category</a>
+					<a class="nav-link" href="addproduct.html">Products Category</a>
 				</li>
 
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Dropdown 1
+						Categories
 					</a>
 
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">Action</a>
-						<a class="dropdown-item" href="#">Another action</a>
+						<a class="dropdown-item" href="#">Clothing &amp; Accessories</a>
+						<a class="dropdown-item" href="#">Jewelry</a>
+                        <a class="dropdown-item" href="#">Craft Supplies</a>
+                        <a class="dropdown-item" href="#">Wedding Accessories</a>
+                        <a class="dropdown-item" href="#">Bedding/Room Décor</a>
+                        <a class="dropdown-item" href="#">Soft Toys</a>
+                        <a class="dropdown-item" href="#">Vintage Arts</a>
 
 						<div class="dropdown-divider"></div>
 
-						<a class="dropdown-item" href="#">Something else here</a>
+						<a class="dropdown-item" href="#">Others</a>
 					</div>
 				</li>
 			</ul>
 
 			<form class="form-inline my-2 my-lg-0">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item">
-						<a class="nav-link" href="registerDefault.html">Login/Register</a>
+                    <li class="nav-item">
+                        <img src="image/Profile.png" id="profile_icon" width="25" height="25" alt="profile icon">
+					</li>
+                    
+                    <li class="nav-item">
+						<a class="nav-link" href="registerDefault.html" style="margin-right: 5%;">Login/Register</a>
+					</li>
+                    
+                    <li class="nav-item">
+						<input class="form-control mr-sm-2" id="searchInput" type="search" placeholder="Search" aria-label="Search">
+					</li>
+                    
+                    <li class="nav-item">
+						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 					</li>
 				</ul>
-				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 			</form>
 		</div>
 	</nav>

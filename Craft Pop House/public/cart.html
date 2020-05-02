@@ -18,18 +18,65 @@
 	
 	<!-- CSS -->
 	<link rel="stylesheet" href="frameworks/css/style.css">
+    
+<style>
+    .cart_body{
+        background: #272727;
+        text-align: center;
+    }
+    
+    .cart_container{
+        margin-top: 7%;
+        margin-left: auto;
+        margin-right: auto;
+        width: 65%;
+        background-color: #eae7dc;
+        color: #e85a4f;
+        font-weight: bold;
+        padding: 2% 3%;
+        border-radius: 30px;
+    }
+    
+    h3{
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 5%;
+        
+        background: #272727;
+        color: white;
+        width: 30%;
+        border: 3px solid white;
+        border-radius: 100px 0px;
+        padding: 0.8% 0%;
+        font-weight: bold;
+    }
+    
+    .cart_table{
+        width: 100%;
+    }
+    
+    .cart_table thead{
+        border-bottom: 2px solid #e85a4f;
+        font-size: 110%;
+    }
+    
+    .cart_table tbody{
+        border-bottom: 2px solid #e85a4f;
+        font-size: 110%;
+    }
+</style>
 </head>
 
-<body>
+<body class="cart_body"> 
 	<!--Nav reuse-->
     <div id="nav-placeholder"></div>
 	
 	<!--Content-->
-	<div class="container" style="margin-top: 7%;">
-		<div class="card bg-light m-4">
-			<article class="card-body">
-				<h4 class="card-title mt-3 text-center">Shopping Cart</h4>
-				<table class="table">
+	<div class="cart_container">
+		<div>
+			<article>
+                <h3>Shopping Cart</h3>
+				<table class="cart_table">
 					<thead>
 						<tr>
 							<th scope="col" class="text-center">Product</th>

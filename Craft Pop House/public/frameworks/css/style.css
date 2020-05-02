@@ -1,4 +1,4 @@
-/* Navbar */
+/* Navbar START*/
 /* Whole navbar row */
 .navbar{
     background-color: #e85a4f;
@@ -9,8 +9,13 @@
 
 /* Navbar first word */
 .navbar-light .navbar-nav .nav-link{
-    color: #eae7dc;
+    color: white;
     font-weight: bold;
+}
+
+.navbar-light .navbar-nav .nav-link:hover{
+    color: black;
+    transition: 0.5s;
 }
 
 /* Navbar dropdown */
@@ -19,13 +24,14 @@
 }
 
 a.dropdown-item{
-    color: #eae7dc;
+    color: white;
     font-weight: bold;
 }
 
 a.dropdown-item:hover{
     background: #e85a4f;
     color: black;
+    transition: 0.5s;
 }
 
 /* Divider line */
@@ -33,32 +39,40 @@ a.dropdown-item:hover{
     border: 1px dashed black;
 }
 
+/* Profile Icon */
+#profile_icon{
+        margin-top: 35%;
+    }
+
 /* Search button */
 .btn-outline-success{
-    color: #eae7dc;
-    border-color: #eae7dc;
+    color: white;
+    border-color: white;
     font-weight: bold;
 }
 
 .btn-outline-success:hover{
     color: #e85a4f;
     background-color: #eae7dc;
+    transition: 0.5s;
 }
+/* Navbar END */
 
 /* Footer */
 footer{
     position:fixed;
     bottom: 0;
-    padding: 0.3% 0;
+    padding: 0.2% 0;
     background-color: #e85a4f;
-    color: #eae7dc;
+    color: white;
     width: 100%;
     text-align: center;
-    font-size: 90%;
+    font-size: 70%;
     font-weight: bold;
 }
+/* Footer END */
 
-/* Index */
+/* Index START */
 .index_body{
         min-height: 100%;
         
@@ -128,6 +142,7 @@ footer{
     border: 2px solid white;
     background: #272727;
     color: white;
+    transition: 0.5s;
 }
 
 /* Page 2 */
@@ -443,6 +458,7 @@ ol, ul {
     display: block;
   }
 }
+/* Index END */
 
 /*Register page css*/
 	.divider-text {

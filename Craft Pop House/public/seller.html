@@ -9,117 +9,147 @@
     <!-- Bootstrap -->
     <link href="frameworks/css/bootstrap.min.css" rel="stylesheet" />
     
-    <style>
-        .row2 {
-            margin-top: 25px;
-        }
-        .s{
-            font-size: 25px;
-            text-align: center;
-            margin: 10px 0;
-        }
+<style>
+    .seller_body{
+        background: #272727;    
+    }
+    
+    #content{
+        margin-top: 7%;
+        margin-left: auto;
+        margin-right: auto;
+        width: 65%;
+        background-color: #eae7dc;
+        color: #e85a4f;
+        font-weight: bold;
+        padding: 2% 0%;
+        border-radius: 30px;
+    }
+    
+    .heading{
+        font-size: 120%;
+        text-align: center;
+        margin-left: 8%;
+    }
+    
+    .sellOnMarketplace{
+        margin-top: 2%;
+        margin-left: 5%;
+    }
+    
+    .sellBtn {
+        color: white;
+        background-color: #272727;
+        border: 2px solid white;
+        cursor: pointer;
+        border-radius: 30px;
+        text-align: center;
+        font-size: 130%;
+        padding: 5% 10%;
+   }
+    
+    .sellBtn:hover {
+        transition: 0.8s;
+        text-decoration: none;
+        color: white;
+        background-color: #e85a4f;
+        border: 2px solid black;
+   }
+    
+    h3{
+        font-size: 140%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 2%;
+        margin-bottom: 2%;
+        text-align: center;
+        
+        background: #272727;
+        color: white;
+        width: 30%;
+        border: 3px solid white;
+        border-radius: 100px 0px;
+        padding: 0.8% 0%;
+        font-weight: bold;
+    }
+    
+    .seller_table{
+        width: 100%;
+        text-align: center;
+        font-size: 90%;
+    }
+    
+    .seller_table thead,th,tr,td{
+        border: 2px solid #e85a4f;
+        font-size: 110%;
+    }
+    
+    .sellerTable_image{
+        width: 20%;
+    }
+    
+    .sellerTable_name{
+        width: 35%;
+    }
+    
+    .sellerTable_price{
+        width: 15%;
+    }
+    
+    .sellerTable_qty{
+        width: 15%;
+    }
 
-       hr{
-           margin-top: 15px;
-       }
+   .pImg {
+       width: 100px;
+       height: 100px;
+       margin: auto;
+   }
 
-       .pImg {
-           width: 100px;
-           height: 100px;
-           margin: auto;
-       }
+   .buttonImg {
+       width: 30px;
+       height: 30px;
+   }
 
-       .buttonImg {
-           width: 30px;
-           height: 30px;
-       }
-
-       button {
-        margin-right: 10px;
-        background-color: transparent;
-        border: 0;
-       }
-
-       .sellBtn {
-            border: none;
-            outline: 0;
-            color: white;
-            background-color: black;
-            display: block;
-            text-align: center;
-            cursor: pointer;
-            border-radius: 20px;
-            padding: 0 30px;
-            height: 80px;
-            margin: 20px 0;
-       }
-
-       .sellBtn a {
-            text-decoration: none;
-            color: white;  
-       }
-
-       .sellBtn a:hover {
-            text-decoration: none;
-       }
-
-
-       .sellBtn p {
-            text-decoration: none;
-            font-size: 20px;
-            font-weight: bold;
-            margin-top: 23px;
-        }
-
-        .row3 p{
-            margin-top: 10px;
-            font-size: 30px;
-        }
-
-        th {
-            text-align: center;
-            font-size: 18px;
-        }
-
-        td {
-            text-align: center;
-            font-size: 18px;
-        }
-    </style>
+   button {
+    margin-right: 10px;
+    background-color: transparent;
+    border: 0;
+   }
+</style>
 </head>
 
-<body>
+<body class="seller_body">
     <div class="container-fluid">
         <div id="content">
-            <div class="row d-flex justify-content-center row2 a">
-                <div class="col-md-6 s a">
+            <div class="row d-flex">
+                <div class="col-md-6 heading">
                     <p>Join Craft Pop House</p>
                     <p>Click the button on the right and become one of the seller</p>
                 </div>
 
-                <div class="col-md-3 d-flex justify-content-center a">
-                    <a href="http://localhost:5000/addproduct.html" class="sellBtn">
-                        <p>Sell on Marketplace</p>
-                    </a>
+                <div class="col-md-4 sellOnMarketplace">
+                    <p><a href="http://localhost:5000/addproduct.html" class="sellBtn">Sell on Marketplace</a></p>
                 </div>
             </div>
+            
             <hr>
 
             <div class="row row3 d-flex justify-content-center ">
-                <p>Current sell listings</p>
+                <h3>Current sell listings</h3>
             </div>
 
             <div class="row d-flex justify-content-center ">
                 <div class="col-md-10 d-flex justify-content-center">
-                    <div class="table-responsive" id="">   
-                        <table class="table table-hover">
-                            <thead class="thead-dark">
+                    <div class="table-responsive">   
+                        <table class="seller_table">
+                            <thead>
                                 <tr>
-                                    <th>Image</th>
-                                    <th>Product Name</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th></th>
+                                    <th class="sellerTable_image">Image</th>
+                                    <th class="sellerTable_name">Product Name</th>
+                                    <th class="sellerTable_price">Price</th>
+                                    <th class="sellerTable_qty">Quantity</th>
+                                    <th class="sellerTable_btn">Action</th>
                                 </tr>
                             </thead>
 

@@ -56,11 +56,11 @@ function renderCart(doc, userDoc){
 	//checkout
 	checkout.textContent = "Check Out";
 	checkout.setAttribute("class", "btn btn-danger btn-block");
+	checkoutDB(checkout);
 	pActions.appendChild(remove);
 	pActions.appendChild(br);
 	pActions.appendChild(checkout);
 	pActions.setAttribute("style", "vertical-align:middle");
-	checkout();
 	
 	//img
 	pImg.src = doc.data().url;
@@ -103,7 +103,7 @@ function removeFromDB(remove){
 	});
 }
 
-function checkoit(){
+function checkoutDB(checkout){
 	//Pass prodID, quantity, total price here
 	checkout.addEventListener("click", (e) =>{
 		e.stopPropagation();

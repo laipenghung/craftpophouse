@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>Order Details</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,
+    initial-scale=1.0" />
+    
+    <!-- Bootstrap -->
+    <link href="frameworks/css/bootstrap.min.css" rel="stylesheet" />
+    
+<style>
+    .orderDetail_body{
+        background: #272727;    
+    }
+
+    #orderDetail_content{
+        margin-top: 7%;
+        margin-left: auto;
+        margin-right: auto;
+        width: 65%;
+        background-color: #eae7dc;
+        color: #e85a4f;
+        font-weight: bold;
+        padding: 2% 0%;
+        border-radius: 30px;
+    }
+
+    h3{
+        font-size: 140%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 2%;
+        text-align: center;
+
+        background: #272727;
+        color: white;
+        width: 30%;
+        border: 3px solid white;
+        border-radius: 100px 0px;
+        padding: 0.8% 0%;
+        font-weight: bold;
+    }
+
+    .orderDetail_table{
+        width: 100%;
+        text-align: center;
+        font-size: 90%;
+    }
+
+    .orderDetail_table thead,th,tr,td{
+        border: 2px solid #e85a4f;
+        font-size: 110%;
+    }
+
+    .orderDetail_image{
+        width: 20%;
+    }
+
+    .orderDetail_name{
+        width: 35%;
+    }
+
+    .orderDetail_qty{
+        width: 15%;
+    }
+
+    .pImg {
+        width: 100px;
+        height: 100px;
+        margin: auto;
+    }
+    
+    .trackButton{
+        background: #272727;
+        color: white;
+        font-weight: bold;
+        padding: 5% 12%;
+        border: 3px solid black;
+        border-radius: 20px;
+    }
+    
+    .trackButton:hover{
+        background: #e85a4f;
+        border: 3px solid black;
+        color: white;
+    }
+</style>
+</head>
+
+<body class="orderDetail_body">
+    <div class="container-fluid">
+        <div id="orderDetail_content">
+            <div class="row d-flex justify-content-center ">
+                <h3>Order Details</h3>
+            </div>
+
+            <div class="row d-flex justify-content-center ">
+                <div class="col-md-10 d-flex justify-content-center">
+                    <div class="table-responsive">   
+                        <table class="orderDetail_table">
+                            <thead>
+                                <tr>
+                                    <th class="orderDetail_image">Image</th>
+                                    <th class="orderDetail_name">Product Name</th>
+                                    <th class="orderDetail_qty">Quantity</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr v-for="p in products">
+                                    <td>
+                                        <img class="pImg" :src=p.url>
+                                    </td>
+                                    <td class="text">{{p.prod_Name}}</td>
+                                    <td class="text">{{p.prod_Quant}}</td>
+                                    <td>
+                                        <a href="#.html">
+                                            <button class="trackButton">
+                                                Track
+                                            </button>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>      
+    </div>    
+
+    <!--vue.js-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="/__/firebase/7.12.0/firebase-app.js"></script>
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+		 https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="/__/firebase/7.12.0/firebase-analytics.js"></script>
+	<script src="/__/firebase/7.14.0/firebase-auth.js"></script>
+	<script src="/__/firebase/7.14.1/firebase-firestore.js"></script>
+	<!-- Initialize Firebase -->
+	<script src="/__/firebase/init.js"></script>
+    <!-- jQuery – required for Bootstrap's JavaScript plugins) --> 
+    <script src="frameworks/js/jquery.min.js"></script> 
+    <!-- All Bootstrap  plug-ins  file --> 
+    <script src="frameworks/js/bootstrap.min.js"></script>
+    
+	<!--Firebase Config-->
+	<script src="firebase_script/firebaseConfig.js"></script>
+    <script src="firebase_script/seller.js"></script>
+
+</body>
+</html>

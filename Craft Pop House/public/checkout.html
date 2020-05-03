@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Edit Product</title>
+    <title>Checkout</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 
@@ -58,15 +58,21 @@
         transition: 0.5s;
         text-decoration: none;
     }
+
+    .cartImg {
+      width: 90px;
+      height: 90px;
+      margin: auto;
+    }
 </style>
 </head>
 
-<body class="checkout_body">
+<body class="checkout_body" onload="loadDetail()">
 	<!-- Nav reuse -->
     <div id="nav-placeholder"></div>    
     
     <div id="checkout_container">
-        <div class="row">
+        <div id="item" class="row">
           <div class="col-md-12">
             <div id="accordion">
               <div>
@@ -217,35 +223,73 @@
               </div>
 
               <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <p>Item Receiver</p>
-                      <p id="itemRec"></p>
+                <div v-for="i in item">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-3 d-flex justify-content-center">
+                        <img class="cartImg" src="image/can.png" alt="Cart item image">
+                      </div>
+  
+                      <div class="col-md-9">
+                        
+                          <p id="cartItemName">{{i.prod_Name}}</p>
+                          <p id="cartItemQuant"></p>
+                          <p id="cartItemTotal"></p>
+                        
+                      </div>
                     </div>
-
-                    <div class="col-md-6">
-                      <p>Contact Number</p>
-                      <p id="itemContact"></p>
+  
+                    <hr> 
+                    <div class="row">
+                      <div class="col-md-6">
+                        <p>Item Receiver</p>
+                        <p id="itemRec"></p>
+                      </div>
+  
+                      <div class="col-md-6">
+                        <p>Contact Number</p>
+                        <p id="itemContact"></p>
+                      </div>
+                    </div>
+  
+                    <div class="row">
+                      <div class="col-md-12">
+                        <p>Shipping Address</p>
+                        <p id="fullShipAdd"></p>
+                      </div>
+                    </div>
+  
+                    <div class="row">
+                      <div class="col-md-12">
+                        <p>Billing Address</p>
+                        <p id="fullBillAdd"></p>
+                      </div>
+                    </div>
+  
+                    <hr>
+  
+                    <div class="row">
+                      <div class="col-md-12">
+                          <table>
+                            <tr>
+                              <th>{{i.prod_Name}}</th>
+                              <th id="itemTotal"></th>
+                            </tr>
+  
+                            <tr>
+                              <td>Delivery Fee</td>
+                              <td>RM 9.50</td>
+                            </tr>
+  
+                            <tr>
+                              <td>Subtotal</td>
+                              <td id="subtotal"></td>
+                            </tr>
+                          </table>
+                      </div>
                     </div>
                   </div>
-
-                  <div class="row">
-                    <div class="col-md-12">
-                      <p>Shipping Address</p>
-                      <p id="fullShipAdd"></p>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-md-12">
-                      <p>Billing Address</p>
-                      <p id="fullBillAdd"></p>
-                    </div>
-                  </div>
-
-                  <hr>
-                </div>
+                </div> 
               </div>
             </div>
           </div>
@@ -260,6 +304,9 @@
     
 	<!-- Footer reuse -->
   <div id="footer-placeholder"></div>
+
+  <!--vue.js-->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   
   <!-- Include the PayPal JavaScript SDK -->
   <script src="https://www.paypal.com/sdk/js?client-id=AXZ2brcl8qa8KxhmXWCFPHMAQz6wBHkG6gGOnpYjTL00qFcumUi8j49uAkxZvT3z7_3e0dh6pGtzMiS9&currency=MYR"></script>

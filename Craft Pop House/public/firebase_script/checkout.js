@@ -1,4 +1,44 @@
+var prodID = sessionStorage.getItem("cartProdID");
+var orderQuant = sessionStorage.getItem("cartProdQuant");
+var cartItemPrice = sessionStorage.getItem("cartTotal");
 var checkTransation = false;
+
+var item = new Vue({
+    el: '#item',
+    data: {
+      item : []
+    },
+    mounted() {
+        const ref = firebase.firestore().collection('Products').where("prod_Id", "==", prodID);
+
+        ref.onSnapshot(snapshot =>{
+            //console.log(snapshot);
+        
+            let porductArr = [];
+            snapshot.forEach(doc => {
+                porductArr.push({...doc.data(), id: doc.id})
+            });
+            //console.log(snapshot);
+            this.item = porductArr;
+        });
+    },
+});
+
+function loadDetail(){
+    //Count the subtotal 
+    var subtotal = parseInt(cartItemPrice) + 9.50;
+
+    //cant get the quantity
+    //document.getElementById("cartItemQuant").innerHTML = orderQuant;
+    document.getElementById("cartItemTotal").innerHTML = "RM " + cartItemPrice;
+    document.getElementById("itemTotal").innerHTML = "RM " + cartItemPrice;
+    document.getElementById("subtotal").innerHTML = "RM " + subtotal;
+
+    var getTime = new Date();
+    var dateString = getTime.toLocaleDateString();
+
+    data = subtotal;
+}
 
 function saveShipAdd(){
     var shipName =  document.getElementById("shipName").value;
@@ -34,8 +74,22 @@ function saveBillAdd(){
 
 function confirmOrder(){
     db.collection("users").doc(gUser.uid).collection("Orders").add({
-
-    })
+        receiverName : shipName,
+        receiverContNum : shipNum,
+        shipAddress : fullShipAdd,
+        billAdd : fullBillAdd,
+        orderDate : dateString,
+        subtotal : subtotal
+        //prodname
+        //prodquant
+    }).then(function(x) {
+        var orderID;
+        orderID = x.id;
+        var updateTask = db.collection("users").doc(gUser.uid).collection("Orders")
+        return updateTask.update({
+            orderID : orderID
+        })
+    });
 }
 
 // Render the PayPal button into #paypal-button-container
@@ -45,10 +99,13 @@ paypal.Buttons({
     },
      // Set up the transaction
     createOrder: function(data, actions) {
+        var x  = subtotal;
+        var total = x.value;
+
         return actions.order.create({
             purchase_units: [{
                 amount: {
-                    value: '1.99'
+                    value: subtotal
                 }
             }]
         });

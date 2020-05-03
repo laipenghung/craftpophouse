@@ -108,8 +108,17 @@ function checkoutDB(checkout){
 	checkout.addEventListener("click", (e) =>{
 		e.stopPropagation();
 		let pid = e.target.parentElement.parentElement.getAttribute("data-id");
-		let pQuant = e.target.parentElement.parentElement.childNodes[3].innerHTML
-		let total = e.target.parentElement.parentElement.childNodes[4].innerHTML;
+		//cant get the value of quantity
+		let pQuant = parseInt(e.target.parentElement.parentElement.childNodes[3].childNodes[0].value);
+		let total = parseInt(e.target.parentElement.parentElement.childNodes[4].innerHTML);
+
+		sessionStorage.setItem("cartProdID", pid);
+		sessionStorage.setItem("cartProdQuant", pQuant);
+		sessionStorage.setItem("cartTotal", total);
+
+		window.open("http://localhost:5000/checkout.html")
+
+		console.log(pid);
 		console.log(pQuant);
 		console.log(total);
 	});

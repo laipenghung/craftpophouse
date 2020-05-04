@@ -110,7 +110,7 @@ function checkoutDB(checkout){
 		let pid = e.target.parentElement.parentElement.getAttribute("data-id");
 		//cant get the value of quantity
 		let pQuant = parseInt(e.target.parentElement.parentElement.childNodes[3].childNodes[0].value);
-		let total = parseInt(e.target.parentElement.parentElement.childNodes[4].innerHTML);
+		let total = parseFloat(e.target.parentElement.parentElement.childNodes[4].innerHTML).toFixed(2);
 
 		sessionStorage.setItem("cartProdID", pid);
 		sessionStorage.setItem("cartProdQuant", pQuant);

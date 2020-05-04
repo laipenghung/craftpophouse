@@ -43,12 +43,9 @@ var product = new Vue({
                     })
                 });
 
-                alert("Data Successfully Update \nClose this tab by clicking the button below");
+                alert("Data Successfully Update");
             });          
-        },
-        closeWindow(){
-            window.close();
-        } 
+        }
     },
     mounted() {
         const ref = firebase.firestore().collection('Products').where("prod_Id", "==", prodID);

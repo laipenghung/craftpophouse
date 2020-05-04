@@ -1,7 +1,12 @@
 var prodID = sessionStorage.getItem("cartProdID");
 var orderQuant = sessionStorage.getItem("cartProdQuant");
 var cartItemPrice = sessionStorage.getItem("cartTotal");
+var dateString;
+var subText;
 var checkTransation = false;
+
+
+var paypaltotal;
 
 var item = new Vue({
     el: '#item',
@@ -35,9 +40,12 @@ function loadDetail(){
     document.getElementById("subtotal").innerHTML = "RM " + subtotal;
 
     var getTime = new Date();
-    var dateString = getTime.toLocaleDateString();
+    dateString = getTime.toLocaleDateString();
 
-    data = subtotal;
+    //convert to string
+    subText = subtotal.toString();
+
+    paypaltotal = parseFloat(subtotal).toFixed(2);
 }
 
 function saveShipAdd(){
@@ -73,24 +81,33 @@ function saveBillAdd(){
 }
 
 function confirmOrder(){
-    db.collection("users").doc(gUser.uid).collection("Orders").add({
-        receiverName : shipName,
-        receiverContNum : shipNum,
-        shipAddress : fullShipAdd,
-        billAdd : fullBillAdd,
+    //var oID;
+
+    firebase.firestore().collection("users").doc(gUser.uid).collection("orders").add({
+        //receiverName : shipName,
+        //receiverContNum : shipNum,
+        //shipAddress : fullShipAdd,
+        //billAdd : fullBillAdd,
         orderDate : dateString,
-        subtotal : subtotal
+        subtotal : subText
         //prodname
         //prodquant
     }).then(function(x) {
-        var orderID;
-        orderID = x.id;
-        var updateTask = db.collection("users").doc(gUser.uid).collection("Orders")
+        var oID;
+        oID = x.id;
+        console.log(oID);
+        var updateTask = firebase.firestore().collection("users").doc(gUser.uid).collection("orders").doc(oID)
         return updateTask.update({
-            orderID : orderID
+            orderid : oID
         })
     });
+
+    
+    
+    
 }
+
+
 
 // Render the PayPal button into #paypal-button-container
 paypal.Buttons({
@@ -99,13 +116,13 @@ paypal.Buttons({
     },
      // Set up the transaction
     createOrder: function(data, actions) {
-        var x  = subtotal;
-        var total = x.value;
+        //var x  = subtotal;
+        //var total = x.value;
 
         return actions.order.create({
             purchase_units: [{
                 amount: {
-                    value: subtotal
+                    value: paypaltotal
                 }
             }]
         });
@@ -115,13 +132,20 @@ paypal.Buttons({
     onApprove: function(data, actions) {
         return actions.order.capture().then(function(details) {
             // Show a success message to the buyer
-            alert('Transaction completed by ' + details.payer.name.given_name + '!');
+            
             checkTransation = true;
 
-            if(checkTransation == true){
+            if(checkTransation == 1){
                 confirmOrder();
+        
             }
+
+            //confirmOrder();
+
+            alert('Transaction completed by ' + details.payer.name.given_name + '!');
         });
-    }
+    },
+    
 }).render('#paypal-button-container');
+
 

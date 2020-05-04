@@ -40,6 +40,7 @@ function renderCart(doc, userDoc){
 	let pName = document.createElement("td");
 	let pPrice = document.createElement("td");
 	let pQuantity = document.createElement("td");
+	let pQuantInput = document.createElement("input");
 	let pTotal = document.createElement("td");
 	let pActions = document.createElement("td");
 	let remove = document.createElement("a");
@@ -78,8 +79,13 @@ function renderCart(doc, userDoc){
 	pPrice.setAttribute("style", "vertical-align:middle");
 	
 	//Product order quantity
-	pQuantity.textContent = userDoc.data().order_quantity;
+	pQuantInput.setAttribute("type", "number");
+	pQuantInput.setAttribute("value", userDoc.data().order_quantity);
+	pQuantInput.setAttribute("min", 1);
+	pQuantInput.setAttribute("style", "width:80px");
+	pQuantity.appendChild(pQuantInput);
 	pQuantity.setAttribute("style", "vertical-align:middle");
+	quantChange(pQuantInput);
 	
 	//Product total price
 	pTotal.textContent = doc.data().prod_Price * userDoc.data().order_quantity;
@@ -94,12 +100,26 @@ function renderCart(doc, userDoc){
 	cartList.appendChild(tr);
 }
 
+function quantChange(pQuantInput){
+	pQuantInput.addEventListener("input", (e) => {
+		e.stopPropagation();
+		let id = e.target.parentElement.parentElement.getAttribute("data-id");
+		let oQuant = parseInt(e.target.parentElement.parentElement.childNodes[3].childNodes[0].value);
+		let price = parseFloat(e.target.parentElement.parentElement.childNodes[2].innerHTML);
+		let total = e.target.parentElement.parentElement.childNodes[4];
+		total.textContent = oQuant * price;
+	});
+}
+
 function removeFromDB(remove){
 	remove.addEventListener("click", (e) =>{
 		e.stopPropagation();
 		let id = e.target.parentElement.parentElement.getAttribute("data-id");
-		console.log(id);
+		let pQuant = parseInt(e.target.parentElement.parentElement.childNodes[3].childNodes[0].value);
 		db.collection("users").doc(gUser.uid).collection("cartItem").doc(id).delete();
+		db.collection("Products").doc(id).update({
+				prod_Quant: firebase.firestore.FieldValue.increment(pQuant)
+		});
 	});
 }
 

@@ -2,7 +2,7 @@ var prodID = sessionStorage.getItem("cartProdID");
 var orderQuant = sessionStorage.getItem("cartProdQuant");
 var cartItemPrice = sessionStorage.getItem("cartTotal");
 var checkTransation = false;
-var shipName, shipNum, fullShipAdd, fullBillAdd, subTotalFoat, subText, dateString, shipCity, shipState, shipPost;
+var shipName, shipNum, fullShipAdd, fullBillAdd, subTotalFoat, subText, dateString, shipCity, shipState, shipPost, oID;
 
 var item = new Vue({
     el: '#item',
@@ -104,7 +104,7 @@ function confirmOrder(){
         orderQuant : orderQuant,
         subtotal : subText
     }).then(function(x) {
-        var oID = x.id;;
+        oID = x.id;;
         //console.log(oID);
         var updateTask = firebase.firestore().collection("users").doc(gUser.uid).collection("orders").doc(oID)
         return updateTask.update({
@@ -114,7 +114,9 @@ function confirmOrder(){
     console.log("orders successfully upload to database");
 }
 
-
+function removeCart(){
+    db.collection("users").doc(gUser.uid).collection("cartItem").doc(prodID).delete();
+}
 
 // Render the PayPal button into #paypal-button-container
 paypal.Buttons({
@@ -137,11 +139,13 @@ paypal.Buttons({
         return actions.order.capture().then(function(details) {
             // Update database if the transaction is completed
             checkTransation = true;
-            if(checkTransation == 1)
+            if(checkTransation == 1){
                 confirmOrder();
+                removeCart();
+            }
         
             // Show a success message to the buyer
-            alert('Transaction completed by ' + details.payer.name.given_name + '!');
+            alert('Transaction completed by ' + details.payer.name.given_name + '!' + '\nNow you can track your order at tracking order page.');
         });
     },
     

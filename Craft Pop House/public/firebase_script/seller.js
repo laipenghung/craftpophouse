@@ -16,6 +16,10 @@ var cotent = new Vue({
             }).catch(function(error) {
                 console.error("Error removing document: ", error);
             });
+        },
+        editProduct(id){
+            sessionStorage.setItem("editProdID", id);
+            window.open("edit-product-details.html");
         }
     },
     mounted() {

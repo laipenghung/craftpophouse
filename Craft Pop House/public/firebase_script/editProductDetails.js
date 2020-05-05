@@ -1,4 +1,4 @@
-var prodID = sessionStorage.getItem("prodID");
+var prodID = sessionStorage.getItem("editProdID");
 
 var product = new Vue({
     el: '#editProduct',

@@ -14,6 +14,9 @@ signupForm.addEventListener("submit", (e) => {
 			addUsername(uname);
 			location.href = "index.html";
 		}
+	}).catch(function(error){
+		var errorMessage = error.message;
+		alert(errorMessage);
 	});
 	
 	//Add username

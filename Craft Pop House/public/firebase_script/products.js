@@ -9,22 +9,25 @@ var all = new Vue({
             sessionStorage.setItem("prod_Id", id);
             sessionStorage.setItem("prod_Cat", cat);
             console.log(sessionStorage);
-            window.open("http://localhost:5000/products-details.html");
+            window.open("products-details.html");
         },
 		addToCart(pid, pName, pPrice, pQuant){
 			//Add to cart
-			db.collection("users").doc(gUser.uid).
-      collection("cartItem").doc(pid).set({
-				prod_ID: pid,
-				prod_name: pName,
-				prod_price: pPrice,
-				order_quantity: firebase.firestore.FieldValue.increment(1)
+			if(gUser == null){
+				location.href = "registerDefault.html";
+			}else{
+				db.collection("users").doc(gUser.uid).collection("cartItem").doc(pid).set({
+					prod_ID: pid,
+					prod_name: pName,
+					prod_price: pPrice,
+					order_quantity: firebase.firestore.FieldValue.increment(1)
 
-			},{merge: true});
-			
-			db.collection("Products").doc(pid).update({
-				prod_Quant: firebase.firestore.FieldValue.increment(-1)
-			});
+				},{merge: true});
+				
+				db.collection("Products").doc(pid).update({
+					prod_Quant: firebase.firestore.FieldValue.increment(-1)
+				});
+			}
 		}
     },
     mounted() {
@@ -53,22 +56,25 @@ var clothOnly = new Vue({
             sessionStorage.setItem("prod_Id", id);
             sessionStorage.setItem("prod_Cat", cat);
             console.log(sessionStorage);
-            window.open("http://localhost:5000/products-details.html");
+            window.open("products-details.html");
         },
 		addToCart(pid, pName, pPrice, pQuant){
 			//Add to cart
-			db.collection("users").doc(gUser.uid).
-      collection("cartItem").doc(pid).set({
-				prod_ID: pid,
-				prod_name: pName,
-				prod_price: pPrice,
-				order_quantity: firebase.firestore.FieldValue.increment(1)
+			if(gUser == null){
+				location.href = "registerDefault.html";
+			}else{
+				db.collection("users").doc(gUser.uid).collection("cartItem").doc(pid).set({
+					prod_ID: pid,
+					prod_name: pName,
+					prod_price: pPrice,
+					order_quantity: firebase.firestore.FieldValue.increment(1)
 
-			},{merge: true});
-			
-			db.collection("Products").doc(pid).update({
-				prod_Quant: firebase.firestore.FieldValue.increment(-1)
-			});
+				},{merge: true});
+				
+				db.collection("Products").doc(pid).update({
+					prod_Quant: firebase.firestore.FieldValue.increment(-1)
+				});
+			}
 		}
     },
     mounted() {
@@ -97,22 +103,25 @@ var jewOnly = new Vue({
             sessionStorage.setItem("prod_Id", id);
             sessionStorage.setItem("prod_Cat", cat);
             console.log(sessionStorage);
-            window.open("http://localhost:5000/products-details.html");
+            window.open("products-details.html");
         },
 		addToCart(pid, pName, pPrice, pQuant){
 			//Add to cart
-			db.collection("users").doc(gUser.uid).
-      collection("cartItem").doc(pid).set({
-				prod_ID: pid,
-				prod_name: pName,
-				prod_price: pPrice,
-				order_quantity: firebase.firestore.FieldValue.increment(1)
+			if(gUser == null){
+				location.href = "registerDefault.html";
+			}else{
+				db.collection("users").doc(gUser.uid).collection("cartItem").doc(pid).set({
+					prod_ID: pid,
+					prod_name: pName,
+					prod_price: pPrice,
+					order_quantity: firebase.firestore.FieldValue.increment(1)
 
-			},{merge: true});
-			
-			db.collection("Products").doc(pid).update({
-				prod_Quant: firebase.firestore.FieldValue.increment(-1)
-			});
+				},{merge: true});
+				
+				db.collection("Products").doc(pid).update({
+					prod_Quant: firebase.firestore.FieldValue.increment(-1)
+				});
+			}
 		}
     },
     mounted() {
@@ -141,22 +150,25 @@ var craftOnly = new Vue({
             sessionStorage.setItem("prod_Id", id);
             sessionStorage.setItem("prod_Cat", cat);
             console.log(sessionStorage);
-            window.open("http://localhost:5000/products-details.html");
+            window.open("products-details.html");
         },
 		addToCart(pid, pName, pPrice, pQuant){
 			//Add to cart
-			db.collection("users").doc(gUser.uid).
-      collection("cartItem").doc(pid).set({
-				prod_ID: pid,
-				prod_name: pName,
-				prod_price: pPrice,
-				order_quantity: firebase.firestore.FieldValue.increment(1)
+			if(gUser == null){
+				location.href = "registerDefault.html";
+			}else{
+				db.collection("users").doc(gUser.uid).collection("cartItem").doc(pid).set({
+					prod_ID: pid,
+					prod_name: pName,
+					prod_price: pPrice,
+					order_quantity: firebase.firestore.FieldValue.increment(1)
 
-			},{merge: true});
-			
-			db.collection("Products").doc(pid).update({
-				prod_Quant: firebase.firestore.FieldValue.increment(-1)
-			});
+				},{merge: true});
+				
+				db.collection("Products").doc(pid).update({
+					prod_Quant: firebase.firestore.FieldValue.increment(-1)
+				});
+			}
 		}
     },
     mounted() {
@@ -185,22 +197,25 @@ var bedOnly = new Vue({
             sessionStorage.setItem("prod_Id", id);
             sessionStorage.setItem("prod_Cat", cat);
             console.log(sessionStorage);
-            window.open("http://localhost:5000/products-details.html");
+            window.open("products-details.html");
         },
 		addToCart(pid, pName, pPrice, pQuant){
 			//Add to cart
-			db.collection("users").doc(gUser.uid).
-      collection("cartItem").doc(pid).set({
-				prod_ID: pid,
-				prod_name: pName,
-				prod_price: pPrice,
-				order_quantity: firebase.firestore.FieldValue.increment(1)
+			if(gUser == null){
+				location.href = "registerDefault.html";
+			}else{
+				db.collection("users").doc(gUser.uid).collection("cartItem").doc(pid).set({
+					prod_ID: pid,
+					prod_name: pName,
+					prod_price: pPrice,
+					order_quantity: firebase.firestore.FieldValue.increment(1)
 
-			},{merge: true});
-			
-			db.collection("Products").doc(pid).update({
-				prod_Quant: firebase.firestore.FieldValue.increment(-1)
-			});
+				},{merge: true});
+				
+				db.collection("Products").doc(pid).update({
+					prod_Quant: firebase.firestore.FieldValue.increment(-1)
+				});
+			}
 		}
     },
     mounted() {
@@ -229,22 +244,25 @@ var toyOnly = new Vue({
             sessionStorage.setItem("prod_Id", id);
             sessionStorage.setItem("prod_Cat", cat);
             console.log(sessionStorage);
-            window.open("http://localhost:5000/products-details.html");
+            window.open("products-details.html");
         },
 		addToCart(pid, pName, pPrice, pQuant){
 			//Add to cart
-			db.collection("users").doc(gUser.uid).
-      collection("cartItem").doc(pid).set({
-				prod_ID: pid,
-				prod_name: pName,
-				prod_price: pPrice,
-				order_quantity: firebase.firestore.FieldValue.increment(1)
+			if(gUser == null){
+				location.href = "registerDefault.html";
+			}else{
+				db.collection("users").doc(gUser.uid).collection("cartItem").doc(pid).set({
+					prod_ID: pid,
+					prod_name: pName,
+					prod_price: pPrice,
+					order_quantity: firebase.firestore.FieldValue.increment(1)
 
-			},{merge: true});
-			
-			db.collection("Products").doc(pid).update({
-				prod_Quant: firebase.firestore.FieldValue.increment(-1)
-			});
+				},{merge: true});
+				
+				db.collection("Products").doc(pid).update({
+					prod_Quant: firebase.firestore.FieldValue.increment(-1)
+				});
+			}
 		}
     },
     mounted() {
@@ -273,21 +291,25 @@ var artOnly = new Vue({
             sessionStorage.setItem("prod_Id", id);
             sessionStorage.setItem("prod_Cat", cat);
             console.log(sessionStorage);
-            window.open("http://localhost:5000/products-details.html");
+            window.open("products-details.html");
         },
 		addToCart(pid, pName, pPrice, pQuant){
 			//Add to cart
-			db.collection("users").doc(gUser.uid).collection("cartItem").doc(pid).set({
-				prod_ID: pid,
-				prod_name: pName,
-				prod_price: pPrice,
-				order_quantity: firebase.firestore.FieldValue.increment(1)
+			if(gUser == null){
+				location.href = "registerDefault.html";
+			}else{
+				db.collection("users").doc(gUser.uid).collection("cartItem").doc(pid).set({
+					prod_ID: pid,
+					prod_name: pName,
+					prod_price: pPrice,
+					order_quantity: firebase.firestore.FieldValue.increment(1)
 
-			},{merge: true});
-			
-			db.collection("Products").doc(pid).update({
-				prod_Quant: firebase.firestore.FieldValue.increment(-1)
-			});
+				},{merge: true});
+				
+				db.collection("Products").doc(pid).update({
+					prod_Quant: firebase.firestore.FieldValue.increment(-1)
+				});
+			}
 		}
     },
     mounted() {
@@ -316,22 +338,25 @@ var weddingOnly = new Vue({
             sessionStorage.setItem("prod_Id", id);
             sessionStorage.setItem("prod_Cat", cat);
             console.log(sessionStorage);
-            window.open("http://localhost:5000/products-details.html");
+            window.open("products-details.html");
         },
 		addToCart(pid, pName, pPrice, pQuant){
 			//Add to cart
-			db.collection("users").doc(gUser.uid).
-      collection("cartItem").doc(pid).set({
-				prod_ID: pid,
-				prod_name: pName,
-				prod_price: pPrice,
-				order_quantity: firebase.firestore.FieldValue.increment(1)
+			if(gUser == null){
+				location.href = "registerDefault.html";
+			}else{
+				db.collection("users").doc(gUser.uid).collection("cartItem").doc(pid).set({
+					prod_ID: pid,
+					prod_name: pName,
+					prod_price: pPrice,
+					order_quantity: firebase.firestore.FieldValue.increment(1)
 
-			},{merge: true});
-			
-			db.collection("Products").doc(pid).update({
-				prod_Quant: firebase.firestore.FieldValue.increment(-1)
-			});
+				},{merge: true});
+				
+				db.collection("Products").doc(pid).update({
+					prod_Quant: firebase.firestore.FieldValue.increment(-1)
+				});
+			}
 		}
     },
     mounted() {

@@ -10,21 +10,25 @@ var content = new Vue({
 		//QUANTITY TO FIX
 		addToCart(pid, pName, pPrice){
 			//Add to cart
-			var selectQuant = document.getElementById("detailsQuant");
-			var quantity = parseInt(selectQuant.options[selectQuant.selectedIndex].value);
-			
-			db.collection("users").doc(gUser.uid).
-			collection("cartItem").doc(pid).set({
-				prod_ID: pid,
-				prod_name: pName,
-				prod_price: pPrice,
-				order_quantity: firebase.firestore.FieldValue.increment(quantity)
+			if(gUser == null){
+				location.href = "registerDefault.html";
+			}else{
+				var selectQuant = document.getElementById("detailsQuant");
+				var quantity = parseInt(selectQuant.options[selectQuant.selectedIndex].value);
+				
+				db.collection("users").doc(gUser.uid).
+				collection("cartItem").doc(pid).set({
+					prod_ID: pid,
+					prod_name: pName,
+					prod_price: pPrice,
+					order_quantity: firebase.firestore.FieldValue.increment(quantity)
 
-			},{merge: true});
-			
-			db.collection("Products").doc(pid).update({
-				prod_Quant: firebase.firestore.FieldValue.increment(-quantity)
-			});
+				},{merge: true});
+				
+				db.collection("Products").doc(pid).update({
+					prod_Quant: firebase.firestore.FieldValue.increment(-quantity)
+				});
+			}
 		}
     },
     mounted() {

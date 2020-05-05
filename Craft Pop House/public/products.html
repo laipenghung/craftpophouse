@@ -15,8 +15,13 @@
     <link href="owlCarousel/dist/assets/owl.theme.default.min.css" rel="stylesheet" text="text/css"/>
    
     <style>
+        body{    
+            background: #272727;
+        }
+        
         .prodCat {
-            border: 1px solid grey;
+            font-weight: bold;
+            border: 1px solid black;
             width: 115px;
             height: 115px;
             text-align: center;
@@ -30,7 +35,7 @@
        }
        
        .catDesc {
-           font-size: 15px;
+           font-size: 90%;
            text-align: center;
            margin-top: 5px;
        }
@@ -38,6 +43,7 @@
        .prodCat:focus {
            outline: none;
        }
+        
         /*product card*/
         .prodCard{
             width: 280px;  
@@ -45,7 +51,7 @@
             text-align: center;
             display: block;
             float: left;
-            margin: 40px 15px;
+            margin: 1% 1%;
             overflow: hidden;
 			background-color: white;
         }
@@ -102,11 +108,14 @@
         }
 
         #btn p {
+            margin: auto;
+            padding: 2% 0%;
+            font-weight: bold;
             font-size: 18px;
         }
 
         .price {
-            font-size: 20px;
+            font-size: 120%;
         }
         
     </style>
@@ -116,9 +125,15 @@
 	<!--Nav reuse-->
     <div id="nav-placeholder"></div>   
 
-    <div class="container-fluid" style="margin-top: 6%;">
+    <div class="container-fluid" style="margin-top: 5%; margin-bottom: 1%;">
         <div class="row d-flex justify-content-center">
 			<!--All icons taken from https://www.flaticon.com/authors/freepik -->
+            <div class="col-auto p-0">
+				<button class="prodCat" onclick="showAll()">
+                    <p class="catDesc" style="font-size: 120%;">All</p>
+				</button>
+			</div>  
+            
 			<div class="col-auto p-0">
 				<button class="prodCat" onclick="filterCloth()">
 					<img class="catImage" src="image/shirt.png" title="" alt="" >
@@ -342,6 +357,8 @@
             </div>
         </div>
     </div>
+    
+    <br>
 	
 	<!--Footer reuse-->
 	<div id="footer-placeholder"></div>

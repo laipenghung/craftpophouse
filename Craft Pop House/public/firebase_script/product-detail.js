@@ -1,6 +1,6 @@
 var prodID = sessionStorage.getItem("prod_Id");
 var prodCat = sessionStorage.getItem("prod_Cat");
-console.log(gUser);
+
 var content = new Vue({
     el: '#content',
     data: {

@@ -1,3 +1,7 @@
+//get user id
+var userID = sessionStorage.getItem("uid");
+//console.log(userID);
+
 var cotent = new Vue({
     el: '#content',
     data: {
@@ -15,7 +19,7 @@ var cotent = new Vue({
         }
     },
     mounted() {
-        const ref = firebase.firestore().collection('Products').where("userID", "==", gUser.uid);
+        const ref = firebase.firestore().collection('Products').where("userID", "==", userID);
 
         ref.onSnapshot(snapshot =>{
             //console.log(snapshot);

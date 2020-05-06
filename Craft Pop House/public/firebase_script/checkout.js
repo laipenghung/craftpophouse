@@ -149,7 +149,11 @@ paypal.Buttons({
             }
         
             // Show a success message to the buyer
-            alert('Transaction completed by ' + details.payer.name.given_name + '!' + '\nNow you can close this page and track your order at order page.');
+            alert('Transaction completed by ' + details.payer.name.given_name + '!');
+        }).then(function(){
+            if(confirm("Click OK to close this page and you can always track your order at order page.")){
+                window.close();
+            }
         });
     },
     

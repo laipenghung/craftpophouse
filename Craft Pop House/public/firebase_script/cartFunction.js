@@ -129,6 +129,8 @@ function checkoutDB(checkout){
 		e.stopPropagation();
 		let pid = e.target.parentElement.parentElement.getAttribute("data-id");
 		//cant get the value of quantity
+		let pName = e.target.parentElement.parentElement.childNodes[1].innerHTML;
+		let imgUrl = e.target.parentElement.parentElement.childNodes[0].childNodes[0].src;
 		let pQuant = parseInt(e.target.parentElement.parentElement.childNodes[3].childNodes[0].value);
 		let total = parseFloat(e.target.parentElement.parentElement.childNodes[4].innerHTML).toFixed(2);
 
@@ -136,10 +138,10 @@ function checkoutDB(checkout){
 		sessionStorage.setItem("cartProdQuant", pQuant);
 		sessionStorage.setItem("cartTotal", total);
 
-		window.open("http://localhost:5000/checkout.html")
+		window.open("checkout.html")
 
-		console.log(pid);
-		console.log(pQuant);
+		console.log(pName);
+		console.log(imgUrl);
 		console.log(total);
 	});
 }

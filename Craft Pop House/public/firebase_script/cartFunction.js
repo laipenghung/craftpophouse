@@ -115,6 +115,8 @@ function checkoutDB(checkout){
 		sessionStorage.setItem("cartProdID", pid);
 		sessionStorage.setItem("cartProdQuant", pQuant);
 		sessionStorage.setItem("cartTotal", total);
+		sessionStorage.setItem("cartProdName", pName);
+		sessionStorage.setItem("cartProdImgUrl", imgUrl);
 
 		window.open("http://localhost:5000/checkout.html")
 

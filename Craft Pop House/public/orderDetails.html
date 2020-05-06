@@ -8,6 +8,10 @@
     
     <!-- Bootstrap -->
     <link href="frameworks/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="frameworks/js/jquery-3.5.0.min.js"></script>
+    
+	<!-- CSS -->
+	<link rel="stylesheet" href="frameworks/css/style.css">
     
 <style>
     .orderDetail_body{
@@ -119,7 +123,7 @@
                                     <td class="text">{{p.prodName}}</td>
                                     <td class="text">{{p.orderQuant}}</td>
                                     <td>
-                                        <a href="#.html">
+                                        <a href="orderTracking.html">
                                             <button class="trackButton">
                                                 Track
                                             </button>
@@ -156,6 +160,7 @@
     
 	<!--Firebase Config-->
 	<script src="firebase_script/firebaseConfig.js"></script>
+    <script src="firebase_script/accountControl.js"></script>
     <script src="firebase_script/order.js"></script>
 
 </body>

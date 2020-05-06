@@ -12,19 +12,25 @@
 	<link rel="stylesheet" href="frameworks/css/style.css">
     
 <style>
+    body{
+        background: #272727;
+    }
+    
     .editProductBody{
+        margin-top: 6%;
         margin-left: auto;
         margin-right: auto;
         width: 65%;
+        height: 200%;
         background-color: #eae7dc;
         color: #e85a4f;
         font-weight: bold;
-        padding: 0% 3%;
-        color: black;
+        padding: 0 3%;
+        border-radius: 30px;
     }
     
     h3{
-        margin-top: 11%;
+        margin-top: 3%;
         margin-bottom: 5%;
         font-weight: bold;
     }
@@ -42,7 +48,7 @@
         background: #4cbb17;
     }
     
-    #removeProduct{
+    #resetField{
         background: #fa8072;
         border: 2px solid #d21f3c;
         border-radius: 100px;
@@ -51,7 +57,7 @@
         margin-left: 2%;
     }
     
-    #removeProduct:hover{
+    #resetField:hover{
         background: #d21f3c;
     }
 </style>
@@ -173,13 +179,16 @@
                         
                         <div class="text-center">
                             <button type="button" id="confirmEdit" @click="editProduct()">Confirm</button>
-                            <button type="button" id="removeProduct" @click="closeWindow()">Remove</button>
+                            <input type="reset" id="resetField" value="Reset">
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    
+    <!--Footer reuse-->
+	<div id="footer-placeholder"></div>
     
     <!--vue.js-->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>

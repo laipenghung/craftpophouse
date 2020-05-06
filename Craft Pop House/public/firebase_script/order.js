@@ -2,24 +2,21 @@
 var userID = sessionStorage.getItem("uid");
 //console.log(userID);
 
-var cotent = new Vue({
-    el: '#orderDetail_content',
-    data: {
-      products : []
+var content = new Vue({
+		//do the onclick function here
     },
-    methods: {
-        mounted() {
-            const ref = firebase.firestore().collection("users").doc(gUser.uid).collection("orders");
+    mounted() {
+        const ref = firebase.firestore().collection("users").doc(userID).collection("orders");
 
-            ref.onSnapshot(snapshot =>{
-                //console.log(snapshot);
-
-                let porductArr = [];
-                snapshot.forEach(doc => {
-                    porductArr.push({...doc.data(), id: doc.id})
-                });
-                //console.log(snapshot);
-                this.products = porductArr;
+        ref.onSnapshot(snapshot =>{
+            //console.log(snapshot);
+        
+            let porductArr = [];
+            snapshot.forEach(doc => {
+                porductArr.push({...doc.data(), id: doc.id})
+            });
+            //console.log(snapshot);
+            this.products = porductArr;
         });
     },
 });

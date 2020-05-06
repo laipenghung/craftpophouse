@@ -1,6 +1,8 @@
 var prodID = sessionStorage.getItem("cartProdID");
 var orderQuant = sessionStorage.getItem("cartProdQuant");
 var cartItemPrice = sessionStorage.getItem("cartTotal");
+var cartProdName = sessionStorage.getItem("cartProdName");
+var cartProdImgUrl = sessionStorage.getItem("cartProdImgUrl");
 var checkTransation = false;
 var shipName, shipNum, fullShipAdd, fullBillAdd, subTotalFoat, subText, dateString, shipCity, shipState, shipPost, oID;
 
@@ -101,6 +103,8 @@ function confirmOrder(){
         billAdd : fullBillAdd,
         orderDate : dateString,
         prodID : prodID,
+        prodName : cartProdName,
+        prodImgUrl : cartProdImgUrl,
         orderQuant : orderQuant,
         subtotal : subText
     }).then(function(x) {
@@ -145,7 +149,7 @@ paypal.Buttons({
             }
         
             // Show a success message to the buyer
-            alert('Transaction completed by ' + details.payer.name.given_name + '!' + '\nNow you can track your order at tracking order page.');
+            alert('Transaction completed by ' + details.payer.name.given_name + '!' + '\nNow you can close this page and track your order at order page.');
         });
     },
     

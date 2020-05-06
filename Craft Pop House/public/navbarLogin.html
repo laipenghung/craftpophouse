@@ -1,4 +1,5 @@
 <script src="https://kit.fontawesome.com/46f7c7318f.js" crossorigin="anonymous"></script>
+
 <header>
 	<nav class="navbar fixed-top navbar-expand-lg navbar-light">
 		<a class="navbar-brand" href="index.html"><img src="image/logo.png" width="30" height="30" class="d-inline-block align-top" alt="Logo"></a>
@@ -13,40 +14,36 @@
 				<li class="nav-item">
 					<a class="nav-link" href="index.html">Home</a>
 				</li>
+				
 				<li class="nav-item">
-					<a class="nav-link" href="products.html">Categories</a>
+					<a class="nav-link" href="products.html">Product Categories</a>
 				</li>
-
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="products.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Categories
-					</a>
-
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">Clothing &amp; Accessories</a>
-						<a class="dropdown-item" href="#">Jewelry</a>
-                        <a class="dropdown-item" href="#">Craft Supplies</a>
-                        <a class="dropdown-item" href="#">Wedding Accessories</a>
-                        <a class="dropdown-item" href="#">Bedding/Room Décor</a>
-                        <a class="dropdown-item" href="#">Soft Toys</a>
-                        <a class="dropdown-item" href="#">Vintage Arts</a>
-					</div>
+                
+                <li class="nav-item">
+					<a class="nav-link" href="marketplace.html">Marketplace</a>
 				</li>
 			</ul>
 
 			<form class="form-inline my-2 my-lg-0">
 				<ul class="navbar-nav mr-auto">
 					<div class="nav-item">
-						<a class="nav-link fa fa-shopping-cart fa-2x" href="cart.html"></a>
+						<a class="nav-link fa fa-shopping-cart fa-2x" href="cart.html" style="font-size:140%;"></a>
 					</div>
 					
-					<li class="nav-item">
+					<li class="nav-item mr-3">
 						<div class="dropdown show">
-							<a class="nav-link fa fa-user fa-2x" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="getUserProfile()"></a>
+							<a class="nav-link fa fa-user fa-2x" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="getUserProfile()" style="font-size:140%;"></a>
 							<div class="dropdown-menu dropdown-menu-right text-center">
-								<p class="font-weight-bold" id="displayName"></p>
-								<a class="dropdown-item" href="addproduct.html">Sell your product</a>
-								<button type="button" class="btn btn-dark my-3" onclick="signOut()">Sign Out</button>
+								<p class="font-weight-bold" id="displayName" style="color:black; margin-top: 3%; font-size: 110%; font-weight: bold;"></p>
+                                
+                                <hr style="border: 1px dashed black;">
+                                
+								<a class="dropdown-item" href="addproduct.html">Sell an item</a>
+								<a class="dropdown-item" href="marketplace.html">Your Marketplace</a>
+                                
+                                <hr style="border: 1px dashed black;">
+                            
+								<button type="button" class="btn btn-dark mb-2 ml-auto mr-auto" onclick="signOut()">Sign Out</button>
 							</div>
 						</div>
 					</li>

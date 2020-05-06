@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html ng-app="app">
 <head>
-    <title>Task 3.4 C</title>
+    <title>Marketplace</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,
     initial-scale=1.0" />
     
     <!-- Bootstrap -->
     <link href="frameworks/css/bootstrap.min.css" rel="stylesheet" />
+	<script src="frameworks/js/jquery-3.5.0.min.js"></script>
     
+    <!-- CSS -->
+	<link rel="stylesheet" href="frameworks/css/style.css">
 <style>
     .seller_body{
         background: #272727;    
@@ -120,6 +123,8 @@
 </head>
 
 <body class="seller_body">
+	<!--Nav reuse-->
+    <div id="nav-placeholder"></div>    
     <div class="container-fluid">
         <div id="content">
             <div class="row d-flex">
@@ -178,6 +183,9 @@
         </div>      
     </div>    
 
+	<!--Footer reuse-->
+	<div id="footer-placeholder"></div>
+
     <!--vue.js-->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
@@ -197,6 +205,7 @@
     
 	<!--Firebase Config-->
 	<script src="firebase_script/firebaseConfig.js"></script>
+	<script src="firebase_script/accountControl.js"></script>
     <script src="firebase_script/seller.js"></script>
 
 </body>

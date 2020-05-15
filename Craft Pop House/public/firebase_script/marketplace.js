@@ -11,11 +11,14 @@ var cotent = new Vue({
         removeProduct(id){
             //console.log(id);
 
-            firebase.firestore().collection("Products").doc(id).delete().then(function() {
-                console.log("Document successfully deleted!");
-            }).catch(function(error) {
-                console.error("Error removing document: ", error);
-            });
+            if(confirm("Are you sure you want to delete this item?")){
+                firebase.firestore().collection("Products").doc(id).delete().then(function() {
+                    console.log("Document successfully deleted!");
+                }).catch(function(error) {
+                    console.error("Error removing document: ", error);
+                }).then(alert("Item successfully delete"));
+            }
+
         },
         editProduct(id){
             sessionStorage.setItem("editProdID", id);

@@ -143,7 +143,7 @@ function checkoutDB(checkout){
 		window.open("checkout.html")
 
 		console.log(pName);
-		console.log(imgUrl);
+		console.log(pQuant);
 		console.log(total);
 	});
 }

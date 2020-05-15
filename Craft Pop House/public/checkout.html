@@ -64,6 +64,14 @@
       height: 90px;
       margin: auto;
     }
+
+    .userInput {
+      color: black;
+    }
+
+    .tableLeft {
+      width: 200px;
+    }
 </style>
 </head>
 
@@ -243,26 +251,26 @@
                     <div class="row">
                       <div class="col-md-6">
                         <p>Item Receiver</p>
-                        <p id="itemRec"></p>
+                        <p id="itemRec" class="userInput"></p>
                       </div>
   
                       <div class="col-md-6">
                         <p>Contact Number</p>
-                        <p id="itemContact"></p>
+                        <p id="itemContact" class="userInput"></p>
                       </div>
                     </div>
   
                     <div class="row">
                       <div class="col-md-12">
                         <p>Shipping Address</p>
-                        <p id="fullShipAdd"></p>
+                        <p id="fullShipAdd" class="userInput"></p>
                       </div>
                     </div>
   
                     <div class="row">
                       <div class="col-md-12">
                         <p>Billing Address</p>
-                        <p id="fullBillAdd"></p>
+                        <p id="fullBillAdd" class="userInput"></p>
                       </div>
                     </div>
   
@@ -272,18 +280,18 @@
                       <div class="col-md-12">
                           <table>
                             <tr>
-                              <th>{{i.prod_Name}}</th>
-                              <th id="itemTotal"></th>
+                              <th class="tableLeft">{{i.prod_Name}}</th>
+                              <th id="itemTotal" class="userInput"></th>
                             </tr>
   
                             <tr>
-                              <td>Delivery Fee</td>
-                              <td>RM 9.50</td>
+                              <td class="tableLeft">Delivery Fee</td>
+                              <td class="userInput">RM 9.50</td>
                             </tr>
   
                             <tr>
-                              <td>Subtotal</td>
-                              <td id="subtotal"></td>
+                              <td class="tableLeft">Subtotal</td>
+                              <td id="subtotal" class="userInput"></td>
                             </tr>
                           </table>
                       </div>
@@ -295,7 +303,7 @@
           </div>
         </div>
 
-        <div>
+        <div class="row d-flex justify-content-center">
           <div id="paypal-button-container"></div>
         </div>
 

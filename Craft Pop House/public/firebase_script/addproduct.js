@@ -33,13 +33,15 @@ function addProductDB(){
 				prod_Desc : document.getElementById("pDesc").value,
 				prod_Price : document.getElementById("pPrice").value,
 				prod_Quant : parseInt(document.getElementById("pQuant").value),
-				prod_Cat : document.querySelector('input[name="gridRadios"]:checked').value
+				prod_Cat : document.querySelector('input[name="gridRadios"]:checked').value,
+				prod_Sold : 0
 			})
 			.then(function(x){
 			  console.log("Document written with ID: ", x.id);
 			  var pId;
 			  pId = x.id;
 			  addToUser(pId);
+			  //add product id to products
 			  var updateTask = db.collection("Products").doc(pId)
 			  return updateTask.update({
 				  prod_Id : pId
@@ -58,4 +60,6 @@ function addToUser(pId){
 		prod_ID: pId
 	});
 }
+
+
 

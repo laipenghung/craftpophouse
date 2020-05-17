@@ -25,7 +25,9 @@ firebase.auth().onAuthStateChanged(function(user){
 function accountDB(user){
 	sessionStorage.setItem("uid", user.uid);
 	db.collection("users").doc(user.uid).set({
-		username:  user.displayName
+		username:  user.displayName,
+		userID: user.uid,
+		productSold: 0
 	});
 }
 

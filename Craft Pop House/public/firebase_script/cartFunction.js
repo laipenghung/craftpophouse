@@ -1,5 +1,6 @@
 var cartList = document.querySelector("#cartList");
 var gUser;
+
 firebase.auth().onAuthStateChanged(function(user){
 	if(user != null){
 		gUser = user;

@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>Marketplace</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,
+    initial-scale=1.0" />
+    
+    <!-- Bootstrap -->
+    <link href="frameworks/css/bootstrap.min.css" rel="stylesheet" />
+	<script src="frameworks/js/jquery-3.5.0.min.js"></script>
+    
+<style>
+    .row1 {
+        margin: 20px 10%;
+        padding: 50px 0;
+        background-color: #dcdcdc;
+    }
+    .profileImg {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 1px solid black;
+    }
+
+    h1 {
+        font-size: 70px;
+        margin-left: 20px;
+    }
+
+    table {
+        margin: 30px 0;
+    }
+
+    .tableImg {
+        width: 30px;
+        height: 30px;
+        margin: 0 10px;
+    }
+
+    .tableCol {
+        width: 280px;
+    }
+
+    th {
+        font-size: 17px;
+        text-align: center; 
+    }
+
+    td {
+        font-size: 30px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .prodTitle {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .pTitle {
+        background-color: #dcdcdc;
+        padding-top: 30px;
+    }
+
+    .row2 {
+        background-color: #dcdcdc;
+        padding-bottom: 25px;
+    }
+
+    #catInfo {
+        font-size: 25px;
+        text-align: left;
+        margin: 30px 0;
+    }
+
+    .row3 {
+        margin: 20px 0;
+    }
+     /*product card*/
+     .prodCard{
+        width: 280px;  
+        height: auto;
+        text-align: center;
+        display: block;
+        float: left;
+        margin: 1% 1%;
+        overflow: hidden;
+        background-color: white;
+    }
+    
+    .prodCard:hover{
+        transform: scale(1.1);
+        transition: 0.3s;
+    }
+    
+    .cardImg-wrapper {  
+        width: auto;
+        height: auto;
+        overflow: hidden; 
+    }
+
+    .cardImg {
+        transition: 0.6s;
+        height: 240px;
+    }
+
+    .cardImg:hover {
+        transform: scale(1.3);
+    }
+    
+    .cardDesc {
+        width: auto;
+        height: auto;
+    }
+    
+    .cardDesc p{
+        text-align: center;
+        margin: 10px 0;
+    }
+    
+    #title {
+        font-size: 15px;
+    }
+    
+    #btn {
+        border: none;
+        outline: 0;
+        padding: 5px;
+        color: white;
+        background-color: #000;
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+        font-size: 15px;
+    }
+    
+    #btn a {
+        text-decoration: none;
+        color: white;
+    }
+
+    #btn p {
+        margin: auto;
+        padding: 2% 0%;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .price {
+        font-size: 120%;
+    }
+
+    /*prod cat*/
+    .prodCat {
+        width: 115px;
+        height: 115px;
+        text-align: center;
+        background-color: transparent;
+        border: transparent;
+    }
+
+    .catImage {
+        margin-top: 15%;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .catDesc {
+        font-size: 15px;
+        text-align: center;
+        margin-top: 5px;
+    }
+    
+    .prodCat:focus {
+        outline: none;
+    }
+
+    .prodCat:hover {
+        color: #e85a4f;
+    }
+
+    .prodCat:after {
+        display:block;
+        content: '';
+        border-bottom: solid 2px #e85a4f;  
+        transform: scaleX(0);  
+        transition: transform 250ms ease-in-out;
+    }
+
+    .prodCat:hover:after { 
+        transform: scaleX(1);
+    }
+</style>
+</head>
+
+<body onload="showAll(); getProdCount();">
+    <div class="container-fluid">
+        <div id="seller">
+            <div class="row d-flex justify-content-center row1">
+                <div class="col-md-10">
+                    <!--Profile Info-->
+                    <div v-for="s in seller">
+                        <div class="row">
+                            <div class="col-md-3 d-flex justify-content-center">
+                                <img class="profileImg" src="image/diamond.png" alt="Profile Image" >
+                            </div>
+            
+                            <div class="col-md-9">
+                                <h1>{{s.username}}</h1>
+                                  
+                                <table>
+                                    <tr>
+                                        <th class="tableCol">
+                                            <img class="tableImg" src="image/product.png">
+                                            Products on Marketplace
+                                        </th>
+                                        <th class="tableCol">
+                                            <img class="tableImg" src="image/sold.png">
+                                            Products sold
+                                        </th>   
+                                    </tr>
+                
+                                    <tr>
+                                        <td id="prodCount"></td>
+                                        <td>13</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>  
+
+        <hr>
+        <div class="row">
+            <div class="col-md-12 pTitle">
+                <p class="prodTitle">Top Selling Products</p> 
+            </div>
+        </div>
+        <!--Hot selling item-->
+        <div class="row d-flex justify-content-center row2">
+            <div class="col-md-10">
+                <div id="hotSelling">
+                    <div v-for = "p in products">
+                        <div class="prodCard">
+                            <div class="cardImg-wrapper" @click="detail(p.prod_Id, p.prod_Cat)">
+                                <img class="cardImg" :src=p.url>
+                            </div>
+                            <div class="cardDesc" >
+                                <p id="title">{{p.prod_Name}}</p>
+        
+                                <p class="price">RM {{p.prod_Price}}</p>
+                            </div>
+                            <button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, 1)" id="btn" data-toggle="modal" data-target="#addToCart">
+                                <p>Add to Cart</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+
+        <hr>
+        <p class="prodTitle">All Selling Products</p>  
+        <!--all selling products-->
+        <div class="row d-flex justify-content-center">
+            <!--All icons taken from https://www.flaticon.com/authors/freepik -->
+            <div class="col-auto p-0">
+                <button class="prodCat" onclick="showAll()">
+                    <img class="catImage" src="image/all.png" title="" alt="" >
+                    <p class="catDesc">All</p>
+                </button>
+            </div>  
+            
+            <div class="col-auto p-0">
+                <button class="prodCat" onclick="filterCloth()">
+                    <img class="catImage" src="image/shirt.png" title="" alt="" >
+                    <p class="catDesc">Clothing &amp; Accessories</p>
+                </button>
+            </div>  
+
+            <div class="col-auto p-0">
+                <button class="prodCat" onclick="filterJew()">
+                    <img class="catImage" src="image/diamond.png" title="" alt="" >
+                    <p class="catDesc">Jewelry</p>
+                </button>
+            </div>
+
+            <div class="col-auto p-0">
+                <button class="prodCat" onclick="filterCraft()">
+                    <img class="catImage" src="image/glue.png" title="" alt="" >
+                    <p class="catDesc">Craft Supplies</p>
+                </button>
+            </div>
+
+            <div class="col-auto p-0">
+                <button class="prodCat" onclick="filterBed()">
+                    <img class="catImage" src="image/frame.png" title="" alt="" >
+                    <p class="catDesc">Bedding/Room Décor</p>
+                </button>
+            </div>
+
+            <div class="col-auto p-0">
+                <button class="prodCat" onclick="filterToy()">
+                    <img class="catImage" src="image/toy.png" title="" alt="" >
+                    <p class="catDesc">Soft Toys</p>
+                </button>
+            </div>  
+
+            <div class="col-auto p-0">
+                <button class="prodCat" onclick="filterArt()">
+                    <img class="catImage" src="image/art.png" title="" alt="" >
+                    <p class="catDesc">Vintage Arts</p>
+                </button>
+            </div>
+
+            <div class="col-auto p-0">
+                <button class="prodCat" onclick="filterWed()">
+                    <img class="catImage" src="image/wedding.png" title="" alt="" >
+                    <p class="catDesc">Wedding Accessories</p>
+                </button>
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-10">
+                <p id="catInfo">Showing All Products</p>
+                <div id="all">
+                    <div v-for = "p in products">
+
+                        <div class="prodCard">
+                            <div class="cardImg-wrapper" @click="detail(p.prod_Id, p.prod_Cat)">
+                                <img class="cardImg" :src=p.url>
+                            </div>
+                            <div class="cardDesc" >
+                                <p id="title">{{p.prod_Name}}</p>
+
+                                <p class="price">RM {{p.prod_Price}}</p>
+                            </div>
+                            <button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, 1)" id="btn" data-toggle="modal" data-target="#addToCart">
+                                <p>Add to Cart</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="clothOnly">
+                    <div v-for = "p in clothOnly">
+
+                        <div class="prodCard">
+                            <div class="cardImg-wrapper" @click="detail(p.prod_Id, p.prod_Cat)">
+                                <img class="cardImg" :src=p.url />
+                            </div>
+                            <div class="cardDesc" >
+                                <p id="title">{{p.prod_Name}}</p>
+
+                                <p class="price">RM {{p.prod_Price}}</p>
+                            </div>
+                            <button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, 1)" id="btn" data-toggle="modal" data-target="#addToCart">
+                                <p>Add to Cart</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="craftOnly">
+                    <div v-for = "p in craftOnly">
+
+                        <div class="prodCard">
+                            <div class="cardImg-wrapper" @click="detail(p.prod_Id, p.prod_Cat)">
+                                <img class="cardImg" :src=p.url />
+                            </div>
+                            <div class="cardDesc" >
+                                <p id="title">{{p.prod_Name}}</p>
+
+                                <p class="price">RM {{p.prod_Price}}</p>
+                            </div>
+                            <button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, 1)" id="btn" data-toggle="modal" data-target="#addToCart">
+                                <p>Add to Cart</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="jewOnly">
+                    <div v-for = "p in jewOnly">
+
+                        <div class="prodCard">
+                            <div class="cardImg-wrapper" @click="detail(p.prod_Id, p.prod_Cat)">
+                                <img class="cardImg" :src=p.url />
+                            </div>
+                            <div class="cardDesc" >
+                                <p id="title">{{p.prod_Name}}</p>
+
+                                <p class="price">RM {{p.prod_Price}}</p>
+                            </div>
+                            <button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, 1)" id="btn" data-toggle="modal" data-target="#addToCart">
+                                <p>Add to Cart</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="bedOnly">
+                    <div v-for = "p in bedOnly">
+
+                        <div class="prodCard">
+                            <div class="cardImg-wrapper" @click="detail(p.prod_Id, p.prod_Cat)">
+                                <img class="cardImg" :src=p.url />
+                            </div>
+                            <div class="cardDesc" >
+                                <p id="title">{{p.prod_Name}}</p>
+
+                                <p class="price">RM {{p.prod_Price}}</p>
+                            </div>
+                            <button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, 1)" id="btn" data-toggle="modal" data-target="#addToCart">
+                                <p>Add to Cart</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="toyOnly">
+                    <div v-for = "p in toyOnly">
+
+                        <div class="prodCard">
+                            <div class="cardImg-wrapper" @click="detail(p.prod_Id, p.prod_Cat)">
+                                <img class="cardImg" :src=p.url />
+                            </div>
+                            <div class="cardDesc" >
+                                <p id="title">{{p.prod_Name}}</p>
+
+                                <p class="price">RM {{p.prod_Price}}</p>
+                            </div>
+                            <button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, 1)" id="btn" data-toggle="modal" data-target="#addToCart">
+                                <p>Add to Cart</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="artOnly">
+                    <div v-for = "p in artOnly">
+
+                        <div class="prodCard">
+                            <div class="cardImg-wrapper" @click="detail(p.prod_Id, p.prod_Cat)">
+                                <img class="cardImg" :src=p.url />
+                            </div>
+                            <div class="cardDesc" >
+                                <p id="title">{{p.prod_Name}}</p>
+
+                                <p class="price">RM {{p.prod_Price}}</p>
+                            </div>
+                            <button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, 1)" id="btn" data-toggle="modal" data-target="#addToCart">
+                                <p>Add to Cart</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="weddingOnly">
+                    <div v-for = "p in weddingOnly">
+                        <div class="prodCard">
+                            <div class="cardImg-wrapper" @click="detail(p.prod_Id, p.prod_Cat)">
+                                <img class="cardImg" :src=p.url />
+                            </div>
+                            <div class="cardDesc" >
+                                <p id="title">{{p.prod_Name}}</p>
+
+                                <p class="price">RM {{p.prod_Price}}</p>
+                            </div>
+                            <button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, 1)" id="btn" data-toggle="modal" data-target="#addToCart">
+                                <p>Add to Cart</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal fade" id="addToCart" tabIndex="-1" role="dialog" aria-labelledby="addToCartTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content text-center">
+                            <div class="modal-body">
+                                <h2>Success add to cart</h2>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary mx-auto" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </div> 
+
+        
+    </div>
+
+    <!--vue.js-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="/__/firebase/7.12.0/firebase-app.js"></script>
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+		 https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="/__/firebase/7.12.0/firebase-analytics.js"></script>
+	<script src="/__/firebase/7.14.0/firebase-auth.js"></script>
+	<script src="/__/firebase/7.14.1/firebase-firestore.js"></script>
+	<!-- Initialize Firebase -->
+	<script src="/__/firebase/init.js"></script>
+    <!-- jQuery – required for Bootstrap's JavaScript plugins) --> 
+    <script src="frameworks/js/jquery.min.js"></script> 
+    <!-- All Bootstrap  plug-ins  file --> 
+    <script src="frameworks/js/bootstrap.min.js"></script>
+    
+	<!--Firebase Config-->
+	<script src="firebase_script/firebaseConfig.js"></script>
+	<script src="firebase_script/accountControl.js"></script>
+    <script src="firebase_script/sellerProfile.js"></script>
+    <script src="scripts/filterCat.js"></script>
+
+</body>
+</html>

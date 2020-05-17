@@ -139,10 +139,57 @@
             font-size: 120%;
         }
 
+		/*profile*/
+		
+		.profileImg {
+			width: 190px;
+			height: 190px;
+			border-radius: 50%;
+			border: 1px solid black;
+		}
+
+		h1 {
+			font-size: 50px;
+			margin-left: 30px;
+		}
+
+		table {
+			margin: 30px 0;
+		}
+
+		.tableImg {
+			width: 30px;
+			height: 30px;
+			margin: 0 10px;
+		}
+
+		.tableCol {
+			width: 280px;
+		}
+
+		th {
+			font-size: 15px;
+			text-align: center; 
+		}
+
+		td {
+			font-size: 25px;
+			text-align: center;
+			font-weight: bold;
+		}
+
+		.btn-seller {
+			margin: 5px 30px;
+		}
+
+		.infoTab {
+			margin: 50px 0;
+		}
+
 	</style>
 </head>
 
-<body class="prod_body">
+<body class="prod_body" onload="getProdCount()">
 	<!--Nav reuse-->
     <div id="nav-placeholder"></div>   
 	<div class="container-fluid" style="margin-top: 6%;">
@@ -195,10 +242,43 @@
                     
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                            <div class="row justify-content-center">
-                                <div class="col-md-9 sm-12 test">
-                                </div>
-                            </div>
+                            <div class="row d-flex justify-content-center infoTab" id="seller">
+								<div class="col-md-10">
+									<div v-for="s in seller">
+										<!--Profile Info-->
+										<div class="row">
+											<div class="col-md-3 d-flex justify-content-center">
+												<img class="profileImg" src="image/diamond.png" alt="Profile Image" >
+											</div>
+							
+											<div class="col-md-9">
+												<h1>{{s.username}}</h1>
+												  
+												<table>
+													<tr>
+														<th class="tableCol">
+															<img class="tableImg" src="image/product.png">
+															Products on Marketplace
+														</th>
+														<th class="tableCol">
+															<img class="tableImg" src="image/sold.png">
+															Products sold
+														</th>   
+													</tr>
+								
+													<tr>
+														<td id="prodCount"></td>
+														<td>13</td>
+													</tr>
+												</table>
+
+												<button type="button" onclick="visitSellerProfile()" class="btn btn-lg btn-light btn-outline-dark btn-seller">Visit Seller Profile</button>
+												<button type="button" class="btn btn-lg btn-light btn-outline-dark btn-seller">Message Seller</button>	
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
                         </div>
                         
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">

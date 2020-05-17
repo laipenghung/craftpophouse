@@ -122,6 +122,21 @@ function removeCart(){
     db.collection("users").doc(gUser.uid).collection("cartItem").doc(prodID).delete();
 }
 
+function prodSoldCounter(){
+    var quantInt = parseInt(orderQuant);
+    //console.log(quantInt);
+    db.collection("Products").doc(prodID).update({
+        prod_Sold: firebase.firestore.FieldValue.increment(quantInt)
+    });
+}
+
+//unfinished
+function selerSoldCounter(){
+    db.collection("users").doc().update({
+        prod_Sold: firebase.firestore.FieldValue.increment(1)
+    });
+}
+
 // Render the PayPal button into #paypal-button-container
 paypal.Buttons({
     style: {
@@ -132,7 +147,7 @@ paypal.Buttons({
         return actions.order.create({
             purchase_units: [{
                 amount: {
-                    value: subTotalFoat
+                    value: '0.1'
                 }
             }]
         });
@@ -146,6 +161,7 @@ paypal.Buttons({
             if(checkTransation == 1){
                 confirmOrder();
                 removeCart();
+                prodSoldCounter();
             }
         
             // Show a success message to the buyer

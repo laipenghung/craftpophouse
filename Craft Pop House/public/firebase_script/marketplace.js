@@ -13,6 +13,7 @@ var cotent = new Vue({
 
             if(confirm("Are you sure you want to delete this item?")){
                 firebase.firestore().collection("Products").doc(id).delete().then(function() {
+                    //firebase.firestore().collection("users").doc(userID).collection("products").where("prod_ID", "==", id).delete();
                     console.log("Document successfully deleted!");
                 }).catch(function(error) {
                     console.error("Error removing document: ", error);

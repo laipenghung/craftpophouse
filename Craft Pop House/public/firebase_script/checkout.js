@@ -3,6 +3,7 @@ var orderQuant = sessionStorage.getItem("cartProdQuant");
 var cartItemPrice = sessionStorage.getItem("cartTotal");
 var cartProdName = sessionStorage.getItem("cartProdName");
 var cartProdImgUrl = sessionStorage.getItem("cartProdImgUrl");
+var cartSellerID =  sessionStorage.getItem("cartSellerID");
 var checkTransation = false;
 var shipName, shipNum, fullShipAdd, fullBillAdd, subTotalFoat, subText, dateString, shipCity, shipState, shipPost, oID;
 
@@ -106,10 +107,11 @@ function confirmOrder(){
         prodName : cartProdName,
         prodImgUrl : cartProdImgUrl,
         orderQuant : orderQuant,
-        subtotal : subText
+        subtotal : subText,
+        seller : cartSellerID
     }).then(function(x) {
         oID = x.id;;
-        //console.log(oID);
+        console.log(oID);
         var updateTask = firebase.firestore().collection("users").doc(gUser.uid).collection("orders").doc(oID)
         return updateTask.update({
             orderid : oID
@@ -132,8 +134,19 @@ function prodSoldCounter(){
 
 //unfinished
 function selerSoldCounter(){
-    db.collection("users").doc().update({
-        prod_Sold: firebase.firestore.FieldValue.increment(1)
+    var quantInt = parseInt(orderQuant);
+    
+    var docRef = firebase.firestore().collection("users").doc(cartSellerID).collection("sold");
+
+    docRef.get().then(function(doc) {
+        if (doc.exists) {
+            console.log("Document data:", doc.data());
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+        }
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
     });
 }
 
@@ -147,7 +160,7 @@ paypal.Buttons({
         return actions.order.create({
             purchase_units: [{
                 amount: {
-                    value: subTotalFoat
+                    value: "0.1"
                 }
             }]
         });
@@ -162,14 +175,13 @@ paypal.Buttons({
                 confirmOrder();
                 removeCart();
                 prodSoldCounter();
+                //selerSoldCounter();
             }
         
             // Show a success message to the buyer
             alert('Transaction completed by ' + details.payer.name.given_name + '!');
         }).then(function(){
-            if(confirm("Click OK to close this page and you can always track your order at order page.")){
-                window.close();
-            }
+            alert("You can close this page and track your order at order page.");
         });
     },
     

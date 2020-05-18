@@ -4,13 +4,15 @@ var userID = sessionStorage.getItem("uid");
 
 var content = new Vue({
     el:'#orderDetail_content',
-    
     data:{
         products : []
     },
-    
     methods:{
-        //do the onclick function here
+        viewOrder(oid){
+            //console.log(oid);
+            sessionStorage.setItem("viewOrderID", oid)
+            document.getElementById("link").href = "orderTracking.html";
+        },
     },
     
     mounted() {

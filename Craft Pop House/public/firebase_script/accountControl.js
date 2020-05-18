@@ -27,8 +27,7 @@ function accountDB(user){
 	db.collection("users").doc(user.uid).set({
 		username:  user.displayName,
 		userID: user.uid,
-		productSold: 0
-	});
+	})
 }
 
 //Switch navbar

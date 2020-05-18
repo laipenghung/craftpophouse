@@ -148,9 +148,10 @@ function checkoutDB(checkout, sellerID){
 			sessionStorage.setItem("cartTotal", total);
 			sessionStorage.setItem("cartProdName", pName);
 			sessionStorage.setItem("cartProdImgUrl", imgUrl);
+			sessionStorage.setItem("cartSellerID", sellerID);
 
 			window.open("checkout.html")
 		}
-		console.log(sellerID);
+		//console.log(sellerID);
 	});
 }

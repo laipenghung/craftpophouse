@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>Order Details</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,
+    initial-scale=1.0" />
+    
+    <!-- Bootstrap -->
+    <link href="frameworks/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="frameworks/js/jquery-3.5.0.min.js"></script>
+    
+	<!-- CSS -->
+	<link rel="stylesheet" href="frameworks/css/style.css">
+    <link rel="stylesheet" href="https://s.pageclip.co/v1/pageclip.css" media="screen">
+    
+<style>
+    .orderDetail_body{
+        background: #272727;    
+    }
+
+    #orderDetail_content{
+        margin-top: 5%;
+        margin-left: auto;
+        margin-right: auto;
+        width: 65%;
+        background-color: #eae7dc;
+        font-weight: bold;
+        padding: 2% 0%;
+        border-radius: 30px;
+    }
+
+    h3{
+        font-size: 140%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 2%;
+        text-align: center;
+
+        background: #272727;
+        color: white;
+        width: 30%;
+        border: 3px solid white;
+        border-radius: 100px 0px;
+        padding: 0.8% 0%;
+        font-weight: bold;
+    }
+    
+    #fbForm{
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+        padding: 2%;
+    }
+    
+    hr{
+        border: 1px solid #e85a4f;
+    }
+    
+    #submitBtn{
+        background: #98fb98;
+        border: 2px solid #4cbb17;
+        border-radius: 100px;
+        padding: 1% 2.5%;
+        font-weight: bold;
+        margin-top: 5%;
+    }
+    
+    #submitBtn:hover{
+        background: #4cbb17;
+    }
+</style>
+</head>
+
+<body class="orderDetail_body">
+    <!-- Nav reuse -->
+    <div id="nav-placeholder"></div>
+    
+    <div class="container-fluid">
+        <div id="orderDetail_content">
+            <div class="row d-flex justify-content-center ">
+                <h3>Feedback</h3>
+            </div>
+            
+            <form name="FeedbackForm" id="fbForm" action="https://send.pageclip.co/ltGvSwR95sqMWXQUfLLF9i560ACDWv10" class="pageclip-form" method="post">
+                <div class="row">
+                    <h2>Your feedback is important to us</h2>
+                </div>
+                
+                <div class="row">
+                    <p>We would love to hear your thoughts, concerns or problems with anything so we can improve!</p>
+                </div>
+                
+                <hr>
+
+                <br>
+                
+                <div class="row">
+                    <p style="font-size:110%;">Feedback Type</p>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-3">
+                        <input type="radio" id="comment" name="Feedback Type" value="Comments">
+                        <label for="comment" style="margin-right: 3%;">Comments</label> 
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <input type="radio" id="bug" name="Feedback Type" value="Bug">
+                        <label for="bug" style="margin-right: 3%;">Bug Reports</label>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <input type="radio" id="question" name="Feedback Type" value="Question">
+                        <label for="question" style="margin-right: 3%;">Questions</label>
+                    </div>
+                </div>
+                
+                <br>
+                
+                <div class="row">
+                    <label for="desc" style="font-size:110%;">Describe Feedback</label>
+                </div>
+                
+                <div class="row">
+                    <textarea rows=4 cols=80></textarea>
+                </div>
+                
+                <br>
+                
+                <div class="row">
+                    <p style="font-size:110%; margin-right: 58%;">Name</p>
+                    <p style="font-size:110%;">Email</p>
+                </div>
+                
+                <div class="row">
+                    <input style="padding: 0.5% 1%; margin-right: 2%;" type="text" id="fname" name="fname" placeholder="First Name"> 
+                    <input style="padding: 0.5% 1%; margin-right: 20%;" type="text" id="lname" name="lname" placeholder="Last Name"> 
+                    
+                    <input style="padding: 0.5% 1%;" type="email" id="fname" name="fname" placeholder="abc123@example.com">
+                </div>
+                
+                
+                
+                
+                
+                
+                
+                
+                <div class="text-center">
+                    <button id="submitBtn" type="submit" class="pageclip-form__submit">
+                        <span>Submit Feedback</span>
+                    </button>
+                </div>
+            </form>
+        </div>      
+    </div>
+    
+    <!--Footer reuse-->
+	<div id="footer-placeholder"></div>
+
+    <!--vue.js-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="/__/firebase/7.12.0/firebase-app.js"></script>
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+		 https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="/__/firebase/7.12.0/firebase-analytics.js"></script>
+	<script src="/__/firebase/7.14.0/firebase-auth.js"></script>
+	<script src="/__/firebase/7.14.1/firebase-firestore.js"></script>
+	<!-- Initialize Firebase -->
+	<script src="/__/firebase/init.js"></script>
+    <!-- jQuery – required for Bootstrap's JavaScript plugins) --> 
+    <script src="frameworks/js/jquery.min.js"></script> 
+    <!-- All Bootstrap  plug-ins  file --> 
+    <script src="frameworks/js/bootstrap.min.js"></script>
+    
+	<!--Firebase Config-->
+	<script src="firebase_script/firebaseConfig.js"></script>
+    <script src="firebase_script/accountControl.js"></script>
+    <script src="firebase_script/order.js"></script>
+    
+    <script src="https://s.pageclip.co/v1/pageclip.js" charset="utf-8"></script>
+
+</body>
+</html>

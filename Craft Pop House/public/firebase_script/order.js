@@ -3,7 +3,12 @@ var userID = sessionStorage.getItem("uid");
 //console.log(userID);
 
 var content = new Vue({
-		//do the onclick function here
+    methods:{
+        viewOrder(oid){
+            //console.log(oid);
+            sessionStorage.setItem("viewOrderID", oid)
+            document.getElementById("link").href = "orderTracking.html";
+        },
     },
     mounted() {
         const ref = firebase.firestore().collection("users").doc(userID).collection("orders");

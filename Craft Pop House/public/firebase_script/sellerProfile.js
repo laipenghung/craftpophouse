@@ -10,6 +10,16 @@ function getProdCount(){
     });
 };
 
+function test(){
+    var productCount;
+    db.collection("orders").where("seller","==",sellerProfileID).get().then(function(querySnapshot) {      
+        console.log(querySnapshot.size); 
+        //productCount = querySnapshot.size;
+    }).then(function(){
+        //document.getElementById("test").innerHTML = productCount;
+    });
+};
+
 //load profile
 var seller = new Vue({
     el: '#seller',

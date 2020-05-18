@@ -13,7 +13,7 @@
         background: #272727;    
     }
 
-    #orderDetail_content{
+    #orderTracking_content{
         margin-top: 7%;
         margin-left: auto;
         margin-right: auto;
@@ -80,67 +80,79 @@
 
 <body class="orderDetail_body">
     <div class="container-fluid">
-        <div id="orderDetail_content">
-            <div class="row d-flex justify-content-center">
-                <h3>Track Your Order</h3>
-            </div>
-            
-            <div class="heading">
-                <p>Tracking Number</p>
-            </div>
-            
-            <div class="content">
-                <p>NLMY000004235158</p>
-            </div>
-            
-            <div class="heading">
-                <p>Estimated Delivery</p>
-            </div>
-            
-            <div class="content">
-                <p>NLMY000004235158</p>
-            </div>
-            
-            <div class="heading">
-                <p>Tracking History</p>
-            </div>
-            
-            <div class="content">
-                <ul class="mainlist">
-                    <li>
-                        <p><b>Order Created</b></p>
-                        <p>30 Apr 20, 8:02 am</p>
-                    </li>
-                </ul>
-            </div>
-            
-            <div class="heading">
-                <p>Parcel Information</p>
-            </div>
-            
-            <div class="content">
-                <ul class="mainlist">
-                    <li>
-                        <p><b>Shipper Name</b></p>
-                        <p>Lazada</p>
-                    </li>
-                    
-                    <li>
-                        <p><b>Delivery Type</b></p>
-                        <p>Standard</p>
-                    </li>
-                    
-                    <li>
-                        <p><b>Cash on Delivery</b></p>
-                        <p>None</p>
-                    </li>
-                    
-                    <li>
-                        <p><b>Instructions to Delivery Driver</b></p>
-                        <p>No delivery instructions</p>
-                    </li>
-                </ul>
-            </div> 
+        <div id="orderTracking_content">
+            <div v-for="o in order">
+                <div class="row d-flex justify-content-center">
+                    <h3>Track Your Order</h3>
+                </div>
+                
+                <div class="heading">
+                    <p>Tracking Number</p>
+                </div>
+                
+                <div class="content">
+                    <p>{{o.orderid}}</p>
+                </div>
+                
+                <div class="heading">
+                    <p>Estimated Delivery</p>
+                </div>
+                
+                <div class="content">
+                    <p>12 May 2020 by 10.00pm</p>
+                </div>
+                
+                <div class="heading">
+                    <p>Tracking History</p>
+                </div>
+                
+                <div class="content">
+                    <ul class="mainlist">
+                        <li>
+                            <p><b>Order Created</b></p>
+                            <p>{{o.orderDate}}</p>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="heading">
+                    <p>Parcel Information</p>
+                </div>
+                
+                <div class="content">
+                    <ul class="mainlist">
+                        <li>
+                            <p class="big"><b>Reciever Name</b></p>
+                            <p>{{o.receiverName}}</p>
+                        </li>
+                        
+                        <li>
+                            <p class="big"><b>Reciever Contact Number</b></p>
+                            <p>{{o.receiverContNum}}</p>
+                        </li>
+                        
+                        <li>
+                            <p class="big"><b>Delivery Address</b></p>
+                            <p>{{o.shipAddress}}</p>
+                        </li>
+                        
+                        <li>
+                            <p class="big"><b>Ordered Product</b></p>
+                            <p>{{o.prodName}}</p>
+                        </li>
+
+                        <li>
+                            <p class="big"><b>Ordered Quantity</b></p>
+                            <p>{{o.orderQuant}}</p>
+                        </li>
+
+                        <li>
+                            <p class="big"><b>Total Amount</b></p>
+                            <p>RM {{o.subtotal}}</p>
+                        </li>
+                    </ul>
+                </div> 
+            </div>  
         </div>      
     </div>    
 
@@ -163,7 +175,8 @@
     
 	<!--Firebase Config-->
 	<script src="firebase_script/firebaseConfig.js"></script>
-    <script src="firebase_script/seller.js"></script>
+    <script src="firebase_script/accountControl.js"></script>
+    <script src="firebase_script/orderTracking.js"></script>
 
 </body>
 </html>

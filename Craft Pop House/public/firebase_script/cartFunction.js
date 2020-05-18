@@ -127,24 +127,24 @@ function removeFromDB(remove){
 function checkoutDB(checkout){
 	//Pass prodID, quantity, total price here
 	checkout.addEventListener("click", (e) =>{
-		e.stopPropagation();
-		let pid = e.target.parentElement.parentElement.getAttribute("data-id");
-		//cant get the value of quantity
-		let pName = e.target.parentElement.parentElement.childNodes[1].innerHTML;
-		let imgUrl = e.target.parentElement.parentElement.childNodes[0].childNodes[0].src;
-		let pQuant = parseInt(e.target.parentElement.parentElement.childNodes[3].childNodes[0].value);
-		let total = parseFloat(e.target.parentElement.parentElement.childNodes[4].innerHTML).toFixed(2);
+		if(confirm("Do you want to checkout?")){
+			e.stopPropagation();
+			let pid = e.target.parentElement.parentElement.parentElement.getAttribute("data-id");
+			//cant get the value of quantity
+			let pName = e.target.parentElement.parentElement.parentElement.childNodes[1].innerHTML;
+			let imgUrl = e.target.parentElement.parentElement.parentElement.childNodes[0].childNodes[0].src;
+			let pQuant = parseInt(e.target.parentElement.parentElement.parentElement.childNodes[3].childNodes[0].value);
+			let total = parseFloat(e.target.parentElement.parentElement.parentElement.childNodes[4].innerHTML).toFixed(2);
+			
+			sessionStorage.setItem("cartProdID", pid);
+			sessionStorage.setItem("cartProdQuant", pQuant);
+			sessionStorage.setItem("cartTotal", total);
+			sessionStorage.setItem("cartProdName", pName);
+			sessionStorage.setItem("cartProdImgUrl", imgUrl);
+			sessionStorage.setItem("cartSellerID", sellerID);
 
-		sessionStorage.setItem("cartProdID", pid);
-		sessionStorage.setItem("cartProdQuant", pQuant);
-		sessionStorage.setItem("cartTotal", total);
-		sessionStorage.setItem("cartProdName", pName);
-		sessionStorage.setItem("cartProdImgUrl", imgUrl);
-
-		window.open("checkout.html")
-
-		console.log(pName);
-		console.log(pQuant);
-		console.log(total);
+			window.open("checkout.html")
+		}
+		//console.log(sellerID);
 	});
 }

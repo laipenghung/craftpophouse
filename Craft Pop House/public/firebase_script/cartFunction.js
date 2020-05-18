@@ -64,7 +64,7 @@ function renderCart(doc, userDoc){
 	checkoutImg.height = 35;
 	checkoutImg.width = 35;
 	checkout.appendChild(checkoutImg);
-	checkoutDB(checkout);
+	checkoutDB(checkout, doc.data().userID);
 	pActions.appendChild(remove);
 	pActions.appendChild(checkout);
 	pActions.setAttribute("style", "vertical-align:middle");
@@ -131,7 +131,7 @@ function removeFromDB(remove){
 	});
 }
 
-function checkoutDB(checkout){
+function checkoutDB(checkout, sellerID){
 	//Pass prodID, quantity, total price here
 	checkout.addEventListener("click", (e) =>{
 		if(confirm("Do you want to checkout?")){
@@ -142,7 +142,7 @@ function checkoutDB(checkout){
 			let imgUrl = e.target.parentElement.parentElement.parentElement.childNodes[0].childNodes[0].src;
 			let pQuant = parseInt(e.target.parentElement.parentElement.parentElement.childNodes[3].childNodes[0].value);
 			let total = parseFloat(e.target.parentElement.parentElement.parentElement.childNodes[4].innerHTML).toFixed(2);
-
+			
 			sessionStorage.setItem("cartProdID", pid);
 			sessionStorage.setItem("cartProdQuant", pQuant);
 			sessionStorage.setItem("cartTotal", total);
@@ -151,8 +151,6 @@ function checkoutDB(checkout){
 
 			window.open("checkout.html")
 		}
-		console.log(pName);
-		console.log(pQuant);
-		console.log(total);
+		console.log(sellerID);
 	});
 }

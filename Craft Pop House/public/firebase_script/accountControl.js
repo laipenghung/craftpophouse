@@ -42,9 +42,16 @@ function switchNavBar(navType){
 }
 
 function getUserProfile(){
-	displayName = document.getElementById("displayName");
+	var displayName = document.getElementById("displayName");
+	var avatar = document.getElementById("avatar");
 	displayName.style.color = "white";
 	displayName.innerText = gUser.displayName;
+	if(gUser.photoURL == null){
+		avatar.src = "../image/defaultUser.png";
+	}
+	else{
+		avatar.src = gUser.photoURL;
+	}
 }
 
 //Sign out

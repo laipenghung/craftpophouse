@@ -8,6 +8,10 @@
     
     <!-- Bootstrap -->
     <link href="frameworks/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="frameworks/js/jquery-3.5.0.min.js"></script>
+    
+	<!-- CSS -->
+	<link rel="stylesheet" href="frameworks/css/style.css">
     
 <style>
     .orderDetail_body{
@@ -89,6 +93,9 @@
 </head>
 
 <body class="orderDetail_body">
+    <!-- Nav reuse -->
+    <div id="nav-placeholder"></div>
+    
     <div class="container-fluid">
         <div id="orderDetail_content">
             <div class="row d-flex justify-content-center ">
@@ -117,6 +124,7 @@
                                     <td class="text">{{p.orderQuant}}</td>
                                     <td>
                                         <a href="#" id="link" @click="viewOrder(p.orderid)">
+
                                             <button class="trackButton">
                                                 Track
                                             </button>
@@ -129,7 +137,10 @@
                 </div>
             </div>
         </div>      
-    </div>    
+    </div>
+    
+    <!--Footer reuse-->
+	<div id="footer-placeholder"></div>
 
     <!--vue.js-->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -150,6 +161,7 @@
     
 	<!--Firebase Config-->
 	<script src="firebase_script/firebaseConfig.js"></script>
+    <script src="firebase_script/accountControl.js"></script>
     <script src="firebase_script/order.js"></script>
 
 </body>

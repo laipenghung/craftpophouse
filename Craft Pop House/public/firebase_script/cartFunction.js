@@ -45,22 +45,27 @@ function renderCart(doc, userDoc){
 	let pTotal = document.createElement("td");
 	let pActions = document.createElement("td");
 	let remove = document.createElement("a");
-	let checkout = document.createElement("button");
-	let br = document.createElement("br");
+	let removeImg = document.createElement("img");
+	let checkout = document.createElement("a");
+	let checkoutImg = document.createElement("img");
 	
 	//remove
-	remove.textContent = "Remove";
 	tr.setAttribute("data-id", userDoc.id);
 	remove.setAttribute("href", "#");
-	remove.setAttribute("class", "btn btn-warning btn-block");
+	removeImg.src = "../image/can.png";
+	removeImg.height = 35;
+	removeImg.width = 35;
+	remove.appendChild(removeImg);
 	removeFromDB(remove);
 	
 	//checkout
-	checkout.textContent = "Check Out";
-	checkout.setAttribute("class", "btn btn-danger btn-block");
-	checkoutDB(checkout);
+	checkout.setAttribute("href", "#");
+	checkoutImg.src = "../image/checkout.png";
+	checkoutImg.height = 35;
+	checkoutImg.width = 35;
+	checkout.appendChild(checkoutImg);
+	checkoutDB(checkout, doc.data().userID);
 	pActions.appendChild(remove);
-	pActions.appendChild(br);
 	pActions.appendChild(checkout);
 	pActions.setAttribute("style", "vertical-align:middle");
 	
@@ -114,17 +119,19 @@ function quantChange(pQuantInput){
 
 function removeFromDB(remove){
 	remove.addEventListener("click", (e) =>{
-		e.stopPropagation();
-		let id = e.target.parentElement.parentElement.getAttribute("data-id");
-		let pQuant = parseInt(e.target.parentElement.parentElement.childNodes[3].childNodes[0].value);
-		db.collection("users").doc(gUser.uid).collection("cartItem").doc(id).delete();
-		db.collection("Products").doc(id).update({
-				prod_Quant: firebase.firestore.FieldValue.increment(pQuant)
-		});
+		if(confirm("Are you sure you want to delete this item?")){
+			e.stopPropagation();
+			let id = e.target.parentElement.parentElement.parentElement.getAttribute("data-id");
+			let pQuant = parseInt(e.target.parentElement.parentElement.parentElement.childNodes[3].childNodes[0].value);
+			db.collection("users").doc(gUser.uid).collection("cartItem").doc(id).delete();
+			db.collection("Products").doc(id).update({
+					prod_Quant: firebase.firestore.FieldValue.increment(pQuant)
+			}).then(alert("Item successfully delete"));
+		}
 	});
 }
 
-function checkoutDB(checkout){
+function checkoutDB(checkout, sellerID){
 	//Pass prodID, quantity, total price here
 	checkout.addEventListener("click", (e) =>{
 		if(confirm("Do you want to checkout?")){

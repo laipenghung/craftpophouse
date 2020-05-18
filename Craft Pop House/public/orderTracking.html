@@ -7,6 +7,10 @@
     
     <!-- Bootstrap -->
     <link href="frameworks/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="frameworks/js/jquery-3.5.0.min.js"></script>
+    
+	<!-- CSS -->
+	<link rel="stylesheet" href="frameworks/css/style.css">
     
 <style>
     .orderDetail_body{
@@ -17,6 +21,7 @@
         margin-top: 7%;
         margin-left: auto;
         margin-right: auto;
+        margin-bottom: 2%;
         width: 65%;
         background-color: #eae7dc;
         color: #e85a4f;
@@ -74,11 +79,20 @@
     .mainlist li{
         margin-bottom: 2%;
     }
+    
+    .big{
+        color: black;
+        font-size:120%;
+        font-weight: normal;
+    }
 
 </style>
 </head>
 
 <body class="orderDetail_body">
+    <!-- Nav reuse -->
+    <div id="nav-placeholder"></div>
+    
     <div class="container-fluid">
         <div id="orderTracking_content">
             <div v-for="o in order">
@@ -156,6 +170,9 @@
         </div>      
     </div>    
 
+    <!--Footer reuse-->
+	<div id="footer-placeholder"></div>
+    
     <!--vue.js-->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
@@ -177,6 +194,7 @@
 	<script src="firebase_script/firebaseConfig.js"></script>
     <script src="firebase_script/accountControl.js"></script>
     <script src="firebase_script/orderTracking.js"></script>
+
 
 </body>
 </html>

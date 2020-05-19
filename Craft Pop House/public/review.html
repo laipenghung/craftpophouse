@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>Order Details</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,
+    initial-scale=1.0" />
+    
+    <!-- Bootstrap -->
+    <link href="frameworks/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="frameworks/js/jquery-3.5.0.min.js"></script>
+    
+	<!-- CSS -->
+	<link rel="stylesheet" href="frameworks/css/style.css">
+    
+<style>
+    .test{
+        border: 1px solid black;
+    }
+
+    .prodImg {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 1px solid black;
+    }
+
+    .pageTitle{
+        text-align: center;
+
+    }
+</style>
+</head>
+
+<body class="orderDetail_body">
+    <div id="reviewProd" class="container">
+        <div v-for="">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="pageTitle">Review item</h1>
+                        </div>
+                    </div>
+                    
+                    <div class="row test">
+                        <div class="col-md-3 test d-flex justify-content-center">
+                            <img src="image/diamond.png" class="prodImg" alt="">
+                        </div>
+
+                        <div class="col-md-9 test">
+                            <h2>product name</h2>
+                            <p>product price</p>
+                            <p>product quantity</p>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 d-flex justify-content-center">
+                    <h3>Review</h3>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 d-flex justify-content-center">
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+                        <label class="custom-control-label" for="customRadioInline1">1</label>
+                    </div>
+
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                        <label class="custom-control-label" for="customRadioInline2">2</label>
+                    </div>
+
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRadioInline3" name="customRadioInline1" class="custom-control-input">
+                        <label class="custom-control-label" for="customRadioInline3">3</label>
+                    </div>
+
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRadioInline4" name="customRadioInline1" class="custom-control-input">
+                        <label class="custom-control-label" for="customRadioInline4">4</label>
+                    </div>
+
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRadioInline5" name="customRadioInline1" class="custom-control-input">
+                        <label class="custom-control-label" for="customRadioInline5">5</label>
+                    </div>    
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 d-flex justify-content-center">
+                    <h3>Feedback For Products</h3>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="pDesc" class="col-md-2 col-form-label">Product Feedback</label>
+                <div class="col-md-10">
+                    <textarea class="form-control" rows="5" id="pDesc" placeholder="Enter the Product Feedback"></textarea>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 d-flex justify-content-center">
+                    <button class="button btn-large">
+                        Submit Review
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--Footer reuse-->
+	<div id="footer-placeholder"></div>
+
+    <!--vue.js-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="/__/firebase/7.12.0/firebase-app.js"></script>
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+		 https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="/__/firebase/7.12.0/firebase-analytics.js"></script>
+	<script src="/__/firebase/7.14.0/firebase-auth.js"></script>
+	<script src="/__/firebase/7.14.1/firebase-firestore.js"></script>
+	<!-- Initialize Firebase -->
+	<script src="/__/firebase/init.js"></script>
+    <!-- jQuery – required for Bootstrap's JavaScript plugins) --> 
+    <script src="frameworks/js/jquery.min.js"></script> 
+    <!-- All Bootstrap  plug-ins  file --> 
+    <script src="frameworks/js/bootstrap.min.js"></script>
+    
+	<!--Firebase Config-->
+	<script src="firebase_script/firebaseConfig.js"></script>
+    <script src="firebase_script/accountControl.js"></script>
+    <script src="firebase_script/review.js"></script>
+
+</body>
+</html>

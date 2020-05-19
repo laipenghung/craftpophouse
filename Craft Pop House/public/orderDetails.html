@@ -124,9 +124,14 @@
                                     <td class="text">{{p.orderQuant}}</td>
                                     <td>
                                         <a href="#" id="link" @click="viewOrder(p.orderid)">
-
                                             <button class="trackButton">
                                                 Track
+                                            </button>
+                                        </a>
+
+                                        <a href="#" id="reviewLink" @click="review(p.prodID)">
+                                            <button class="trackButton" data-toggle="modal" data-target="#reviewModel">
+                                                Review
                                             </button>
                                         </a>
                                     </td>
@@ -136,7 +141,7 @@
                     </div>
                 </div>
             </div>
-        </div>      
+        </div>  
     </div>
     
     <!--Footer reuse-->

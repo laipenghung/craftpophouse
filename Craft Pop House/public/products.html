@@ -121,7 +121,7 @@
     </style>
 </head>
 
-<body onload="showAll()">
+<body onload="Onload()">
 	<!--Nav reuse-->
     <div id="nav-placeholder"></div>   
 
@@ -190,7 +190,25 @@
         <!--row 1-->
         <div class="row d-flex justify-content-center">
             <div class="col-lg-10">
+				<div id="searchOnly">
+                    <div v-for = "p in products">
 
+                        <div class="prodCard">
+                            <div class="cardImg-wrapper" @click="detail(p.prod_Id, p.prod_Cat, p.userID)">
+                                <img class="cardImg" :src=p.url>
+                            </div>
+                            <div class="cardDesc" >
+                                <p id="title">{{p.prod_Name}}</p>
+
+                                <p class="price">RM {{p.prod_Price}}</p>
+                            </div>
+							<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, p.userID)" id="btn" data-toggle="modal" data-target="#addToCart">
+								<p>Add to Cart</p>
+							</button>
+                        </div>
+                    </div>
+                </div>
+				
                 <div id="all">
                     <div v-for = "p in products">
 
@@ -362,9 +380,6 @@
 	
 	<!--Footer reuse-->
 	<div id="footer-placeholder"></div>
-
-    <!--vue.js-->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
 	<script src="/__/firebase/7.12.0/firebase-app.js"></script>

@@ -1,6 +1,8 @@
 <script src="https://kit.fontawesome.com/46f7c7318f.js" crossorigin="anonymous"></script>
 
 <header>
+    <!--vue.js-->
+    <script src="frameworks/js/vue.js"></script> 
 	<nav class="navbar fixed-top navbar-expand-lg navbar-light">
 		<a class="navbar-brand" href="index.html"><img src="image/logo.png" width="30" height="30" class="d-inline-block align-top" alt="Logo"></a>
 
@@ -24,7 +26,7 @@
 				</li>
 			</ul>
 
-			<form class="form-inline my-2 my-lg-0">
+			<form class="form-inline my-2 my-lg-0" id="searchForm">
 				<ul class="navbar-nav mr-auto">
 					<div class="nav-item">
 						<a class="nav-link fa fa-shopping-cart fa-2x" href="cart.html" style="font-size:140%;"></a>
@@ -50,9 +52,11 @@
 						</div>
 					</li>
 				</ul>
-				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+				<input class="form-control mr-sm-2" id="searchInput" type="search" placeholder="Search" aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" onclick="search()">Search</button>
 			</form>
+			<script src="firebase_script/products.js"></script>
+			<script src="firebase_script/search.js"></script>
 		</div>
 	</nav>
 </header>

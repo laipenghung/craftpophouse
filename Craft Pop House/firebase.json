@@ -1,6 +1,6 @@
 {
   "hosting": {
-	"site": "craftpophouse",
+    "site": "craftpophouse",
     "public": "public",
     "ignore": [
       "firebase.json",

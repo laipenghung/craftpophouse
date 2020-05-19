@@ -1,0 +1,1 @@
+var prodID = sessionStorage.getItem("reviewProdID");

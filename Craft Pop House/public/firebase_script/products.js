@@ -1,3 +1,54 @@
+var searchOnly = new Vue({
+    el: '#searchOnly',
+    data: {
+      products : []
+    },
+    methods: {
+        detail(id, cat, sellerID){
+            //console.log(id);
+            sessionStorage.setItem("prod_Id", id);
+            sessionStorage.setItem("prod_Cat", cat);
+            sessionStorage.setItem("prod_Seller", sellerID);
+            console.log(sessionStorage);
+            window.open("products-details.html");
+        },
+		addToCart(pid, pName, pPrice, sellerID){
+			//Add to cart
+			if(gUser == null){
+				location.href = "registerDefault.html";
+			}else{
+				db.collection("users").doc(gUser.uid).collection("cartItem").doc(pid).set({
+					prod_ID: pid,
+					prod_name: pName,
+					prod_price: pPrice,
+                    order_quantity: firebase.firestore.FieldValue.increment(1),
+                    sellerID: sellerID
+
+				},{merge: true});
+				
+				db.collection("Products").doc(pid).update({
+					prod_Quant: firebase.firestore.FieldValue.increment(-1)
+				});
+			}
+		}
+    },
+    mounted() {
+		const searchValues = sessionStorage.getItem("searchValues");
+        const ref = firebase.firestore().collection('Products').where("prod_Name", ">=", searchValues).where("prod_Name", "<=", searchValues + "\uf8ff");
+
+        ref.onSnapshot(snapshot =>{
+            //console.log(snapshot);
+        
+            let porductArr = [];
+            snapshot.forEach(doc => {
+                porductArr.push({...doc.data(), id: doc.id})
+            });
+            //console.log(snapshot);
+            this.products = porductArr;
+        });
+    },
+});
+
 var all = new Vue({
     el: '#all',
     data: {
@@ -385,7 +436,48 @@ var weddingOnly = new Vue({
     },
 });
 
+function Onload(){
+	if(sessionStorage.getItem("sequence")==1){
+		filterSearch();
+	}else{
+		showAll();
+	}
+}
+
+
+function filterSearch(){
+	var x = document.getElementById("searchOnly");
+	x.style.display = "block";
+		
+	var x = document.getElementById("all");
+	x.style.display = "none";
+
+    var x = document.getElementById("clothOnly");
+    x.style.display = "none";
+
+    var x = document.getElementById("jewOnly");
+    x.style.display = "none";
+
+    var x = document.getElementById("craftOnly");
+    x.style.display = "none";
+
+    var x = document.getElementById("bedOnly");
+    x.style.display = "none";
+
+    var x = document.getElementById("toyOnly");
+    x.style.display = "none";
+
+    var x = document.getElementById("artOnly");
+    x.style.display = "none";
+
+    var x = document.getElementById("weddingOnly");
+    x.style.display = "none";
+};
+
 function showAll(){
+	var x = document.getElementById("searchOnly");
+    x.style.display = "none";	
+	
     var x = document.getElementById("all");
     x.style.display = "block";
 
@@ -412,6 +504,9 @@ function showAll(){
 };
 
 function filterCloth(){
+	var x = document.getElementById("searchOnly");
+    x.style.display = "none";	
+	
     var x = document.getElementById("all");
     x.style.display = "none";
 
@@ -438,6 +533,9 @@ function filterCloth(){
 };
 
 function filterJew(){
+	var x = document.getElementById("searchOnly");
+    x.style.display = "none";	
+	
     var x = document.getElementById("all");
     x.style.display = "none";
 
@@ -464,6 +562,9 @@ function filterJew(){
 };
 
 function filterCraft(){
+	var x = document.getElementById("searchOnly");
+    x.style.display = "none";	
+	
     var x = document.getElementById("all");
     x.style.display = "none";
 
@@ -490,6 +591,9 @@ function filterCraft(){
 };
 
 function filterBed(){
+	var x = document.getElementById("searchOnly");
+    x.style.display = "none";
+	
     var x = document.getElementById("all");
     x.style.display = "none";
 
@@ -516,6 +620,9 @@ function filterBed(){
 };
 
 function filterToy(){
+	var x = document.getElementById("searchOnly");
+    x.style.display = "none";	
+	
     var x = document.getElementById("all");
     x.style.display = "none";
 
@@ -542,6 +649,9 @@ function filterToy(){
 };
 
 function filterArt(){
+	var x = document.getElementById("searchOnly");
+    x.style.display = "none";
+	
     var x = document.getElementById("all");
     x.style.display = "none";
 
@@ -568,6 +678,9 @@ function filterArt(){
 };
 
 function filterWed(){
+	var x = document.getElementById("searchOnly");
+    x.style.display = "none";
+	
     var x = document.getElementById("all");
     x.style.display = "none";
 

@@ -1,7 +1,7 @@
 //get user id
 var userID = sessionStorage.getItem("uid");
 //console.log(userID);
-var currentProdReview, userProdReview, newProdReview;
+var checkReview, userProdReview, newProdReview;
 
 var content = new Vue({
     el:'#orderDetail_content',
@@ -14,10 +14,23 @@ var content = new Vue({
             sessionStorage.setItem("viewOrderID", oid)
             document.getElementById("link").href = "orderTracking.html";
         },
-        review(pid){
-            console.log(pid);
-            sessionStorage.setItem("reviewProdID", pid)
-            document.getElementById("reviewLink").href = "review.html";
+        review(pid, oid){
+            db.collection("users").doc(userID).collection("orders").doc(oid).get().then(doc => {
+                //console.log(doc.data().prod_Review) 
+                checkReview = doc.data().review
+                console.log(checkReview);
+            }).then(function (){
+                if(checkReview == false){
+                    //console.log(sessionStorage);
+                    sessionStorage.setItem("reviewProdID", pid)
+                    sessionStorage.setItem("reviewOrderID", oid)
+                    window.open("review.html");
+                }
+                else {
+                    alert("You Already Reviewed This Product")
+                }
+            })
+
         }
     },
     mounted() {
@@ -36,8 +49,11 @@ var content = new Vue({
     },
 });
 
-function countReviewAverage(){
-    newProdReview = (currentProdReview + newProdReview) / reviewCount;
+function check(oid){
+    db.collection("users").doc(userID).collection("orders").doc(oid).get().then(doc => {
+        //console.log(doc.data().prod_Review) 
+        checkReview = doc.data().review
+    })
 }
 
 function addReviewCount(){

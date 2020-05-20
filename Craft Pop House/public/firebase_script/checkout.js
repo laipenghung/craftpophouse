@@ -108,7 +108,8 @@ function confirmOrder(){
         prodImgUrl : cartProdImgUrl,
         orderQuant : orderQuant,
         subtotal : subText,
-        seller : cartSellerID
+        seller : cartSellerID,
+        review : false
     }).then(function(x) {
         oID = x.id;;
         console.log(oID);

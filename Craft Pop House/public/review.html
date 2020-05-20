@@ -14,84 +14,116 @@
 	<link rel="stylesheet" href="frameworks/css/style.css">
     
 <style>
-    .test{
+    h1{
+        margin-bottom: 40px;
+        margin-top: 90px;
+    }
+
+    .container {
+        background-color: #f5f5f5;
+    }
+    .prodImg {
+        width: 250px;
+        height: 250px;
         border: 1px solid black;
     }
 
-    .prodImg {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        border: 1px solid black;
+    h2 {
+        margin-top: 10px;
+    }
+
+    .prodInfo p {
+        font-size: 20px;
+        margin-top: 10px;
     }
 
     .pageTitle{
         text-align: center;
 
     }
+
+    h3 {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .rating {
+        font-size: 20px;
+        margin: 10px 20px;
+    }
+
+    .btn {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 </style>
 </head>
 
-<body class="orderDetail_body">
-    <div id="reviewProd" class="container">
-        <div v-for="">
+<body class="review_body">
+    <!--Nav reuse-->
+    <div id="nav-placeholder"></div> 
+
+    <div id="reviewContent_Order" class="container">
+        <div v-for="o in order">
             <div class="row">
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class="pageTitle">Review item</h1>
+                            <h1 class="pageTitle">Review Product</h1>
                         </div>
                     </div>
                     
                     <div class="row test">
                         <div class="col-md-3 test d-flex justify-content-center">
-                            <img src="image/diamond.png" class="prodImg" alt="">
+                            <img :src=o.prodImgUrl class="prodImg" alt="">
                         </div>
 
-                        <div class="col-md-9 test">
-                            <h2>product name</h2>
-                            <p>product price</p>
-                            <p>product quantity</p>
+                        <div class="col-md-9 prodInfo">
+                            <h2>{{o.prodName}}</h2>
+                            <p>Order Date: {{o.orderDate}}</p>
+                            <p>Quantity ordered: {{o.orderQuant}}</p>
                         </div>
                     </div> 
                 </div>
             </div>
 
+            <hr>
             <div class="row">
                 <div class="col-md-12 d-flex justify-content-center">
-                    <h3>Review</h3>
+                    <h3>Product Rating</h3>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-12 d-flex justify-content-center">
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
-                        <label class="custom-control-label" for="customRadioInline1">1</label>
+                    <div class="custom-control custom-radio custom-control-inline rating">
+                        <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input" value="1">
+                        <label class="custom-control-label" for="customRadioInline1"><p>Very Bad</p></label>
                     </div>
 
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-                        <label class="custom-control-label" for="customRadioInline2">2</label>
+                    <div class="custom-control custom-radio custom-control-inline rating">
+                        <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input" value="2">
+                        <label class="custom-control-label" for="customRadioInline2"><p>Bad</p></label>
                     </div>
 
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="customRadioInline3" name="customRadioInline1" class="custom-control-input">
-                        <label class="custom-control-label" for="customRadioInline3">3</label>
+                    <div class="custom-control custom-radio custom-control-inline rating">
+                        <input type="radio" id="customRadioInline3" name="customRadioInline1" class="custom-control-input" value="3">
+                        <label class="custom-control-label" for="customRadioInline3"><p>Neutral</p></label>
                     </div>
 
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="customRadioInline4" name="customRadioInline1" class="custom-control-input">
-                        <label class="custom-control-label" for="customRadioInline4">4</label>
+                    <div class="custom-control custom-radio custom-control-inline rating">
+                        <input type="radio" id="customRadioInline4" name="customRadioInline1" class="custom-control-input" value="4">
+                        <label class="custom-control-label" for="customRadioInline4"><p>Good</p></label>
                     </div>
 
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="customRadioInline5" name="customRadioInline1" class="custom-control-input">
-                        <label class="custom-control-label" for="customRadioInline5">5</label>
+                    <div class="custom-control custom-radio custom-control-inline rating">
+                        <input type="radio" id="customRadioInline5" name="customRadioInline1" class="custom-control-input" value="5">
+                        <label class="custom-control-label" for="customRadioInline5"><p>Execellent</p></label>
                     </div>    
                 </div>
             </div>
 
+            <hr>
             <div class="row">
                 <div class="col-md-12 d-flex justify-content-center">
                     <h3>Feedback For Products</h3>
@@ -101,13 +133,13 @@
             <div class="form-group row">
                 <label for="pDesc" class="col-md-2 col-form-label">Product Feedback</label>
                 <div class="col-md-10">
-                    <textarea class="form-control" rows="5" id="pDesc" placeholder="Enter the Product Feedback"></textarea>
+                    <textarea class="form-control" rows="5" id="pFeedback" placeholder="Tell us more about the product"></textarea>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-12 d-flex justify-content-center">
-                    <button class="button btn-large">
+                    <button type="button" class="btn btn-lg btn-outline-danger" onclick="submitReview()">
                         Submit Review
                     </button>
                 </div>

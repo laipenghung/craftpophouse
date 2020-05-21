@@ -27,6 +27,7 @@ function accountDB(user){
 	db.collection("users").doc(user.uid).set({
 		username:  user.displayName,
 		userID: user.uid,
+		photoURL: user.photoURL
 	})
 }
 

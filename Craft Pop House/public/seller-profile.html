@@ -19,10 +19,9 @@
         margin-top: 80px;
     }
     .profileImg {
-        width: 200px;
-        height: 200px;
+        width: 250px;
+        height: 250px;
         border-radius: 50%;
-        border: 1px solid black;
     }
 
     h1 {
@@ -196,7 +195,7 @@
 </style>
 </head>
 
-<body onload="showAll(); getProdCount(); test();">
+<body onload="seller_showAll(); setSellerProfilePic(); getProdCount();">
     <!-- Nav reuse -->
     <div id="nav-placeholder"></div>
 
@@ -208,7 +207,7 @@
                     <div v-for="s in seller">
                         <div class="row">
                             <div class="col-md-3 d-flex justify-content-center">
-                                <img class="profileImg" src="image/diamond.png" alt="Profile Image" >
+                                <img id="profileIMG" class="profileImg" src="" alt="Profile Image" >
                             </div>
             
                             <div class="col-md-9">
@@ -273,56 +272,56 @@
         <div class="row d-flex justify-content-center">
             <!--All icons taken from https://www.flaticon.com/authors/freepik -->
             <div class="col-auto p-0">
-                <button class="prodCat" onclick="showAll()">
+                <button class="prodCat" onclick="seller_showAll()">
                     <img class="catImage" src="image/all.png" title="" alt="" >
                     <p class="catDesc">All</p>
                 </button>
             </div>  
             
             <div class="col-auto p-0">
-                <button class="prodCat" onclick="filterCloth()">
+                <button class="prodCat" onclick="seller_filterCloth()">
                     <img class="catImage" src="image/shirt.png" title="" alt="" >
                     <p class="catDesc">Clothing &amp; Accessories</p>
                 </button>
             </div>  
 
             <div class="col-auto p-0">
-                <button class="prodCat" onclick="filterJew()">
+                <button class="prodCat" onclick="seller_filterJew()">
                     <img class="catImage" src="image/diamond.png" title="" alt="" >
                     <p class="catDesc">Jewelry</p>
                 </button>
             </div>
 
             <div class="col-auto p-0">
-                <button class="prodCat" onclick="filterCraft()">
+                <button class="prodCat" onclick="seller_filterCraft()">
                     <img class="catImage" src="image/glue.png" title="" alt="" >
                     <p class="catDesc">Craft Supplies</p>
                 </button>
             </div>
 
             <div class="col-auto p-0">
-                <button class="prodCat" onclick="filterBed()">
+                <button class="prodCat" onclick="seller_filterBed()">
                     <img class="catImage" src="image/frame.png" title="" alt="" >
                     <p class="catDesc">Bedding/Room Décor</p>
                 </button>
             </div>
 
             <div class="col-auto p-0">
-                <button class="prodCat" onclick="filterToy()">
+                <button class="prodCat" onclick="seller_filterToy()">
                     <img class="catImage" src="image/toy.png" title="" alt="" >
                     <p class="catDesc">Soft Toys</p>
                 </button>
             </div>  
 
             <div class="col-auto p-0">
-                <button class="prodCat" onclick="filterArt()">
+                <button class="prodCat" onclick="seller_filterArt()">
                     <img class="catImage" src="image/art.png" title="" alt="" >
                     <p class="catDesc">Vintage Arts</p>
                 </button>
             </div>
 
             <div class="col-auto p-0">
-                <button class="prodCat" onclick="filterWed()">
+                <button class="prodCat" onclick="seller_filterWed()">
                     <img class="catImage" src="image/wedding.png" title="" alt="" >
                     <p class="catDesc">Wedding Accessories</p>
                 </button>
@@ -332,7 +331,7 @@
         <div class="row d-flex justify-content-center">
             <div class="col-md-10">
                 <p id="catInfo">Showing All Products</p>
-                <div id="all">
+                <div id="seller_all">
                     <div v-for = "p in products">
 
                         <div class="prodCard">
@@ -351,7 +350,7 @@
                     </div>
                 </div>
 
-                <div id="clothOnly">
+                <div id="seller_clothOnly">
                     <div v-for = "p in clothOnly">
 
                         <div class="prodCard">
@@ -370,7 +369,7 @@
                     </div>
                 </div>
 
-                <div id="craftOnly">
+                <div id="seller_craftOnly">
                     <div v-for = "p in craftOnly">
 
                         <div class="prodCard">
@@ -389,7 +388,7 @@
                     </div>
                 </div>
 
-                <div id="jewOnly">
+                <div id="seller_jewOnly">
                     <div v-for = "p in jewOnly">
 
                         <div class="prodCard">
@@ -408,7 +407,7 @@
                     </div>
                 </div>
 
-                <div id="bedOnly">
+                <div id="seller_bedOnly">
                     <div v-for = "p in bedOnly">
 
                         <div class="prodCard">
@@ -427,7 +426,7 @@
                     </div>
                 </div>
 
-                <div id="toyOnly">
+                <div id="seller_toyOnly">
                     <div v-for = "p in toyOnly">
 
                         <div class="prodCard">
@@ -446,7 +445,7 @@
                     </div>
                 </div>
 
-                <div id="artOnly">
+                <div id="seller_artOnly">
                     <div v-for = "p in artOnly">
 
                         <div class="prodCard">
@@ -465,7 +464,7 @@
                     </div>
                 </div>
 
-                <div id="weddingOnly">
+                <div id="seller_weddingOnly">
                     <div v-for = "p in weddingOnly">
                         <div class="prodCard">
                             <div class="cardImg-wrapper" @click="detail(p.prod_Id, p.prod_Cat)">
@@ -482,7 +481,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="modal fade" id="addToCart" tabIndex="-1" role="dialog" aria-labelledby="addToCartTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content text-center">

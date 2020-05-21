@@ -54,7 +54,7 @@ var clothOnly = new Vue({
         clothOnly : []
     },
     methods: {
-        detail(id, cat){
+        detail(id, cat, sellerID){
             sessionStorage.setItem("prod_Id", id);
             sessionStorage.setItem("prod_Cat", cat);
             sessionStorage.setItem("prod_Seller", sellerID);
@@ -103,7 +103,7 @@ var jewOnly = new Vue({
         jewOnly : []
     },
     methods: {
-        detail(id, cat){
+        detail(id, cat, sellerID){
             sessionStorage.setItem("prod_Id", id);
             sessionStorage.setItem("prod_Cat", cat);
             sessionStorage.setItem("prod_Seller", sellerID);
@@ -151,7 +151,7 @@ var craftOnly = new Vue({
         craftOnly : []
     },
     methods: {
-        detail(id, cat){
+        detail(id, cat, sellerID){
             sessionStorage.setItem("prod_Id", id);
             sessionStorage.setItem("prod_Cat", cat);
             sessionStorage.setItem("prod_Seller", sellerID);
@@ -199,7 +199,7 @@ var bedOnly = new Vue({
         bedOnly : []
     },
     methods: {
-        detail(id, cat){
+        detail(id, cat, sellerID){
             sessionStorage.setItem("prod_Id", id);
             sessionStorage.setItem("prod_Cat", cat);
             sessionStorage.setItem("prod_Seller", sellerID);
@@ -247,7 +247,7 @@ var toyOnly = new Vue({
         toyOnly : []
     },
     methods: {
-        detail(id, cat){
+        detail(id, cat, sellerID){
             sessionStorage.setItem("prod_Id", id);
             sessionStorage.setItem("prod_Cat", cat);
             sessionStorage.setItem("prod_Seller", sellerID);
@@ -295,7 +295,7 @@ var artOnly = new Vue({
         artOnly : []
     },
     methods: {
-        detail(id, cat){
+        detail(id, cat, sellerID){
             sessionStorage.setItem("prod_Id", id);
             sessionStorage.setItem("prod_Cat", cat);
             sessionStorage.setItem("prod_Seller", sellerID);
@@ -343,7 +343,7 @@ var weddingOnly = new Vue({
         weddingOnly : []
     },
     methods: {
-        detail(id, cat){
+        detail(id, cat, sellerID){
             sessionStorage.setItem("prod_Id", id);
             sessionStorage.setItem("prod_Cat", cat);
             sessionStorage.setItem("prod_Seller", sellerID);

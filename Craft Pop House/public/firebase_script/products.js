@@ -34,7 +34,7 @@ var searchOnly = new Vue({
     },
     mounted() {
 		const searchValues = sessionStorage.getItem("searchValues");
-        const ref = firebase.firestore().collection('Products').where("prod_Name", ">=", searchValues).where("prod_Name", "<=", searchValues + "\uf8ff");
+        const ref = firebase.firestore().collection('Products').where("SEO", "array-contains-any", [searchValues]);
 
         ref.onSnapshot(snapshot =>{
             //console.log(snapshot);
@@ -45,6 +45,7 @@ var searchOnly = new Vue({
             });
             //console.log(snapshot);
             this.products = porductArr;
+			sessionStorage.setItem("searchValues", "");
         });
     },
 });
@@ -439,6 +440,7 @@ var weddingOnly = new Vue({
 function Onload(){
 	if(sessionStorage.getItem("sequence")==1){
 		filterSearch();
+		sessionStorage.setItem("sequence", 0);
 	}else{
 		showAll();
 	}

@@ -189,10 +189,20 @@
 		#Ques {
 			height: 400px;
 			overflow-y: scroll;
+			border: 1px solid black;
 		}
 
-		#Ques p{
-			font-size: 40px;
+		.test {
+			border: 1px solid black;
+		}
+
+		.quesImg {
+			height: 40xp;
+			width: 40px;
+		}
+
+		.quesLine {
+			width: 60%;
 		}
 
 	</style>
@@ -290,21 +300,49 @@
                         </div>
                         
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                            <div class="row justify-content-center">
-                                <div id="Ques" class="col-md-10 questionAnswer">
-									<p>adasdasdasdasd</p>
-									<p>adasdasdasdasd</p>
-									<p>adasdasdasdasd</p>
+                            <div id="Ques" class="row justify-content-center questionAnswer">
+								<div class="col-md-12">
+									<div class="row justify-content-center">
+										<h3>Question about this product ()</h3>
+									</div>
+									<!--question-->
+									<div v-for="">
+										<div class="row justify-content-center">
+											<div class="col-md-1 test">
+												<img class="quesImg" src="image/box.png">
+											</div>
+		
+											<div class="col-md-5 test">
+												<p>asdkljas laksdjlkasd alksjdlkasd jalskdjaisdjkl  jsdfauh;ern adadaisjfkoihe</p>
+											</div>
+										</div>
+										<hr class="quesLine">
+									</div> 
 
-									<p>adasdasdasdasd</p>
-									<p>adasdasdasdasd</p>
-									<p>adasdasdasdasd</p>
-									<p>adasdasdasdasd</p>
-									<p>adasdasdasdasd</p>
-									<p>adasdasdasdasd</p>
-									<p>adasdasdasdasd</p>
+									<div v-for="">
+										<div class="row justify-content-center">
+											<div class="col-md-1 test">
+												<img class="quesImg" src="image/box.png">
+											</div>
+		
+											<div class="col-md-5 test">
+												<p>asdkljas laksdjlkasd alksjdlkasd jalskdjaisdjkl  jsdfauh;ern adadaisjfkoihe</p>
+											</div>
+										</div>
+									</div>
 
-                                </div>
+									<div v-for="">
+										<div class="row justify-content-center">
+											<div class="col-md-1 test">
+												<img class="quesImg" src="image/box.png">
+											</div>
+		
+											<div class="col-md-5 test">
+												<p>asdkljas laksdjlkasd alksjdlkasd jalskdjaisdjkl  jsdfauh;ern adadaisjfkoihe</p>
+											</div>
+										</div>
+									</div>
+								</div>
                             </div>
                         </div>
                         

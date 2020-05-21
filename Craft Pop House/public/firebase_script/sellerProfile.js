@@ -10,15 +10,16 @@ function getProdCount(){
     });
 };
 
-function test(){
-    var productCount;
-    db.collection("orders").where("seller","==",sellerProfileID).get().then(function(querySnapshot) {      
-        console.log(querySnapshot.size); 
-        //productCount = querySnapshot.size;
+function setSellerProfilePic() {
+    var URL
+    db.collection("users").doc(sellerProfileID).get().then(doc => {      
+        URL = doc.data().photoURL
     }).then(function(){
-        //document.getElementById("test").innerHTML = productCount;
+        console.log("pic url", URL)
+        //document.getElementById("prodCount").innerHTML = productCount;
+        document.getElementById("profileIMG").src = URL;
     });
-};
+}
 
 //load profile
 var seller = new Vue({
@@ -95,7 +96,7 @@ var topProducts = new Vue({
 
 //load products sell by seller
 var all = new Vue({
-    el: '#all',
+    el: '#seller_all',
     data: {
       products : []
     },
@@ -145,7 +146,7 @@ var all = new Vue({
 });
 
 var clothOnly = new Vue({
-    el: '#clothOnly',
+    el: '#seller_clothOnly',
     data: {
         clothOnly : []
     },
@@ -194,7 +195,7 @@ var clothOnly = new Vue({
 });
 
 var jewOnly = new Vue({
-    el: '#jewOnly',
+    el: '#seller_jewOnly',
     data: {
         jewOnly : []
     },
@@ -242,7 +243,7 @@ var jewOnly = new Vue({
 });
 
 var craftOnly = new Vue({
-    el: '#craftOnly',
+    el: '#seller_craftOnly',
     data: {
         craftOnly : []
     },
@@ -290,7 +291,7 @@ var craftOnly = new Vue({
 });
 
 var bedOnly = new Vue({
-    el: '#bedOnly',
+    el: '#seller_bedOnly',
     data: {
         bedOnly : []
     },
@@ -338,7 +339,7 @@ var bedOnly = new Vue({
 });
 
 var toyOnly = new Vue({
-    el: '#toyOnly',
+    el: '#seller_toyOnly',
     data: {
         toyOnly : []
     },
@@ -386,7 +387,7 @@ var toyOnly = new Vue({
 });
 
 var artOnly = new Vue({
-    el: '#artOnly',
+    el: '#seller_artOnly',
     data: {
         artOnly : []
     },
@@ -434,7 +435,7 @@ var artOnly = new Vue({
 });
 
 var weddingOnly = new Vue({
-    el: '#weddingOnly',
+    el: '#seller_weddingOnly',
     data: {
         weddingOnly : []
     },
@@ -480,3 +481,33 @@ var weddingOnly = new Vue({
         });
     },
 });
+
+//filter
+//function seller_showAll(){
+    //document.getElementById("catInfo").innerHTML = "Showing All Products";
+
+    //var x = document.getElementById("seller_all");
+    //x.style.display = "block";
+
+    //var x = document.getElementById("seller_clothOnly");
+    //x.style.display = "none";
+
+    //var x = document.getElementById("seller_jewOnly");
+    //x.style.display = "none";
+
+    //var x = document.getElementById("seller_craftOnly");
+    //x.style.display = "none";
+
+    //var x = document.getElementById("seller_bedOnly");
+    //x.style.display = "none";
+
+    //var x = document.getElementById("seller_toyOnly");
+    //x.style.display = "none";
+
+    //var x = document.getElementById("seller_artOnly");
+    //x.style.display = "none";
+
+    //var x = document.getElementById("seller_weddingOnly");
+    //x.style.display = "none";
+//};
+

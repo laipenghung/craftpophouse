@@ -2,6 +2,8 @@ var prodID = sessionStorage.getItem("prod_Id");
 var prodCat = sessionStorage.getItem("prod_Cat");
 var prodSeller = sessionStorage.getItem("prod_Seller");
 
+window.onload = setSellerProfilePic();
+
 function getProdCount(){
     var productCount;
     db.collection("Products").where("userID","==",prodSeller).get().then(function(querySnapshot) {      
@@ -9,6 +11,16 @@ function getProdCount(){
         productCount = querySnapshot.size;
     }).then(function(){
         document.getElementById("prodCount").innerHTML = productCount;
+    });
+}
+
+function setSellerProfilePic() {
+    var URL
+    db.collection("users").doc(prodSeller).get().then(doc => {      
+        URL = doc.data().photoURL
+    }).then(function(){
+        //console.log("pic url", URL)
+        document.getElementById("profileIMG").src = URL;
     });
 }
 
@@ -82,7 +94,8 @@ var seller = new Vue({
 
 function visitSellerProfile(){
     sessionStorage.setItem("sellerProfile", prodSeller);
-    window.open("seller-profile.html");
+    document.getElementById("sellerProfileLink").href = "seller-profile.html";
+    //window.open("seller-profile.html");
     //console.log(sessionStorage);
 }
 

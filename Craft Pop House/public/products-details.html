@@ -145,7 +145,7 @@
 			width: 190px;
 			height: 190px;
 			border-radius: 50%;
-			border: 1px solid black;
+			/*border: 1px solid black;*/
 		}
 
 		h1 {
@@ -184,6 +184,15 @@
 
 		.infoTab {
 			margin: 50px 0;
+		}
+
+		#Ques {
+			height: 400px;
+			overflow-y: scroll;
+		}
+
+		#Ques p{
+			font-size: 40px;
 		}
 
 	</style>
@@ -248,7 +257,7 @@
 										<!--Profile Info-->
 										<div class="row">
 											<div class="col-md-3 d-flex justify-content-center">
-												<img class="profileImg" src="image/diamond.png" alt="Profile Image" >
+												<img id="profileIMG" class="profileImg" src="" alt="Profile Image" >
 											</div>
 							
 											<div class="col-md-9">
@@ -267,8 +276,12 @@
 													</tr>
 												</table>
 
-												<button type="button" onclick="visitSellerProfile()" class="btn btn-lg btn-light btn-outline-dark btn-seller">Visit Seller Profile</button>
-												<button type="button" class="btn btn-lg btn-light btn-outline-dark btn-seller">Message Seller</button>	
+												<a  id="sellerProfileLink" href="#">
+													<button type="button" onclick="visitSellerProfile()" class="btn btn-lg btn-light btn-outline-dark btn-seller">
+														Visit Seller Profile
+													</button>	
+												</a>
+												<!--<button type="button" class="btn btn-lg btn-light btn-outline-dark btn-seller">Message Seller</button>-->	
 											</div>
 										</div>
 									</div>
@@ -278,8 +291,19 @@
                         
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                             <div class="row justify-content-center">
-                                <div id="review" class="col-md-10 test">
-									
+                                <div id="Ques" class="col-md-10 questionAnswer">
+									<p>adasdasdasdasd</p>
+									<p>adasdasdasdasd</p>
+									<p>adasdasdasdasd</p>
+
+									<p>adasdasdasdasd</p>
+									<p>adasdasdasdasd</p>
+									<p>adasdasdasdasd</p>
+									<p>adasdasdasdasd</p>
+									<p>adasdasdasdasd</p>
+									<p>adasdasdasdasd</p>
+									<p>adasdasdasdasd</p>
+
                                 </div>
                             </div>
                         </div>

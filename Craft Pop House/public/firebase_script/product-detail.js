@@ -1,8 +1,9 @@
 var prodID = sessionStorage.getItem("prod_Id");
 var prodCat = sessionStorage.getItem("prod_Cat");
 var prodSeller = sessionStorage.getItem("prod_Seller");
+var dateString;
 
-window.onload = setSellerProfilePic();
+//window.onload = setSellerProfilePic();
 
 function getProdCount(){
     var productCount;
@@ -17,10 +18,10 @@ function getProdCount(){
 function setSellerProfilePic() {
     var URL
     db.collection("users").doc(prodSeller).get().then(doc => {      
-        URL = doc.data().photoURL
+        profilePicURL = doc.data().photoURL
     }).then(function(){
-        //console.log("pic url", URL)
-        document.getElementById("profileIMG").src = URL;
+        console.log("pic url", profilePicURL)
+        document.getElementById("profileImage").src = profilePicURL;
     });
 }
 
@@ -120,3 +121,4 @@ var related = new Vue({
         });
     },
 });
+

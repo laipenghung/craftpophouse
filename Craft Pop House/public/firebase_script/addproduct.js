@@ -47,7 +47,7 @@ function addProductDB(){
 				  prod_Id : pId
 			  })
 			});
-			alert("Succuessful Added");
+			alert("Successfully Added");
 			document.getElementById("addProductForm").reset();
 		});
 	});

@@ -192,23 +192,32 @@
 			border: 1px solid black;
 		}
 
-		.test {
-			border: 1px solid black;
-		}
-
 		.quesImg {
-			height: 40xp;
-			width: 40px;
+			height: 30xp;
+			width: 30px;
 		}
 
 		.quesLine {
 			width: 60%;
 		}
 
+		.quesTitle {
+			margin: 20px 0;
+		}
+
+		.table-responsive td{
+			font-size: 18px;
+			font-weight: normal;
+		}
+
+		.tableQuesCol {
+			margin: 10px 30px;
+		}
+
 	</style>
 </head>
 
-<body class="prod_body" onload="getProdCount()">
+<body class="prod_body" onload="getProdCount(); setSellerProfilePic();">
 	<!--Nav reuse-->
     <div id="nav-placeholder"></div>   
 	<div class="container-fluid" style="margin-top: 6%;">
@@ -267,7 +276,7 @@
 										<!--Profile Info-->
 										<div class="row">
 											<div class="col-md-3 d-flex justify-content-center">
-												<img id="profileIMG" class="profileImg" src="" alt="Profile Image" >
+												<img id="profileImage" src="#" class="profileImg" alt="Profile Image" >
 											</div>
 							
 											<div class="col-md-9">
@@ -302,44 +311,43 @@
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                             <div id="Ques" class="row justify-content-center questionAnswer">
 								<div class="col-md-12">
-									<div class="row justify-content-center">
+									<div class="row justify-content-center quesTitle">
 										<h3>Question about this product ()</h3>
 									</div>
 									<!--question-->
 									<div v-for="">
-										<div class="row justify-content-center">
-											<div class="col-md-1 test">
-												<img class="quesImg" src="image/box.png">
-											</div>
-		
-											<div class="col-md-5 test">
-												<p>asdkljas laksdjlkasd alksjdlkasd jalskdjaisdjkl  jsdfauh;ern adadaisjfkoihe</p>
+										<div class="row d-flex justify-content-center quesContent">
+											<div class="col-md-6">
+												<table class="table-responsive d-flex justify-content-center">
+													<tr>
+														<td class="tableQuesCol">
+															<img class="quesImg" src="image/question.png">
+														</td>
+														<td class="tableQuesCol">
+															asdkljas laksdjlkasd alksjdlkasd jalskdjaisdjkl  jsdfauh;ern adadaisjfkoihe
+														</td>
+													</tr>
+												</table>
 											</div>
 										</div>
-										<hr class="quesLine">
 									</div> 
 
-									<div v-for="">
-										<div class="row justify-content-center">
-											<div class="col-md-1 test">
-												<img class="quesImg" src="image/box.png">
-											</div>
-		
-											<div class="col-md-5 test">
-												<p>asdkljas laksdjlkasd alksjdlkasd jalskdjaisdjkl  jsdfauh;ern adadaisjfkoihe</p>
+									<hr class="quesLine">
+									<!--post-->
+									<form id="quesForm">
+										<div class="row d-flex justify-content-center">
+											<div class="col-md-6 d-flex justify-content-left">
+												<input type="text" class="form-control" id="pQues" placeholder="Post Product Question Here">
 											</div>
 										</div>
-									</div>
+									</form>
+									
 
-									<div v-for="">
-										<div class="row justify-content-center">
-											<div class="col-md-1 test">
-												<img class="quesImg" src="image/box.png">
-											</div>
-		
-											<div class="col-md-5 test">
-												<p>asdkljas laksdjlkasd alksjdlkasd jalskdjaisdjkl  jsdfauh;ern adadaisjfkoihe</p>
-											</div>
+									<div class="row d-flex justify-content-center">
+										<div class="col-md-6 d-flex justify-content-center">
+											<button type="button" onclick="addProdQuestion()" class="btn btn-sm btn-light btn-outline-dark btn-seller">
+												Post Question
+											</button>	
 										</div>
 									</div>
 								</div>

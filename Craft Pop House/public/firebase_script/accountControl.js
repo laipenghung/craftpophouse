@@ -24,7 +24,7 @@ firebase.auth().onAuthStateChanged(function(user){
 //Add user info to database
 function accountDB(user){
 	sessionStorage.setItem("uid", user.uid);
-	db.collection("users").doc(user.uid).set({
+	db.collection("users").doc(user.uid).add({
 		username:  user.displayName,
 		userID: user.uid,
 		photoURL: user.photoURL

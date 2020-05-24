@@ -2,6 +2,7 @@ var editForm = document.querySelector("#editAccountForm");
 var newUsername = editForm.eUsername;
 var newPhone = editForm.ePhone;
 var newImage = editForm.eImage;
+var newSub = editForm.subscribe;
 
 window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
 	"recaptcha-container2",
@@ -32,6 +33,11 @@ function editProfile(user){
 				updateName(user);
 				if(newImage.files.length != 0){
 					uploadAvatar(user);
+				}
+				if(newSub.checked == true){
+					updateSubscriber(user, true);
+				}else{
+					updateSubscriber(user, false);
 				}
 				validatePhone(user);
 			}else{
@@ -92,5 +98,11 @@ function updatePhone(user,phoneCredential){
 	user.updatePhoneNumber(phoneCredential).then(function(){
 		alert("Update success");
 		location.reload();
+	});
+}
+
+function updateSubscriber(user, sub){
+	db.collection("users").doc(user.uid).update({
+		subscribe: sub
 	});
 }

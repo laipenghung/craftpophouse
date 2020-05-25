@@ -186,12 +186,6 @@
 			margin: 50px 0;
 		}
 
-		#Ques {
-			height: 400px;
-			overflow-y: scroll;
-			border: 1px solid black;
-		}
-
 		.quesImg {
 			height: 30xp;
 			width: 30px;
@@ -205,19 +199,38 @@
 			margin: 20px 0;
 		}
 
-		.table-responsive td{
-			font-size: 18px;
+		.ques{
+			font-size: 19px;
 			font-weight: normal;
+			margin-top: 15px;
 		}
 
 		.tableQuesCol {
 			margin: 10px 30px;
 		}
 
+		.btn-postQues {
+			margin-top: 20px;
+		}
+
+		.deliveryImg {
+			height: 120px;
+			width: 120px;
+		}
+
+		.deliveryTitle{
+			font-size: 35px;
+			font-weight: bold;
+			margin: 20px 0;
+		}
+
+		.deliveryDesc{
+			font-size: 19px;
+		}
 	</style>
 </head>
 
-<body class="prod_body" onload="getProdCount(); setSellerProfilePic();">
+<body class="prod_body" onload="getProdCount(); setSellerProfilePic(); getQuestionCount();">
 	<!--Nav reuse-->
     <div id="nav-placeholder"></div>   
 	<div class="container-fluid" style="margin-top: 6%;">
@@ -312,22 +325,17 @@
                             <div id="Ques" class="row justify-content-center questionAnswer">
 								<div class="col-md-12">
 									<div class="row justify-content-center quesTitle">
-										<h3>Question about this product ()</h3>
+										<h3>Question about this product (<span id="quesCount"></span>)</h3>
 									</div>
 									<!--question-->
-									<div v-for="">
+									<div v-for="q in questions">
 										<div class="row d-flex justify-content-center quesContent">
-											<div class="col-md-6">
-												<table class="table-responsive d-flex justify-content-center">
-													<tr>
-														<td class="tableQuesCol">
-															<img class="quesImg" src="image/question.png">
-														</td>
-														<td class="tableQuesCol">
-															asdkljas laksdjlkasd alksjdlkasd jalskdjaisdjkl  jsdfauh;ern adadaisjfkoihe
-														</td>
-													</tr>
-												</table>
+											<div class="col-md-1 d-flex justify-content-center">
+												<img class="quesImg" src="image/question.png">
+											</div>
+
+											<div class="col-md-5 d-flex justify-content-left">
+												<p class="ques">{{q.prodQues}}</p>
 											</div>
 										</div>
 									</div> 
@@ -345,7 +353,7 @@
 
 									<div class="row d-flex justify-content-center">
 										<div class="col-md-6 d-flex justify-content-center">
-											<button type="button" onclick="addProdQuestion()" class="btn btn-sm btn-light btn-outline-dark btn-seller">
+											<button type="button" onclick="addProdQuestion()" class="btn btn-sm btn-light btn-outline-dark btn-postQues">
 												Post Question
 											</button>	
 										</div>
@@ -356,7 +364,26 @@
                         
                         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                             <div class="row justify-content-center">
-                                <div class="col-md-9 test">
+                                <div class="col-md-6">
+									<div class="row">
+										<div class="col-md-12 d-flex justify-content-center">
+											<p class="deliveryTitle">Standard Delivery</p>
+										</div>
+									</div>
+									<div class="row d-flex justify-content-center">
+										<div class="col-md-2 d-flex justify-content-center">
+											<img class="deliveryImg" src="image/sold.png">
+										</div>
+
+										<div class="col-md-10 d-flex justify-content-center">
+											<p class="deliveryDesc">
+												Lucky for you, we're kind of a big deal. Thanks to the massive number of packages we ship, 
+												our partner courier has agreed to provide dbrand customers with unprecedented discounts. It doesn't matter 
+												where you are or what you order – you'll never pay more than RM 9.50. Give us your money before 
+												we change our mind.
+											</p>
+										</div>
+									</div>
                                 </div>
                             </div>
                         </div>

@@ -16,12 +16,22 @@ function getProdCount(){
 }
 
 function setSellerProfilePic() {
-    var URL
+    //var URL
     db.collection("users").doc(prodSeller).get().then(doc => {      
         profilePicURL = doc.data().photoURL
     }).then(function(){
-        console.log("pic url", profilePicURL)
+        //console.log("pic url", profilePicURL)
         document.getElementById("profileImage").src = profilePicURL;
+    });
+}
+
+function getQuestionCount() {
+    var QuesCount
+    db.collection("question").where("prodID","==",prodID).get().then(function(querySnapshot) {      
+        console.log(querySnapshot.size); 
+        QuesCount = querySnapshot.size;
+    }).then(function(){
+        document.getElementById("quesCount").innerHTML = QuesCount;
     });
 }
 
@@ -118,6 +128,43 @@ var related = new Vue({
             });
             //console.log(snapshot);
             this.products = porductArr;
+        });
+    },
+});
+
+//add question to database
+function addProdQuestion() {
+    var getTime = new Date();
+    dateString = getTime.toLocaleDateString();
+
+    db.collection("question").add({
+        prodID: prodID,
+        prodQues: document.getElementById("pQues").value,
+        postDate: firebase.firestore.FieldValue.serverTimestamp() 
+    }).then(function(){
+        alert("Question Successfully Posted");
+		document.getElementById("quesForm").reset();
+    });
+}
+
+//load question
+var related = new Vue({
+    el: '#Ques',
+    data: {
+      questions : []
+    },
+    mounted() {
+        const ref = firebase.firestore().collection('question').where("prodID", "==", prodID).orderBy("postDate", "desc");
+
+        ref.onSnapshot(snapshot =>{
+            //console.log(snapshot);
+        
+            let questionArr = [];
+            snapshot.forEach(doc => {
+                questionArr.push({...doc.data(), id: doc.id})
+            });
+            //console.log(snapshot);
+            this.questions = questionArr;
         });
     },
 });

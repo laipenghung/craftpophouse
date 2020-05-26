@@ -1,7 +1,9 @@
 var searchOnly = new Vue({
     el: '#searchOnly',
     data: {
-      products : []
+      products : [],
+	  perPage: 2,
+	  currPage: 1
     },
     methods: {
         detail(id, cat, sellerID){
@@ -34,7 +36,8 @@ var searchOnly = new Vue({
     },
     mounted() {
 		const searchValues = sessionStorage.getItem("searchValues");
-        const ref = firebase.firestore().collection('Products').where("SEO", "array-contains-any", [searchValues]);
+		console.log(searchValues);
+        const ref = firebase.firestore().collection('Products').where("SEO", "array-contains-any", [searchValues.toLowerCase()]);
 
         ref.onSnapshot(snapshot =>{
             //console.log(snapshot);
@@ -48,12 +51,17 @@ var searchOnly = new Vue({
 			sessionStorage.setItem("searchValues", "");
         });
     },
+	computed:{
+		rows(){return ((this.products.length-1)/3)}
+	}
 });
 
 var all = new Vue({
     el: '#all',
     data: {
-      products : []
+      products : [],
+	  perPage: 2,
+	  currPage: 1
     },
     methods: {
         detail(id, cat, sellerID){
@@ -98,12 +106,17 @@ var all = new Vue({
             this.products = porductArr;
         });
     },
+	computed:{
+		rows(){return ((this.products.length-1)/3)}
+	}
 });
 
 var clothOnly = new Vue({
     el: '#clothOnly',
     data: {
-        clothOnly : []
+        clothOnly : [],
+		perPage: 2,
+		currPage: 1
     },
     methods: {
         detail(id, cat, sellerID){
@@ -147,12 +160,17 @@ var clothOnly = new Vue({
             this.clothOnly = porductArr;
         });
     },
+	computed:{
+		rows(){return ((this.clothOnly.length-1)/3)}
+	}
 });
 
 var jewOnly = new Vue({
     el: '#jewOnly',
     data: {
-        jewOnly : []
+        jewOnly : [],
+		perPage: 2,
+		currPage: 1
     },
     methods: {
         detail(id, cat, sellerID){
@@ -195,12 +213,17 @@ var jewOnly = new Vue({
             this.jewOnly = porductArr;
         });
     },
+	computed:{
+		rows(){return ((this.jewOnly.length-1)/3)}
+	}
 });
 
 var craftOnly = new Vue({
     el: '#craftOnly',
     data: {
-        craftOnly : []
+        craftOnly : [],
+		perPage: 2,
+		currPage: 1
     },
     methods: {
         detail(id, cat, sellerID){
@@ -243,12 +266,17 @@ var craftOnly = new Vue({
             this.craftOnly = porductArr;
         });
     },
+	computed:{
+		rows(){return ((this.craftOnly.length-1)/3)}
+	}
 });
 
 var bedOnly = new Vue({
     el: '#bedOnly',
     data: {
-        bedOnly : []
+        bedOnly : [],
+		perPage: 2,
+		currPage: 1
     },
     methods: {
         detail(id, cat, sellerID){
@@ -291,12 +319,17 @@ var bedOnly = new Vue({
             this.bedOnly = porductArr;
         });
     },
+	computed:{
+		rows(){return ((this.bedOnly.length-1)/3)}
+	}
 });
 
 var toyOnly = new Vue({
     el: '#toyOnly',
     data: {
-        toyOnly : []
+        toyOnly : [],
+		perPage: 2,
+		currPage: 1
     },
     methods: {
         detail(id, cat, sellerID){
@@ -339,12 +372,17 @@ var toyOnly = new Vue({
             this.toyOnly = porductArr;
         });
     },
+	computed:{
+		rows(){return ((this.toyOnly.length-1)/3)}
+	}
 });
 
 var artOnly = new Vue({
     el: '#artOnly',
     data: {
-        artOnly : []
+        artOnly : [],
+		perPage: 2,
+		currPage: 1
     },
     methods: {
         detail(id, cat, sellerID){
@@ -387,12 +425,17 @@ var artOnly = new Vue({
             this.artOnly = porductArr;
         });
     },
+	computed:{
+		rows(){return ((this.artOnly.length-1)/3)}
+	}
 });
 
 var weddingOnly = new Vue({
     el: '#weddingOnly',
     data: {
-        weddingOnly : []
+        weddingOnly : [],
+		perPage: 2,
+		currPage: 1
     },
     methods: {
         detail(id, cat, sellerID){
@@ -435,6 +478,9 @@ var weddingOnly = new Vue({
             this.weddingOnly = porductArr;
         });
     },
+	computed:{
+		rows(){return ((this.weddingOnly.length-1)/3)}
+	}
 });
 
 function Onload(){

@@ -114,8 +114,31 @@ function visitSellerProfile(){
 var related = new Vue({
     el: '#related',
     data: {
-      products : []
+      products : [],
+	  perPage: 2,
+	  currPage: 1
     },
+	methods:{
+		addToCart(pid, pName, pPrice, sellerID){
+			//Add to cart
+			if(gUser == null){
+				location.href = "registerDefault.html";
+			}else{
+				db.collection("users").doc(gUser.uid).collection("cartItem").doc(pid).set({
+					prod_ID: pid,
+					prod_name: pName,
+					prod_price: pPrice,
+                    order_quantity: firebase.firestore.FieldValue.increment(1),
+                    sellerID: sellerID
+
+				},{merge: true});
+				
+				db.collection("Products").doc(pid).update({
+					prod_Quant: firebase.firestore.FieldValue.increment(-1)
+				});
+			}
+		}
+	},
     mounted() {
         const ref = firebase.firestore().collection('Products').where("prod_Cat", "==", prodCat).limit(5);
 
@@ -130,6 +153,9 @@ var related = new Vue({
             this.products = porductArr;
         });
     },
+	computed:{
+		rows(){return ((this.products.length-1)/3)}
+	}
 });
 
 //add question to database

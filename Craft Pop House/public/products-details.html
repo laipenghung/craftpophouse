@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Product</title>
     <meta charset="utf-8" />
@@ -10,6 +10,16 @@
 	<script src="frameworks/js/jquery-3.5.0.min.js"></script>
      <!-- CSS -->
 	<link rel="stylesheet" href="frameworks/css/style.css">
+	
+	<!-- Load required Bootstrap and BootstrapVue CSS -->
+	<link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
+	<!-- Load polyfills to support older browsers -->
+	<script src="//polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver" crossorigin="anonymous"></script>
+	<!-- Load Vue followed by BootstrapVue -->
+	<script src="frameworks/js/vue.js"></script> 
+	<script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
+	<!-- Load the following for BootstrapVueIcons support -->
+	<script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
 	<style>
 		#content {
 			margin-top: 6%;
@@ -397,22 +407,28 @@
     
             <div class="row d-flex justify-content-center">
                 <div class="col-lg-10">
-                    <div id="related">
-                        <div v-for = "p in products">
-                            <div class="prodCard" @click="detail(p.prod_Id)">
-                                <div class="cardImg-wrapper">
-                                    <img class="cardImg" :src=p.url>
-                                </div>
-                                <div class="cardDesc" >
-                                    <p id="title">{{p.prod_Name}}</p>
-    
-                                    <p>{{p.prod_Price}}</p>
-                                    <button href="#" id="btn">
-                                        <a href="http://steamcommunity.com/id/kalatehpengsatu/"><p>Add to Cart</p></a>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                    <div id="related" :per-page="perPage" :current-page="currPage">
+						<div class="row justify-content-center">
+							<div class="m-2" v-for = "(p, index) in products.slice(10*(currPage-1),10*(currPage))" :key="index">
+								<div class="prodCard" @click="detail(p.prod_Id)">
+									<div class="cardImg-wrapper">
+										<img class="cardImg" :src=p.url>
+									</div>
+									<div class="cardDesc" >
+										<p id="title">{{p.prod_Name}}</p>
+		
+										<p>{{p.prod_Price}}</p>
+										<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, p.userID)" id="btn" data-toggle="modal" data-target="#addToCart">
+											<p>Add to Cart</p>
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="row justify-content-center mb-5">
+							<b-pagination v-model="currPage" :total-rows="rows" :per-page="perPage" aria-controls="related"></b-pagination>
+						</div>
                     </div>
                 </div>
             </div>
@@ -433,9 +449,7 @@
 	
   	<!--Footer reuse-->
 	<div id="footer-placeholder"></div>
-     <!--vue.js-->
-     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
+	
      <!-- The core Firebase JS SDK is always required and must be listed first -->
      <script src="/__/firebase/7.12.0/firebase-app.js"></script>
      <!-- TODO: Add SDKs for Firebase products that you want to use

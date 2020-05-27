@@ -1,5 +1,3 @@
-var sellerProfileID = sessionStorage.getItem("sellerProfile");
-
 // load top selling products
 var topProducts = new Vue({
     el: '#hotSelling',

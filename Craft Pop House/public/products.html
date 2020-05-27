@@ -13,7 +13,16 @@
 	<link rel="stylesheet" href="frameworks/css/style.css">
     <link href="owlCarousel/dist/assets/owl.carousel.css" rel="stylesheet" text="text/css"/>
     <link href="owlCarousel/dist/assets/owl.theme.default.min.css" rel="stylesheet" text="text/css"/>
-   
+	
+	<!-- Load required Bootstrap and BootstrapVue CSS -->
+	<link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
+	<!-- Load polyfills to support older browsers -->
+	<script src="//polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver" crossorigin="anonymous"></script>
+	<!-- Load Vue followed by BootstrapVue -->
+	<script src="frameworks/js/vue.js"></script> 
+	<script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
+	<!-- Load the following for BootstrapVueIcons support -->
+	<script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
     <style>
         body{    
             background: #272727;
@@ -121,9 +130,9 @@
     </style>
 </head>
 
-<body onload="showAll()">
+<body onload="Onload()">
 	<!--Nav reuse-->
-    <div id="nav-placeholder"></div>   
+    <div id="nav-placeholder"></div>
 
     <div class="container-fluid" style="margin-top: 5%; margin-bottom: 1%;">
         <div class="row d-flex justify-content-center">
@@ -190,156 +199,220 @@
         <!--row 1-->
         <div class="row d-flex justify-content-center">
             <div class="col-lg-10">
+				<div id="searchOnly" :per-page="perPage" :current-page="currPage">
+					<div class="row justify-content-center">
+						<div class="m-2" v-for = "(p, index) in products.slice(10*(currPage-1),10*(currPage))" :key="index">
+							<div class="prodCard">
+								<div class="cardImg-wrapper" @click="detail(p.prod_Id, p.prod_Cat, p.userID)">
+									<img class="cardImg" :src=p.url>
+								</div>
+								<div class="cardDesc" >
+									<p id="title">{{p.prod_Name}}</p>
 
-                <div id="all">
-                    <div v-for = "p in products">
+									<p class="price">RM {{p.prod_Price}}</p>
+								</div>
+								<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, p.userID)" id="btn" data-toggle="modal" data-target="#addToCart">
+									<p>Add to Cart</p>
+								</button>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row justify-content-center">
+						<b-pagination v-model="currPage" :total-rows="rows" :per-page="perPage" aria-controls="searchOnly"></b-pagination>
+					</div>
+                </div>
+				
+                <div id="all" :per-page="perPage" :current-page="currPage">
+					<div class="row justify-content-center">
+						<div class="m-2" v-for = "(p, index) in products.slice(10*(currPage-1),10*(currPage))" :key="index">
+							<div class="prodCard">
+								<div class="cardImg-wrapper" @click="detail(p.prod_Id, p.prod_Cat, p.userID)">
+									<img class="cardImg" :src=p.url>
+								</div>
+								<div class="cardDesc" >
+									<p id="title">{{p.prod_Name}}</p>
 
-                        <div class="prodCard">
-                            <div class="cardImg-wrapper" @click="detail(p.prod_Id, p.prod_Cat, p.userID)">
-                                <img class="cardImg" :src=p.url>
-                            </div>
-                            <div class="cardDesc" >
-                                <p id="title">{{p.prod_Name}}</p>
+									<p class="price">RM {{p.prod_Price}}</p>
+								</div>
+								<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, p.userID)" id="btn" data-toggle="modal" data-target="#addToCart">
+									<p>Add to Cart</p>
+								</button>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row justify-content-center">
+						<b-pagination v-model="currPage" :total-rows="rows" :per-page="perPage" aria-controls="all"></b-pagination>
+					</div>
+                </div>
+			
+                <div id="clothOnly" :per-page="perPage" :current-page="currPage">
+					<div class="row justify-content-center">
+						<div class="m-2" v-for = "(p, index) in clothOnly.slice(10*(currPage-1),10*(currPage))" :key="index">
+							<div class="prodCard">
+								<div class="cardImg-wrapper" @click="detail(p.prod_Id, p.prod_Cat, p.userID)">
+									<img class="cardImg" :src=p.url />
+								</div>
+								<div class="cardDesc" >
+									<p id="title">{{p.prod_Name}}</p>
 
-                                <p class="price">RM {{p.prod_Price}}</p>
-                            </div>
-							<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, p.userID)" id="btn" data-toggle="modal" data-target="#addToCart">
-								<p>Add to Cart</p>
-							</button>
-                        </div>
-                    </div>
+									<p class="price">RM {{p.prod_Price}}</p>
+								</div>
+								<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, p.userID)" id="btn" data-toggle="modal" data-target="#addToCart">
+									<p>Add to Cart</p>
+								</button>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row justify-content-center">
+						<b-pagination v-model="currPage" :total-rows="rows" :per-page="perPage" aria-controls="clothOnly"></b-pagination>
+					</div>
                 </div>
 
-                <div id="clothOnly">
-                    <div v-for = "p in clothOnly">
+                <div id="craftOnly" :per-page="perPage" :current-page="currPage">
+					<div class="row justify-content-center">
+						<div class="m-2" v-for = "(p, index) in craftOnly.slice(10*(currPage-1),10*(currPage))" :key="index">
+							<div class="prodCard">
+								<div class="cardImg-wrapper" @click="detail(p.prod_Id, p.prod_Cat, p.userID)">
+									<img class="cardImg" :src=p.url />
+								</div>
+								<div class="cardDesc" >
+									<p id="title">{{p.prod_Name}}</p>
 
-                        <div class="prodCard">
-                            <div class="cardImg-wrapper" @click="detail(p.prod_Id, p.prod_Cat, p.userID)">
-                                <img class="cardImg" :src=p.url />
-                            </div>
-                            <div class="cardDesc" >
-                                <p id="title">{{p.prod_Name}}</p>
-
-                                <p class="price">RM {{p.prod_Price}}</p>
-                            </div>
-							<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, p.userID)" id="btn" data-toggle="modal" data-target="#addToCart">
-								<p>Add to Cart</p>
-							</button>
-                        </div>
-                    </div>
+									<p class="price">RM {{p.prod_Price}}</p>
+								</div>
+								<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, p.userID)" id="btn" data-toggle="modal" data-target="#addToCart">
+									<p>Add to Cart</p>
+								</button>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row justify-content-center">
+						<b-pagination v-model="currPage" :total-rows="rows" :per-page="perPage" aria-controls="craftOnly"></b-pagination>
+					</div>
                 </div>
 
-                <div id="craftOnly">
-                    <div v-for = "p in craftOnly">
+                <div id="jewOnly" :per-page="perPage" :current-page="currPage">
+					<div class="row justify-content-center">
+						<div class="m-2" v-for = "(p, index) in jewOnly.slice(10*(currPage-1),10*(currPage))" :key="index">
+							<div class="prodCard">
+								<div class="cardImg-wrapper" @click="detail(p.prod_Id, p.prod_Cat, p.userID)">
+									<img class="cardImg" :src=p.url />
+								</div>
+								<div class="cardDesc" >
+									<p id="title">{{p.prod_Name}}</p>
 
-                        <div class="prodCard">
-                            <div class="cardImg-wrapper" @click="detail(p.prod_Id, p.prod_Cat, p.userID)">
-                                <img class="cardImg" :src=p.url />
-                            </div>
-                            <div class="cardDesc" >
-                                <p id="title">{{p.prod_Name}}</p>
-
-                                <p class="price">RM {{p.prod_Price}}</p>
-                            </div>
-							<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, p.userID)" id="btn" data-toggle="modal" data-target="#addToCart">
-								<p>Add to Cart</p>
-							</button>
-                        </div>
-                    </div>
+									<p class="price">RM {{p.prod_Price}}</p>
+								</div>
+								<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, p.userID)" id="btn" data-toggle="modal" data-target="#addToCart">
+									<p>Add to Cart</p>
+								</button>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row justify-content-center">
+						<b-pagination v-model="currPage" :total-rows="rows" :per-page="perPage" aria-controls="jewOnly"></b-pagination>
+					</div>
                 </div>
 
-                <div id="jewOnly">
-                    <div v-for = "p in jewOnly">
+                <div id="bedOnly" :per-page="perPage" :current-page="currPage">
+					<div class="row justify-content-center">
+						<div class="m-2" v-for = "(p, index) in bedOnly.slice(10*(currPage-1),10*(currPage))" :key="index">
+							<div class="prodCard">
+								<div class="cardImg-wrapper" @click="detail(p.prod_Id, p.prod_Cat, p.userID)">
+									<img class="cardImg" :src=p.url />
+								</div>
+								<div class="cardDesc" >
+									<p id="title">{{p.prod_Name}}</p>
 
-                        <div class="prodCard">
-                            <div class="cardImg-wrapper" @click="detail(p.prod_Id, p.prod_Cat, p.userID)">
-                                <img class="cardImg" :src=p.url />
-                            </div>
-                            <div class="cardDesc" >
-                                <p id="title">{{p.prod_Name}}</p>
-
-                                <p class="price">RM {{p.prod_Price}}</p>
-                            </div>
-							<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, p.userID)" id="btn" data-toggle="modal" data-target="#addToCart">
-								<p>Add to Cart</p>
-							</button>
-                        </div>
-                    </div>
+									<p class="price">RM {{p.prod_Price}}</p>
+								</div>
+								<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, p.userID)" id="btn" data-toggle="modal" data-target="#addToCart">
+									<p>Add to Cart</p>
+								</button>
+							</div>
+						</div>
+					</div>	
+						
+					<div class="row justify-content-center">
+						<b-pagination v-model="currPage" :total-rows="rows" :per-page="perPage" aria-controls="bedOnly"></b-pagination>
+					</div>
                 </div>
 
-                <div id="bedOnly">
-                    <div v-for = "p in bedOnly">
+                <div id="toyOnly" :per-page="perPage" :current-page="currPage">
+					<div class="row justify-content-center">
+						<div class="m-2" v-for = "(p, index) in toyOnly.slice(10*(currPage-1),10*(currPage))" :key="index">
+							<div class="prodCard">
+								<div class="cardImg-wrapper" @click="detail(p.prod_Id, p.prod_Cat, p.userID)">
+									<img class="cardImg" :src=p.url />
+								</div>
+								<div class="cardDesc" >
+									<p id="title">{{p.prod_Name}}</p>
 
-                        <div class="prodCard">
-                            <div class="cardImg-wrapper" @click="detail(p.prod_Id, p.prod_Cat, p.userID)">
-                                <img class="cardImg" :src=p.url />
-                            </div>
-                            <div class="cardDesc" >
-                                <p id="title">{{p.prod_Name}}</p>
-
-                                <p class="price">RM {{p.prod_Price}}</p>
-                            </div>
-							<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, p.userID)" id="btn" data-toggle="modal" data-target="#addToCart">
-								<p>Add to Cart</p>
-							</button>
-                        </div>
-                    </div>
+									<p class="price">RM {{p.prod_Price}}</p>
+								</div>
+								<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, p.userID)" id="btn" data-toggle="modal" data-target="#addToCart">
+									<p>Add to Cart</p>
+								</button>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row justify-content-center">
+						<b-pagination v-model="currPage" :total-rows="rows" :per-page="perPage" aria-controls="toyOnly"></b-pagination>
+					</div>
                 </div>
 
-                <div id="toyOnly">
-                    <div v-for = "p in toyOnly">
+                <div id="artOnly" :per-page="perPage" :current-page="currPage">
+					<div class="row justify-content-center">
+						<div class="m-2" v-for = "(p, index) in artOnly.slice(10*(currPage-1),10*(currPage))" :key="index">
+							<div class="prodCard">
+								<div class="cardImg-wrapper" @click="detail(p.prod_Id, p.prod_Cat, p.userID)">
+									<img class="cardImg" :src=p.url />
+								</div>
+								<div class="cardDesc" >
+									<p id="title">{{p.prod_Name}}</p>
 
-                        <div class="prodCard">
-                            <div class="cardImg-wrapper" @click="detail(p.prod_Id, p.prod_Cat, p.userID)">
-                                <img class="cardImg" :src=p.url />
-                            </div>
-                            <div class="cardDesc" >
-                                <p id="title">{{p.prod_Name}}</p>
-
-                                <p class="price">RM {{p.prod_Price}}</p>
-                            </div>
-							<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, p.userID)" id="btn" data-toggle="modal" data-target="#addToCart">
-								<p>Add to Cart</p>
-							</button>
-                        </div>
-                    </div>
+									<p class="price">RM {{p.prod_Price}}</p>
+								</div>
+								<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, p.userID)" id="btn" data-toggle="modal" data-target="#addToCart">
+									<p>Add to Cart</p>
+								</button>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row justify-content-center">
+						<b-pagination v-model="currPage" :total-rows="rows" :per-page="perPage" aria-controls="artOnly"></b-pagination>
+					</div>
                 </div>
 
-                <div id="artOnly">
-                    <div v-for = "p in artOnly">
+                <div id="weddingOnly" :per-page="perPage" :current-page="currPage">
+					<div class="row justify-content-center">
+						<div class="m-2" v-for = "(p, index) in weddingOnly.slice(10*(currPage-1),10*(currPage))" :key="index">
+						  <div class="prodCard">
+								<div class="cardImg-wrapper" @click="detail(p.prod_Id, p.prod_Cat, p.userID)">
+									<img class="cardImg" :src=p.url />
+								</div>
+								<div class="cardDesc" >
+									<p id="title">{{p.prod_Name}}</p>
 
-                        <div class="prodCard">
-                            <div class="cardImg-wrapper" @click="detail(p.prod_Id, p.prod_Cat, p.userID)">
-                                <img class="cardImg" :src=p.url />
-                            </div>
-                            <div class="cardDesc" >
-                                <p id="title">{{p.prod_Name}}</p>
-
-                                <p class="price">RM {{p.prod_Price}}</p>
-                            </div>
-							<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, p.userID)" id="btn" data-toggle="modal" data-target="#addToCart">
-								<p>Add to Cart</p>
-							</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="weddingOnly">
-                    <div v-for = "p in weddingOnly">
-                      <div class="prodCard">
-                            <div class="cardImg-wrapper" @click="detail(p.prod_Id, p.prod_Cat, p.userID)">
-                                <img class="cardImg" :src=p.url />
-                            </div>
-                            <div class="cardDesc" >
-                                <p id="title">{{p.prod_Name}}</p>
-
-                                <p class="price">RM {{p.prod_Price}}</p>
-                            </div>
-							<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, p.userID)" id="btn" data-toggle="modal" data-target="#addToCart">
-								<p>Add to Cart</p>
-							</button>
-                        </div>
-                    </div>
+									<p class="price">RM {{p.prod_Price}}</p>
+								</div>
+								<button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, p.userID)" id="btn" data-toggle="modal" data-target="#addToCart">
+									<p>Add to Cart</p>
+								</button>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row justify-content-center">
+						<b-pagination v-model="currPage" :total-rows="rows" :per-page="perPage" aria-controls="weddingOnly"></b-pagination>
+					</div>
                 </div>
 				
 				<div class="modal fade" id="addToCart" tabIndex="-1" role="dialog" aria-labelledby="addToCartTitle" aria-hidden="true">
@@ -357,14 +430,11 @@
             </div>
         </div>
     </div>
-    
+
     <br>
 	
 	<!--Footer reuse-->
 	<div id="footer-placeholder"></div>
-
-    <!--vue.js-->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
 	<script src="/__/firebase/7.12.0/firebase-app.js"></script>
@@ -381,11 +451,11 @@
     <script src="frameworks/js/bootstrap.min.js"></script>
 	<!--AngularJS-->
     <script src="frameworks/js/angular.min.js"></script>
-    
+	
 	<!--Firebase Config-->
 	<script src="firebase_script/firebaseConfig.js"></script>
 	<script src="firebase_script/accountControl.js"></script>
-    <script src="firebase_script/products.js"></script>
+	<script src="firebase_script/products.js"></script>
 	<script src="firebase_script/cartFunction.js"></script>
     
     <script src="owlCarousel/dist/owl.carousel.js" type="text/javascript"></script>
@@ -415,5 +485,13 @@
         })
     </script>
 
+    <!-- Live Chat Script-->
+    <script type='text/javascript'>
+        (function() {
+        var s = document.createElement('script');s.type='text/javascript';s.async=true;s.id='lsInitScript';
+        s.src='https://livesupporti.com/Scripts/clientAsync.js?acc=588b01fb-9e03-49a5-9685-22ed5e61e7e8&skin=Air';
+        var scr=document.getElementsByTagName('script')[0];scr.parentNode.appendChild(s, scr);
+        })();
+    </script>
 </body>
 </html>

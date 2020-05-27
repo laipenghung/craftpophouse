@@ -1,4 +1,6 @@
 <header>
+    <!--vue.js-->
+    <script src="frameworks/js/vue.js"></script> 
 	<nav class="navbar fixed-top navbar-expand-lg navbar-light">
 		<a class="navbar-brand" href="index.html"><img src="image/logo.png" width="30" height="30" class="d-inline-block align-top" alt="Logo"></a>
 
@@ -22,7 +24,7 @@
 				</li>
 			</ul>
 
-			<form class="form-inline my-2 my-lg-0">
+			<form class="form-inline my-2 my-lg-0" id="searchForm">
 				<ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <img src="image/profile.png" id="profile_icon" width="25" height="25" alt="profile icon">
@@ -37,10 +39,11 @@
 					</li>
                     
                     <li class="nav-item">
-						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+						<button class="btn btn-outline-success my-2 my-sm-0" onclick="search()">Search</button>
 					</li>
 				</ul>
 			</form>
+			<script src="firebase_script/search.js"></script>
 		</div>
 	</nav>
 </header>

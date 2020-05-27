@@ -312,35 +312,44 @@
     
     
 	<!-- Footer reuse -->
-  <div id="footer-placeholder"></div>
+    <div id="footer-placeholder"></div>
 
-  <!--vue.js-->
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--vue.js-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   
-  <!-- Include the PayPal JavaScript SDK -->
-  <script src="https://www.paypal.com/sdk/js?client-id=AXZ2brcl8qa8KxhmXWCFPHMAQz6wBHkG6gGOnpYjTL00qFcumUi8j49uAkxZvT3z7_3e0dh6pGtzMiS9&currency=MYR"></script>
+    <!-- Include the PayPal JavaScript SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=AXZ2brcl8qa8KxhmXWCFPHMAQz6wBHkG6gGOnpYjTL00qFcumUi8j49uAkxZvT3z7_3e0dh6pGtzMiS9&currency=MYR"></script>
 	
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
 	<script src="/__/firebase/7.12.0/firebase-app.js"></script>
 	<!-- TODO: Add SDKs for Firebase products that you want to use
 		 https://firebase.google.com/docs/web/setup#available-libraries -->
 	<script src="/__/firebase/7.12.0/firebase-analytics.js"></script>
 	<script src="/__/firebase/7.14.0/firebase-auth.js"></script>
-  <script src="/__/firebase/7.14.1/firebase-firestore.js"></script>
-  <script src="/__/firebase/7.14.2/firebase-storage.js"></script>
-  <script src="/__/firebase/7.14.2/firebase-database.js"></script>
+    <script src="/__/firebase/7.14.1/firebase-firestore.js"></script>
+    <script src="/__/firebase/7.14.2/firebase-storage.js"></script>
+    <script src="/__/firebase/7.14.2/firebase-database.js"></script>
 	<!-- Initialize Firebase -->
 	<script src="/__/firebase/init.js"></script>
-  <!-- jQuery – required for Bootstrap's JavaScript plugins) --> 
-  <script src="frameworks/js/jquery.min.js"></script> 
-  <!-- All Bootstrap  plug-ins  file --> 
-  <script src="frameworks/js/bootstrap.min.js"></script>
+    <!-- jQuery – required for Bootstrap's JavaScript plugins) --> 
+    <script src="frameworks/js/jquery.min.js"></script> 
+    <!-- All Bootstrap  plug-ins  file --> 
+    <script src="frameworks/js/bootstrap.min.js"></script>
 	<!--AngularJS-->
-  <script src="frameworks/js/angular.min.js"></script>
+    <script src="frameworks/js/angular.min.js"></script>
     
 	<!--Firebase Config-->
 	<script src="firebase_script/firebaseConfig.js"></script>
 	<script src="firebase_script/accountControl.js"></script>
-  <script src="firebase_script/checkout.js"></script>
+    <script src="firebase_script/checkout.js"></script>
+    
+    <!-- Live Chat Script-->
+    <script type='text/javascript'>
+        (function() {
+        var s = document.createElement('script');s.type='text/javascript';s.async=true;s.id='lsInitScript';
+        s.src='https://livesupporti.com/Scripts/clientAsync.js?acc=588b01fb-9e03-49a5-9685-22ed5e61e7e8&skin=Air';
+        var scr=document.getElementsByTagName('script')[0];scr.parentNode.appendChild(s, scr);
+        })();
+    </script>
 </body>
 </html>

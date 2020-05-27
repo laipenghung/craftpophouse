@@ -9,10 +9,7 @@
 	<script src="frameworks/js/jquery-3.5.0.min.js"></script>
     
     <!-- CSS -->
-	<link rel="stylesheet" href="frameworks/css/style.css">
-<<<<<<< Updated upstream
-=======
-    
+	<link rel="stylesheet" href="frameworks/css/style.css">  
     <!-- Load required Bootstrap and BootstrapVue CSS -->
 	<link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
 	<!-- Load polyfills to support older browsers -->
@@ -21,6 +18,7 @@
 	<script src="frameworks/js/vue.js"></script> 
 	<script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
 	<!-- Load the following for BootstrapVueIcons support -->
+
     <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
     
     <style>
@@ -98,7 +96,10 @@
             font-size: 120%;
         }
     </style>
->>>>>>> Stashed changes
+
+
+	<script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
+
 </head>
 
 <body class="index_body" data-hijacking="on" data-animation="scaleDown">
@@ -141,22 +142,24 @@
         <div>
             <h2>Weekly Special</h2>
             
-            <table id="weekSpecialTable" align="center">
-                <tr>
-                    <td><img src="image/products/p1.jpg" class="specialProduct" alt="productImg"></td>
-                    <td><img src="image/products/p2.jpg" class="specialProduct" alt="productImg"></td>
-                    <td><img src="image/products/p3.jpg" class="specialProduct" alt="productImg"></td>
-                    <td><img src="image/products/p4.jpg" class="specialProduct" alt="productImg"></td>
-                </tr>
-                
-                <tr>
-                    <td><img src="image/products/p5.jpg" class="specialProduct" alt="productImg"></td>
-                    <td><img src="image/products/p6.jpg" class="specialProduct" alt="productImg"></td>
-                    <td><img src="image/products/p7.jpg" class="specialProduct" alt="productImg"></td>
-                    <td><img src="image/products/p8.jpg" class="specialProduct" alt="productImg"></td>
-                </tr>
-                
-            </table>
+            <!--Hot selling item-->
+            <div id="hotSelling">
+                <div v-for="p in products">
+                    <div class="prodCard">
+                        <div class="cardImg-wrapper" @click="detail(p.prod_Id, p.prod_Cat)">
+                            <img class="cardImg" :src=p.url>
+                        </div>
+                        <div class="cardDesc" >
+                            <p id="title">{{p.prod_Name}}</p>
+
+                            <p class="price">RM {{p.prod_Price}}</p>
+                        </div>
+                        <button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, 1)" id="btn" data-toggle="modal" data-target="#addToCart">
+                            <p>Add to Cart</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -239,5 +242,15 @@
 	<!--Firebase Config-->
 	<script src="firebase_script/firebaseConfig.js"></script>
 	<script src="firebase_script/accountControl.js"></script>
+    <script src="firebase_script/indexImage.js"></script>
+    
+    <!-- Live Chat Script-->
+    <script type='text/javascript'>
+        (function() {
+        var s = document.createElement('script');s.type='text/javascript';s.async=true;s.id='lsInitScript';
+        s.src='https://livesupporti.com/Scripts/clientAsync.js?acc=588b01fb-9e03-49a5-9685-22ed5e61e7e8&skin=Air';
+        var scr=document.getElementsByTagName('script')[0];scr.parentNode.appendChild(s, scr);
+        })();
+    </script>
 </body>
 </html>

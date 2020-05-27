@@ -24,7 +24,7 @@
     <style>
         /*product card*/
         .prodCard{
-            width: 280px;  
+            width: 250px;  
             height: auto;
             text-align: center;
             display: block;
@@ -47,7 +47,7 @@
 
         .cardImg {
             transition: 0.6s;
-            height: 240px;
+            height: 180px;
         }
 
         .cardImg:hover {
@@ -68,32 +68,15 @@
             font-size: 15px;
         }
         
-        #btn {
-            border: none;
-            outline: 0;
-            padding: 5px;
-            color: white;
-            background-color: #000;
-            text-align: center;
-            cursor: pointer;
-            width: 100%;
-            font-size: 15px;
-        }
-        
-        #btn a {
-            text-decoration: none;
-            color: white;
-        }
-
-        #btn p {
-            margin: auto;
-            padding: 2% 0%;
-            font-weight: bold;
-            font-size: 18px;
-        }
-
         .price {
             font-size: 120%;
+        }
+        
+        #hotSelling{
+            width: 70%;
+            margin-left: auto;
+            margin-right: 10%;
+            margin-right: 9%;
         }
     </style>
 
@@ -149,14 +132,11 @@
                         <div class="cardImg-wrapper" @click="detail(p.prod_Id, p.prod_Cat)">
                             <img class="cardImg" :src=p.url>
                         </div>
-                        <div class="cardDesc" >
+                        <div class="cardDesc" style="color:black;">
                             <p id="title">{{p.prod_Name}}</p>
 
                             <p class="price">RM {{p.prod_Price}}</p>
                         </div>
-                        <button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, 1)" id="btn" data-toggle="modal" data-target="#addToCart">
-                            <p>Add to Cart</p>
-                        </button>
                     </div>
                 </div>
             </div>

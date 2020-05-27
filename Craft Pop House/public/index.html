@@ -59,50 +59,27 @@
     </section>
 
     <section class="cd-section">
-        <!--Hot selling item-->
-        <div class="row d-flex justify-content-center row2">
-            <div class="col-md-10">
-                <div id="hotSelling">
-                    <div v-for="p in products">
-                        <div class="prodCard">
-                            <div class="cardImg-wrapper" @click="detail(p.prod_Id, p.prod_Cat)">
-                                <img class="cardImg" :src=p.url>
-                            </div>
-                            <div class="cardDesc" >
-                                <p id="title">{{p.prod_Name}}</p>
-
-                                <p class="price">RM {{p.prod_Price}}</p>
-                            </div>
-                            <button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, 1)" id="btn" data-toggle="modal" data-target="#addToCart">
-                                <p>Add to Cart</p>
-                            </button>
+        <div>
+            <h2>Weekly Special</h2>
+            
+            <!--Hot selling item-->
+            <div id="hotSelling">
+                <div v-for="p in products">
+                    <div class="prodCard">
+                        <div class="cardImg-wrapper" @click="detail(p.prod_Id, p.prod_Cat)">
+                            <img class="cardImg" :src=p.url>
                         </div>
+                        <div class="cardDesc" >
+                            <p id="title">{{p.prod_Name}}</p>
+
+                            <p class="price">RM {{p.prod_Price}}</p>
+                        </div>
+                        <button @click="addToCart(p.prod_Id, p.prod_Name, p.prod_Price, 1)" id="btn" data-toggle="modal" data-target="#addToCart">
+                            <p>Add to Cart</p>
+                        </button>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <div>
-            <h2>Weekly Special</h2>
-                
-            
-            
-            <table id="weekSpecialTable" align="center">    
-                <tr>
-                    <td><img src="image/products/p1.jpg" class="specialProduct" alt="productImg"></td>
-                    <td><img src="image/products/p2.jpg" class="specialProduct" alt="productImg"></td>
-                    <td><img src="image/products/p3.jpg" class="specialProduct" alt="productImg"></td>
-                    <td><img src="image/products/p4.jpg" class="specialProduct" alt="productImg"></td>
-                </tr>
-                
-                <tr>
-                    <td><img src="image/products/p5.jpg" class="specialProduct" alt="productImg"></td>
-                    <td><img src="image/products/p6.jpg" class="specialProduct" alt="productImg"></td>
-                    <td><img src="image/products/p7.jpg" class="specialProduct" alt="productImg"></td>
-                    <td><img src="image/products/p8.jpg" class="specialProduct" alt="productImg"></td>
-                </tr>
-                
-            </table>
         </div>
     </section>
 
@@ -185,8 +162,7 @@
 	<!--Firebase Config-->
 	<script src="firebase_script/firebaseConfig.js"></script>
 	<script src="firebase_script/accountControl.js"></script>
-    <script src="firebase_script/sellerProfile.js"></script>
-    <script src="scripts/filterCat.js"></script>
+    <script src="firebase_script/indexImage.js"></script>
     
     <!-- Live Chat Script-->
     <script type='text/javascript'>

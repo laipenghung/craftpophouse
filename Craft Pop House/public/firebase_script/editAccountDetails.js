@@ -18,6 +18,12 @@ firebase.auth().onAuthStateChanged(function(user){
 	if(user != null){
 		newUsername.value = user.displayName;
 		newPhone.value = user.phoneNumber;
+		getSubscriber(user).then(function(result){
+			console.log(result);
+			if(result == true){
+				document.getElementById("subscribe").checked = true;
+			}
+		});
 		editProfile(user);
 	}
 	else{
@@ -98,6 +104,12 @@ function updatePhone(user,phoneCredential){
 	user.updatePhoneNumber(phoneCredential).then(function(){
 		alert("Update success");
 		location.reload();
+	});
+}
+
+function getSubscriber(user){
+	return db.collection("users").doc(user.uid).get().then(function(doc){
+		return doc.data().subscribe;
 	});
 }
 

@@ -53,6 +53,7 @@ function renderCart(doc, userDoc){
 	tr.setAttribute("data-id", userDoc.id);
 	remove.setAttribute("href", "#");
 	removeImg.src = "../image/can.png";
+	removeImg.setAttribute("title", "Remove");
 	removeImg.height = 35;
 	removeImg.width = 35;
 	remove.appendChild(removeImg);
@@ -61,6 +62,7 @@ function renderCart(doc, userDoc){
 	//checkout
 	checkout.setAttribute("href", "#");
 	checkoutImg.src = "../image/checkout.png";
+	checkoutImg.setAttribute("title", "Checkout");
 	checkoutImg.height = 35;
 	checkoutImg.width = 35;
 	checkout.appendChild(checkoutImg);

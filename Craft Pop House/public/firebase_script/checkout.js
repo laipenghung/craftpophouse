@@ -161,6 +161,10 @@ paypal.Buttons({
         return actions.order.create({
             purchase_units: [{
                 amount: {
+                    // value is currenty set to 0.1 for debug purpose
+                    // to get the total price for the ordered products dynamically, change 0.1 to "subTotalFoat"
+                    // make the payment using sandbox paypal account provided below
+                    // Email:sb-dxzc01595809@personal.example.com   Password:x8TNs_12
                     value: "0.1"
                 }
             }]
